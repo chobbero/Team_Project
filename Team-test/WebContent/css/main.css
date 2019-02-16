@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+body {
+	font-family: Circlar, Roboto,sans-serif;
+	color: #484848;
+}
+a {
+	text-decoration: none;
+}
+
+ nav a:LINK, nav a:VISITED {
+}
+
+ nav a:HOVER, nav a:ACTIVE {
+}
+
+/*모바일 first */
+div#container {
+   width: 100%;
+   margin: 0 auto; 
+}
+header {
+	border: 1px solid red;
+	margin: 0;
+	padding: 0;
+}
+
+/* 로고 */
+#logo {
+	width: 70px; height: 70px;
+	background-color: #ff5a5f;
+	position: relative;
+	border-radius: 5px;
+}
+
+.logo_img {
+	width: 40px; height: 40px;
+	margin: auto;	
+	position: absolute;
+	left: 15px;
+	top: 15px;
+	
+}
+
+/* 메뉴 바  */
+nav {
+	width: 100%;
+	display: block;
+	border-top: 1px solid #ccc;
+	position: fixed;
+	bottom: 5px;
+	text-align: center;
+	margin: 0;
+	padding-top: 10px;
+	
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul li {
+	display: inline-block;
+/* 	border: 1px solid red; */
+	margin: 0 5px;
+}
+
+nav .nav_img {
+	width: 30px; height: 30px;
+	display: inline-block;
+/* 	border: 1px solid; */
+}
+
+nav .nav_wrap {
+/* 	border: 1px solid red; */
+	width: 40px; height: 40px;
+	display: inline-block;
+}
+
+nav .nav_text {
+	margin: 0;
+	display: inline-block;
+/* 	border: 1px solid blue; */
+	font-size: 0.5rem;
+	width: 40px;
+	text-align: center;
+	font-weight: bold;
+	color: #616161;
+	letter-spacing:0;
+}
