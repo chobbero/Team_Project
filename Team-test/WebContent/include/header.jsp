@@ -9,8 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<div id="container">
-		<header>
+	<header>
 		<a href="https://www.naver.com/"><div id="logo">
 		<img class="logo_img" alt="logo" src="img/logo.png">
 		</div></a>
@@ -54,7 +53,7 @@
 					</a></li>
 				</ul>
 			</nav>
-		</header>
+	</header>
 
 
 
@@ -67,8 +66,5 @@
 		<section id="category"></section>
 
 
-
-		<footer> </footer>
-	</div>
 </body>
 </html>
