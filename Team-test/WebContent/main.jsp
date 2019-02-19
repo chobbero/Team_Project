@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
-<link href="css/main.css" rel="stylesheet">
+<link href="css/main3.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -57,8 +57,30 @@
 		</header>
 
 
+		<section id="search">
+		
+		<div class="search_bar">
+		
+		<form action="" method="post" name="search">
+		
+		<div class="search_input_wrap">
+		<img class="search_input_logo" alt="" src="img/bar_logo.png">
+		<input class="search_input" type="text">
+		</div>
+		
+		<button type="submit" class="search_btn_icon">
+		<img alt="search" src="img/Search.png">
+		</button>
+		
+		<button type="submit" class="search_btn_text">
+		검색
+		</button>
 
-		<section id="search"></section>
+		
+		</form>
+		</div>
+		
+		</section>
 
 		<section id="rank"></section>
 
@@ -67,7 +89,7 @@
 		<section id="category"></section>
 
 
-
+	
 		<footer> </footer>
 	</div>
 </body>
