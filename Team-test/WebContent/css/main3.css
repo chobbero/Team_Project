@@ -1,0 +1,166 @@
+@charset "UTF-8";
+
+body {
+	font-family: Circlar, Roboto,sans-serif;
+	color: #484848;
+}
+a {
+	text-decoration: none;
+}
+
+ nav a:LINK, nav a:VISITED {
+}
+
+ nav a:HOVER, nav a:ACTIVE {
+}
+
+/*모바일 first */
+div#container {
+   width: 100%;
+   margin: 0 auto; 
+}
+header {
+	background-color: #efefef;
+	border: 1px solid red;
+	margin: 0;
+	padding: 0;
+}
+
+/* 로고 */
+#logo {
+	width: 70px; height: 70px;
+	background-color: #ff5a5f;
+	position: relative;
+	border-radius: 5px;
+}
+
+.logo_img {
+	width: 50px; height: 50px;
+	margin: auto;	
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	
+}
+
+/* 메뉴 바  */
+nav {
+	width: 100%;
+	display: block;
+	border-top: 1px solid #ccc;
+	position: fixed;
+	bottom: 5px;
+	text-align: center;
+	margin: 0;
+	padding-top: 10px;
+	
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul li {
+	display: inline-block;
+/* 	border: 1px solid red; */
+	margin: 0 5px;
+}
+
+nav .nav_img {
+	width: 30px; height: 30px;
+	display: inline-block;
+/* 	border: 1px solid; */
+}
+
+nav .nav_wrap {
+/* 	border: 1px solid red; */
+	width: 40px; height: 40px;
+	display: inline-block;
+}
+
+nav .nav_text {
+	margin: 0;
+	display: inline-block;
+/* 	border: 1px solid blue; */
+	font-size: 0.5rem;
+	width: 40px;
+	text-align: center;
+	font-weight: bold;
+	color: #616161;
+	letter-spacing:0;
+}
+
+/* 검색창 */
+section#search {
+	background-color: #efefef;
+}
+
+section#search .search_bar {
+	border: 1px solid red;
+	
+}
+section#search .search_input_wrap{
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #fff;
+	width: 90%; height: 55px;
+	margin: 10px 5%;
+	position: relative;
+		
+}
+
+
+section#search .search_input_logo {
+	height: 25px;
+	padding: 15px;	
+	border-radius: 5px;
+	
+}
+
+section#search .search_input {
+	width: 80%; height: 25px;
+	display: inline;
+	background-color: #fff;
+	border: none;
+	position: absolute;
+	top: 15px;
+}
+
+section#search .search_btn_icon {
+	width: 100px; height: 100px;
+	border: none;
+	background-color: #ff5a5f;
+	display: none;	
+}
+
+section#search .search_btn_text {
+	width: 90%; height: 55px;
+	border: none;
+	border-radius: 5px;
+	background-color: #ff5a5f;
+	display: block;	
+	margin: 0 5%;
+	color: #fff;
+	font-weight: bold;
+	font-size: 1.15em;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
