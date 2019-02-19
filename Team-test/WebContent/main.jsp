@@ -56,6 +56,7 @@
 			</nav>
 		</header>
 
+<<<<<<< HEAD
 
 		<section id="search">
 		
@@ -75,6 +76,9 @@
 		<button type="submit" class="search_btn_text">
 		검색
 		</button>
+=======
+ 
+>>>>>>> 5e585e9fdee374433da68fbcceb1c77dbe6919aa
 
 		
 		</form>
