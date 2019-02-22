@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+#board_frame {
+	border: 1px solid red;
+	text-align: center;
+}
+
+#board_view {
+	width: 922px;
+	display: inline-block;
+	margin: auto;
+}
+
+#board_title {
+	border: 1px solid blue;
+	display: block;
+	margin: 10px;
+}
+
+#board_content {
+	border: 1px solid black;
+	display: block;
+	margin: 10px;
+}
+
+.content_img, .content_content {
+	vertical-align: top;
+}
+
+.content_img {
+	display: inline-block;
+	border: 3px solid green;
+}
+
+.content_img_size {
+	width: 250px;
+	height: 250px;
+}
+
+.content_content {
+	text-align :left; 
+	width:600px;
+	height: 250px;
+	display: inline-block;
+	border: 3px solid orange;
+}
+
+.restaurant_name {
+	font-size: 34px;
+	font-weight: bold;
+}
+
+.name_emphasis {
+	font-size: 40px;
+	color: blue;
+}
+
+.restaurant_address {
+	color: gray;
+	font-size: 20px;
+}
+
+.restaurant_content {
+	color: green;
+	font-size: 24px;
+	white-space: pre-line;
+	overflow: hidden;
+	
+}

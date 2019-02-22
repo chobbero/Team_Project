@@ -5,15 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
-<link href="css/main3.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-	<div id="container">
-		<header>
-			<a href="https://www.naver.com/"><div id="logo">
-					<img class="logo_img" alt="logo" src="img/logo.png">
-				</div></a>
+	<header>
+		<a href="https://www.naver.com/"><div id="logo">
+		<img class="logo_img" alt="logo" src="img/logo.png">
+		</div></a>
 			<nav>
 				<ul>
 					<li><a href="https://www.naver.com/">
@@ -30,8 +29,7 @@
 					</a></li>
 					<li><a href="#">
 							<div class="nav_wrap">
-								<img class="nav_img" alt="recommend"
-									src="img/recommendation.png">
+								<img class="nav_img" alt="recommend" src="img/recommendation.png">
 								<div class="nav_text">추천음식점</div>
 							</div>
 					</a></li>
@@ -55,32 +53,11 @@
 					</a></li>
 				</ul>
 			</nav>
-		</header>
+	</header>
 
-		<section id="search">
 
-			<div class="search_bar">
 
-				<form action="" method="post" name="search">
-
-					<div class="search_bar_text">
-					추천 음식점을 Pick 하세요.
-					</div>
-					<div class="search_input_wrap">
-						<img class="search_input_logo" alt="" src="img/bar_logo.png">
-						<input class="search_input" type="text">
-					</div>
-
-					<button type="submit" class="search_btn_icon">
-						<img alt="search" src="img/Search.png">
-					</button>
-
-					<button type="submit" class="search_btn_text">검색</button>
-
-				</form>
-			</div>
-
-		</section>
+		<section id="search"></section>
 
 		<section id="rank"></section>
 
@@ -89,8 +66,5 @@
 		<section id="category"></section>
 
 
-
-		<footer> </footer>
-	</div>
 </body>
 </html>
