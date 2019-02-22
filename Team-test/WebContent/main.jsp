@@ -63,6 +63,9 @@
 
 				<form action="" method="post" name="search">
 
+					<div class="search_bar_text">
+					추천 음식점을 Pick 하세요.
+					</div>
 					<div class="search_input_wrap">
 						<img class="search_input_logo" alt="" src="img/bar_logo.png">
 						<input class="search_input" type="text">
