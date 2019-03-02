@@ -62,7 +62,7 @@ nav {
 	text-align: center;
 	margin: 0;
 	padding-top: 10px;
-	
+	background-color: #fff;
 }
 
 ul {
@@ -169,22 +169,35 @@ section#search .search_btn_text {
 
 #rank {
 	border: 1px solid red;
-	height: 300px;
+	height: 1000px;
 }
 
-#rank .cate {
-	height: 80px;
-	width: 80px;
-	border-radius: 40px;
-	display: inline-block;
-	margin-right: 20px;
+#rank .container_category{
 	border: 1px solid red;
+	text-align: center;
+}
+#rank .category {
+	display: inline-block;
+	height: 100px;
+	width: 80px;
+	margin: 10px;
+/* 	border: 1px solid red; */
 }
 
-#rank .cate>img {
+#rank .category>img {
+	box-sizing: border-box;
+/* 	border: 1px solid red; */
 	height: 80px;
 	width: 80px;
 	border-radius: 40px;
+}
+
+.describe {
+	width: 80px; height: 20px;
+	color: #484848;
+	font-weight: 600;
+/* 	border: 1px solid red; */
+	text-align: center;
 }
 
 

@@ -1,0 +1,412 @@
+@charset "UTF-8";
+
+body {
+	font-family: Circlar, Roboto, sans-serif;
+	color: #484848;
+}
+
+a {
+	text-decoration: none;
+}
+
+nav a:LINK, nav a:VISITED {
+	
+}
+
+nav a:HOVER, nav a:ACTIVE {
+	
+}
+* {
+	margin:0;
+	padding:0;
+}
+
+/*모바일 first */
+div#container {
+	width: 100%;
+	margin: 0 auto;
+}
+
+header {
+	background-color: #efefef;
+	/* 	border: 1px solid red; */
+	margin: 0;
+	padding: 0;
+}
+
+/* 로고 */
+.logo_link {
+	display: inline-block;
+}
+#logo {
+	width: 70px;
+	height: 70px;
+	background-color: #efefef;
+	position: relative;
+	border-radius: 5px;
+	display: inline-block;
+}
+
+.logo_img {
+	width: 40px;
+	height: 40px;
+	margin: auto;
+	position: absolute;
+	left: 20px;
+	top: 20px;
+	display: inline-block;
+}
+
+.logo_img_wh {
+	width: 40px;
+	height: 40px;
+	margin: auto;
+	position: absolute;
+	left: 20px;
+	top: 20px;
+	display: none;
+}
+
+/* 메뉴 바  */
+nav {
+	width: 100%;
+	display: block;
+	border-top: 1px solid #ccc;
+	position: fixed;
+	bottom: 0;
+	text-align: center;
+	margin: 0;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	background-color: #fff;
+	z-index: 9999;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul li {
+	display: inline-block;
+	/* 	border: 1px solid red; */
+	margin: 0 10px;
+}
+
+nav .nav_img {
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	/* 	border: 1px solid; */
+}
+
+nav .nav_wrap {
+	/* 	border: 1px solid red; */
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+}
+
+nav .nav_text {
+	margin: 0;
+	display: inline-block;
+	/* 	border: 1px solid blue; */
+	font-size: 0.5rem;
+	width: 40px;
+	text-align: center;
+	font-weight: bold;
+	color: #616161;
+	letter-spacing: 0;
+}
+
+/* 검색창 */
+section#search {
+	background-color: #efefef;
+	padding-bottom: 30px;
+}
+
+section#search .search_bar_text {
+	color: #484848;
+	font-size: 1.5rem;
+	/* 	border: 1px solid red; */
+	font-weight: bold;
+	width: 90%;
+	margin: 12px 5% 15px 5%;
+}
+
+section#search .search_bar {
+	border: 1px solid #efefef;
+}
+
+section#search .search_input_wrap {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background-color: #fff;
+	width: 90%;
+	height: 55px;
+	margin: 10px 5%;
+	position: relative;
+}
+
+section#search .search_input_logo {
+	height: 25px;
+	padding: 15px;
+	border-radius: 5px;
+}
+
+section#search .search_input {
+	width: 78%;
+	height: 25px;
+	display: inline;
+	background-color: #fff;
+	border: none;
+	position: absolute;
+	top: 15px;
+}
+
+section#search .search_btn_icon {
+	width: 100px;
+	height: 100px;
+	border: none;
+	background-color: #ff5a5f;
+	display: none;
+}
+
+section#search .search_btn_text {
+	width: 90%;
+	height: 55px;
+	border: none;
+	border-radius: 5px;
+	background-color: #ff5a5f;
+	display: block;
+	margin: 0 5%;
+	color: #fff;
+	font-weight: bold;
+	font-size: 1.15em;
+	cursor: pointer;
+}
+
+/*랭킹*/
+#rank {
+	display: none;
+	border-bottom: 1px solid #ccc;
+	min-height: 450px;
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
+
+#rank .title {
+	color: #e47679;
+	font-size: 1.3rem;
+	font-weight: bold;
+	width: 90%;
+	margin: 12px 5% 25px 5%;
+}
+
+#rank .container_rank {
+/* 	border: 1px solid red; */
+	min-height: 380px;
+}
+
+#rank .rank1 {
+/* 	border: 1px solid red; */
+	position: relative;
+	height: 160px;
+}
+
+.rank1_img {
+	height: 140px; width: 140px;
+/* 	border: 1px solid red; */
+	position: absolute;
+	left: 10px;
+}
+
+#rank .rank1_sub {
+/* 	border: 1px solid red; */
+	display: inline-block;
+	position: absolute;
+	left: 170px; top: 10px;
+}
+
+.crown {
+	height: 28px;
+/* 	border: 1px solid red; */
+	margin-right: 10px;
+}
+
+#rank .rank1_title {
+	font-size: 1.3rem;
+	font-weight: 600;
+/* 	border: 1px solid red; */
+	display: inline-block;
+	vertical-align: top;
+}
+
+#rank .rank1_desc {
+	height: 100px;
+/* 	border: 1px solid; */
+	width: 55%;
+	position: absolute;
+	top: 50px; left: 170px;
+}
+
+#rank .rankOthers {
+	position: relative;
+	border-top: 1px solid #484848; 
+	height: 80px;
+	margin-bottom: 25px;
+}
+
+#rank .ranks_img {
+/* 	border: 1px solid red;  */
+	position: absolute;
+	left: 10px;
+	height: 80px; width: 80px;
+	
+}
+
+#rank .ranks_title {
+	display: inline-block;
+/* 	border: 1px solid red;  */
+	position: absolute;
+	left: 110px; top: 10px;
+	height: 80px;
+	font-size: 1.3rem;
+	font-weight: 600;
+}
+
+#rank .ranks_desc {
+	position: absolute;
+	top: 50px; left: 110px;
+	width: 65%;
+/* 	border: 1px solid red; */
+	
+}
+/*카테고리 */
+#category {
+	display: none;
+	border-bottom: 1px solid #ccc;
+	height: 560px;
+	margin-bottom: 30px;
+}
+
+#category .title {
+	color: #e47679;
+	font-size: 1.3rem;
+	font-weight: bold;
+	width: 90%;
+	margin: 12px 5% 12px 5%;
+}
+
+#category .container_category {
+	text-align: center;
+}
+
+#category .category {
+	display: inline-block;
+	height: 100px;
+	width: 76px;
+	margin: 12px;
+	/* 	border: 1px solid red; */
+}
+
+#category .category>img {
+	box-sizing: border-box;
+	/* 	border: 1px solid red; */
+	height: 76px;
+	width: 76px;
+	border-radius: 38px;
+}
+
+.describe {
+	width: 76px;
+	height: 20px;
+	color: #484848;
+	font-weight: 600;
+	font-size: 0.9em;
+	/* 	border: 1px solid red; */
+	text-align: center;
+}
+/*지역별 검색*/
+#region {
+	border-bottom: 1px solid #ccc;
+	height: 450px;
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
+
+#region .title {
+	color: #e47679;
+	font-size: 1.3rem;
+	font-weight: bold;
+	width: 90%;
+	margin: 12px 5% 12px 5%;
+}
+
+#region .img_for_region {
+	height: 350px;
+	width: 100%;
+}
+
+@MEDIA all and (min-width:768px){
+	header {
+		background-color: #fff;
+		border-bottom: 1px solid ccc;
+		
+	}
+	
+	.logo_link {
+		border: 1px solid red;
+	}
+	
+	#logo {
+		width: 80px;
+		height: 80px;
+		background-color: #ff5a5f;
+		border-radius: 5px;
+	}
+	
+	.logo_img {
+		display: none;
+	}
+
+	.logo_img_wh {
+		display: inline-block;
+	}
+	
+	nav .nav_wrap {
+	border: 1px solid red;
+}
+	
+	nav {
+		border: 1px solid red;
+		position: relative;
+		display: inline-block;
+		width: 700px;
+		top: -20px;
+	}
+	
+	ul li {
+		display: inline-block;
+		border: 1px solid red;
+		margin: 0 10px;
+		width: 120px;
+	}
+	nav .nav_text {
+	margin: 0;
+	display: inline-block;
+		border: 1px solid blue;
+	font-size: 1.3rem;
+	width: 100px;
+	text-align: center;
+	font-weight: bold;
+	color: #616161;
+	letter-spacing: 3px;
+}
+	
+	nav .nav_img {
+	display: none;
+	width: 0px;
+}
+}
