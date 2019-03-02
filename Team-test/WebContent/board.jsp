@@ -12,7 +12,7 @@
 <body>
 	<div id="container">
 	
-		<jsp:include page="/include/menuBar.jsp" />
+		<jsp:include page="include/menuBar.jsp" />
 		
 		<article id="board_frame">
 			<div id="board_view">
@@ -37,7 +37,7 @@
 			</div>
 		</article>
 
-		
+		<jsp:include page="include/footer.jsp"/>
 	</div>
 </body>
 </html>

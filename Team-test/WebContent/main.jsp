@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
 <link href="css/main9.css" rel="stylesheet">
-<link href="css/menuBar.css" rel="stylesheet">
+<link href="css/menuBar2.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
@@ -129,15 +129,9 @@
 				<img class="img_for_region" src="img/region.jpg">
 			</div>
 		</section>
-
-		<footer>
-			<hr>
-			<div id="copy">
-				All contents Copyright @pick_pick. all rights reserved<br>
-				Contact &nbsp; # mail : stranger_m@naver.com &nbsp;&nbsp; # Tel.
-				010-7186-6065
-			</div>
-		</footer>
+		
+		<jsp:include page="include/footer.jsp" />
+		
 	</div>
 </body>
 </html>

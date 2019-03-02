@@ -191,6 +191,7 @@ footer {
 		letter-spacing: 1px;
 	}
 	li:hover .nav_text {
+		box-sizing:border-box;
 		border-bottom: 1.5px solid #484848;
 	}
 	nav .nav_img {
@@ -219,13 +220,11 @@ footer {
 	}
 	nav {
 		background-color: #ff5a5f;
-		vertical-align: top;
 		/* 		border: 1px solid red; */
 		position: absolute;
-		width: 850px;
+		width: 840px;
 		box-sizing: border-box;
-		height: 80px;
-		right: 0px;
+		right: 5px;
 		vertical-align: top;
 	}
 	ul li {
@@ -247,6 +246,7 @@ footer {
 		position: absolute;
 		top: 20px;
 		height: 60px;
+		padding: 0px;
 	}
 	li:hover .nav_text {
 		border-bottom: 4px solid #ccc;
