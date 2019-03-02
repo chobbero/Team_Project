@@ -6,29 +6,81 @@
 <head>
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
-<link href="css/main9.css" rel="stylesheet">
-<link href="css/menuBar.css" rel="stylesheet">
+<link href="css/main8.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('.down_scroll').click(function() {
-			var h = $('.container_rank').height();
-			if (h > 250) {
-				$('.container_rank').css('height', '200px');
-				$('.rankOthers').css('display', 'none');
-			} else {
-				$('.container_rank').css('height', '1140px');
-				$('.rankOthers').toggle('slow');
-			}
+		// show()   hide()  toggle()  
+		// slideDown()  slideUp()  slideToggle()
+		// fadeIn()  fadeOut()  fadeToggle() 
+		// h1 태그클릭 이벤트발생하면
+		// 클릭한대상  $(this).next().toggle('slow',function(){})
+		$('.container_rank').click(function() {
+			$('.rankOthers').next().toggle('slow', function() {
+				// 			alert("효과끝");
+			});
 		});
 	});
 </script>
 </head>
 <body>
 	<div id="container">
-
-		<jsp:include page="include/menuBar.jsp" />
+		<header>
+			<a href="https://www.naver.com/" class="logo_link">
+				<div id="logo">
+					<img class="logo_img" alt="logo" src="img/logo_pink.png"> <img
+						class="logo_img_wh" alt="logo" src="img/logo.png">
+				</div>
+			</a>
+			<nav>
+				<ul>
+					<li><a href="https://www.naver.com/">
+							<div class="nav_wrap">
+								<img class="nav_img" alt="search" src="img/search_nav.png">
+								<div class="nav_text">검색하기</div>
+							</div>
+					</a></li>
+					<li><a href="#">
+							<div class="nav_wrap">
+								<img class="nav_img" alt="review" src="img/review.png">
+								<div class="nav_text">리얼후기</div>
+							</div>
+					</a></li>
+					<li><a href="#">
+							<div class="nav_wrap">
+								<img class="nav_img" alt="recommend"
+									src="img/recommendation.png">
+								<div class="nav_text">추천음식점</div>
+							</div>
+					</a></li>
+					<li><a href="#">
+							<div class="nav_wrap">
+								<img class="nav_img" alt="cowork" src="img/organization.png">
+								<div class="nav_text">제휴음식점</div>
+							</div>
+					</a></li>
+					<c:choose>
+						<c:when test="${info !=null }">
+							<li><a href="#">
+									<div class="nav_wrap">
+										<img class="nav_img" alt="MyPage" src="img/MyPage.png">
+										<div class="nav_text">마이페이지</div>
+									</div>
+							</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="#">
+									<div class="nav_wrap">
+										<img class="nav_img" alt="Log_in" src="img/log_in.png">
+										<div class="nav_text">로그인</div>
+									</div>
+							</a></li>
+						</c:otherwise>
+					</c:choose>
+				</ul>
+			</nav>
+		</header>
 
 		<section id="search">
 
@@ -60,7 +112,7 @@
 
 				<div class="rank1">
 
-					<a href="#"><img class="rank1_img" alt="no.1" src="img/ex2.jpg"></a>
+					<img class="rank1_img" alt="no.1" src="img/ex2.jpg">
 
 					<div class="rank1_sub">
 
@@ -72,13 +124,13 @@
 					<div class="rank1_desc">
 						# 일식<br>전화번호<br>주소<br>추천
 					</div>
-					<img class="down_scroll" alt="down_scroll" src="img/down5.png">
+
 				</div>
 				<%
-				    for (int i = 2; i <= 10; i++) {
+				    for (int i = 2; i <= 3; i++) {
 				%>
 				<div class="rankOthers">
-					<a href="#"><img class="ranks_img" alt="no.1" src="img/ex.jpg"></a>
+					<img class="ranks_img" alt="no.1" src="img/ex.jpg">
 					<div class="ranks_title"><%=i%>. 맛집이름
 					</div>
 					<div class="ranks_desc"># 일식</div>
@@ -86,6 +138,20 @@
 				<%
 				    }
 				%>
+
+				<%
+				    for (int i = 4; i <= 10; i++) {
+				%>
+				<div class="rankOthers">
+					<img class="ranks_img" alt="no.1" src="img/ex.jpg">
+					<div class="ranks_title"><%=i%>. 맛집이름
+					</div>
+					<div class="ranks_desc"># 일식</div>
+				</div>
+				<%
+				    }
+				%>
+
 			</div>
 		</section>
 
@@ -94,6 +160,7 @@
 			<div class="title">원하는 메뉴를 고르세요.</div>
 
 			<div class="container_category">
+
 				<a href="#" class="category"> <img src="img/date.png">
 					<div class="describe"># 데이트</div>
 				</a> <a href="#" class="category"> <img src="img/chinese_food.png">
@@ -119,6 +186,8 @@
 				</a> <a href="#" class="category"> <img src="img/etc.png">
 					<div class="describe"># 기타</div>
 				</a>
+
+
 			</div>
 		</section>
 
@@ -127,15 +196,26 @@
 
 			<div class="container_region">
 				<img class="img_for_region" src="img/region.jpg">
+
+
+
+
+
+
 			</div>
 		</section>
+
+
+
+
 
 		<footer>
 			<hr>
 			<div id="copy">
-				All contents Copyright @pick_pick. all rights reserved<br>
-				Contact &nbsp; # mail : stranger_m@naver.com &nbsp;&nbsp; # Tel.
-				010-7186-6065
+				All contents Copyright @pick_pick. all rights reserved<br> 
+				Contact &nbsp;
+				# mail : stranger_m@naver.com &nbsp;&nbsp; # Tel. 010-7186-6065
+				
 			</div>
 		</footer>
 	</div>

@@ -5,14 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
-<link href="css/main.css" rel="stylesheet">
+<link href="css/menuBar.css" rel="stylesheet">
 <link href="css/board.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 	<div id="container">
 	
-		<jsp:include page="/include/header.jsp" />
+		<jsp:include page="/include/menuBar.jsp" />
 		
 		<article id="board_frame">
 			<div id="board_view">
