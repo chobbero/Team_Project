@@ -133,7 +133,10 @@ footer {
 		height: 80px;
 		border-bottom: 1.5px solid #efefef;
 		margin-bottom: 20px;
-		position: relative;
+		position: fixed;
+		top: 0;
+		z-index: 99999;
+		width: 100%;
 	}
 	.logo_link {
 		/* 		border: 1px solid red; */
