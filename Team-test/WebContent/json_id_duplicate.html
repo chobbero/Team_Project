@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#btn').click(function() {
+			var input_id = $('#id').val();
+			var duplicate = false;
+			$.getJSON('json2.jsp', function(data) {
+				$.each(data, function(index, item) {
+					var db_id = item.id;
+					if (input_id == db_id) {
+						duplicate = true;
+					} else if(input_id == ""){
+						duplicate = true;
+					}
+				});
+				if (duplicate) {
+					alert('사용 불가능/ 다른 아이디를 입력하세요.');
+				} else {
+					alert('사용가능한 아이디');
+				}
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<h2>아이디 중복확인</h2>
+
+	<input type="text" id="id">
+	<input type="button" value="아이디 중복확인" id="btn">
+
+</body>
+</html>
+
