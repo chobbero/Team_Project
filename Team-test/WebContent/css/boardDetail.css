@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+#board_frame {
+	border: 1px solid red;
+	text-align: center;
+	margin-top: 85px;
+}
+
+#reviewImageArea1 {display: block; width: 100%; border:1px solid green;}
+#reviewImageArea1 img {width:240px; height:240px;}
+.imageSildeBtn1{position: absolute; top: 22.5%; right: 2%;}
+.imageSildeBtn2{position: absolute; top: 22.5%; left: 2%;}
+
+#reviewImageArea2 {display: none;}
+
+#contentArea {display: block; border:1px solid blue;}
+#boardDeatilContentArea, #etcArea  {display: inline-block; border:1px solid orange; margin: 10px 0; vertical-align: top;}
+
+#boardDeatilContentArea {width:70%; text-align: left; padding: 15px;}
+.contentTitle {font-size: 30px; font-weight: bold;}
+.contentSubTitle {font-size: 15px; color: gray;}
+.contentETC {font-size: 20px; color:green; margin: 5px 0;}
+
+hr {margin: 5px;}
+
+table {margin: 25px 0; border-collapse: separate; border-spacing: 0 10px;}
+table .menu {min-width:100px; font-weight: bold;}
+table .menuDetail {white-space: pre-line;}
+
+#contentImg {}
+#contentImg p {font-weight: bold;}
+#contentImg img {width:120px; height:120px;}
+
+#etcArea {width:25%;}
+
+#reviewArea {display: block; border: 1px solid red;}
+
+
+
+@MEDIA screen and (max-width:1023px) {
+	#board_frame {margin-top: 85px;}
+	
+	#reviewImageArea1 {}
+	#reviewImageArea1 img {width:180px; height:180px;}
+	.imageSildeBtn1{position: absolute; top: 20%; right: 1%;}
+	.imageSildeBtn2{position: absolute; top: 20%; left: 1%;}
+	
+	#reviewImageArea2 {display: none;}
+	
+	#contentArea {}
+	
+	#boardDeatilContentArea {width:70%;}
+	
+	table {margin: 25px 0;}
+	
+	#contentImg img {width:90px; height:90px;}
+	
+	#etcArea {width:24%;}
+}
+
+
+
+@MEDIA screen and (max-width:767px) {
+	#board_frame {margin-top: 0;}
+	
+	#reviewImageArea1 {display: none;}
+	#reviewImageArea2 {display: block;}
+	#reviewImageArea2 img {}
+	
+	.imageSildeBtn1{position: absolute; top: 16%; right: 30px;}
+	.imageSildeBtn2{position: absolute; top: 16%; left: 30px;}
+	
+	#contentArea {}
+	
+	#boardDeatilContentArea {width:100%;}
+	
+	table {margin: 10px 0;}
+	
+	#contentImg img {width:70px; height:70px;}
+	
+	#etcArea {display: none;}
+}
+
