@@ -16,22 +16,71 @@
 			
 			<section id="board_frame">
 				<!-- 리뷰의 이미지만 표시(최대 4개 표시) -->
-				<aside id="reviewImageArea1">
+				<aside id="contentImageArea1">
 					<img src="img/pasta.png">
-					<img src="img/pasta.png">
-					<img src="img/pasta.png">
-					<img src="img/pasta.png">
+					<img src="img/hot-dog.png">
+					<img src="img/meat.png">
+					<img src="img/noodles.png">
 					<!-- 이미지 슬라이드 스크립트 구현 -->
 					<a class="imageSildeBtn1" onclick="plusDivs(1)">❯</a>
 					<a class="imageSildeBtn2" onclick="plusDivs(-1)">❮</a>
+						
 				</aside>
 				
-				<!-- 화면크기에 따라 표시 -->
-				<aside id="reviewImageArea2">
-					<img src="img/pasta.png">
+				<!-- 화면크기에 따라 표시 width=767미만 -->
+				<aside id="contentImageArea2">
+					<!-- 추가한 이미지들의 클래스는 동일하게 -->
+					<img src="img/pasta.png" class="imgSlides">
+					<img src="img/hot-dog.png" class="imgSlides">
+					<img src="img/meat.png" class="imgSlides">
+					<img src="img/noodles.png" class="imgSlides">
+					<a class="imageSildeBtn1" onclick="plusDivs(1)">❯</a>
+					<a class="imageSildeBtn2" onclick="plusDivs(-1)">❮</a>
+					<script>
+						// 수동 이미지 슬라이드
+						var slideIndex = 1;
+						showDivs(slideIndex);
+					
+						function plusDivs(n) {
+						  showDivs(slideIndex += n);
+						}
+			
+						function showDivs(n) {
+							var i;
+					 	 	var x = document.getElementsByClassName("imgSlides");
+						 	if (n > x.length) {slideIndex = 1}    
+					 		if (n < 1) {slideIndex = x.length} ;
+							for (i = 0; i < x.length; i++) {
+						    	x[i].style.display = "none";  
+							}
+							x[slideIndex-1].style.display = "block";  
+						}
+						
+						// 자동 이미지 슬라이드
+						var myIndex = 0;
+						carousel();
+			
+						function carousel() {
+			   				var i;
+			   				var x = document.getElementsByClassName("imgSlides");
+			   				for (i = 0; i < x.length; i++) {
+			      			x[i].style.display = "none";  
+			    		}
+			   			myIndex++;
+			   			if (myIndex > x.length) {myIndex = 1}    
+			   				x[myIndex-1].style.display = "block";  
+			   				setTimeout(carousel, 5000);  // 5초마다 변경
+						}
+					</script>
 				</aside>
+				
+				<!-- 주내용 -->
 				<section id="contentArea">
 					<article id="boardDeatilContentArea">
+						<div class="reviewWrite_favorite">
+							<div><a href="#"><img src="img/review.png"><br>리뷰쓰기</a></div>
+							<div><a href="#"><img src="img/recommendation.png"><br>즐겨찾기</a></div>
+						</div>
 						<p class="contentTitle">아웃백 스테이크 하우스 (부산역점)</p>
 						<p class="contentSubTitle">Outback Stake House (Pusan Station)</p>
 						<p class="contentETC">기타추가(좋아요 조회수 등등..)</p>
@@ -58,13 +107,6 @@
 							<td class="menuDetail">스테이크 1인분 (국내산)   100000원</td>
 							</tr>
 						</table>
-						<!-- 해당 가게의 이미지만 표시 -->
-						<div id="contentImg">
-							<p>이미지</p>
-							<img src="img/meat.png">
-							<img src="img/japanese_food.png">
-							<img src="img/pasta.png">
-						</div>
 					</article>
 					
 					<!-- 기타정보 표시 (지도, 주변정보, 태그 등등..) -->
@@ -77,9 +119,28 @@
 					</aside>
 				</section>
 				
-				<!-- 리뷰갯수 마다 반복 -->
+				<!-- 리뷰표시 -->
 				<section id="reviewArea">
-					리뷰 표시
+					<p>리뷰</p>
+					<table>
+						<!-- 리뷰갯수 마다 반복 -->
+						<tr>
+							<td class="reviewWriter">홍길동</td>
+							<td class="reviewContent">good~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</td>
+						</tr>
+						<tr>
+							<td class="reviewWriter">지나가던</td>
+							<td class="reviewContent">맛있숨1</td>
+						</tr>
+						<tr>
+							<td class="reviewWriter">글쓴이2</td>
+							<td class="reviewContent">존맛</td>
+						</tr>
+						<tr>
+							<td class="reviewWriter">글쓴이3</td>
+							<td class="reviewContent">비쌈</td>
+						</tr>
+					</table>
 				</section>
 			</section>
 			
