@@ -50,7 +50,6 @@
 	overflow: hidden;
 	height: 300px;
 	width: 94%;
-	background-image: url("../img/1_c_f.jpg");
 	background-size: cover;
 	background-position: center center;
 	box-sizing: border-box;
@@ -130,6 +129,11 @@
 }
 
 @MEDIA screen and (min-width:1024px) {
+	#boardList .boardList_title {
+			border: 1px solid red;
+		height: 140px;
+		background-color: #efefef;
+	}
 	#boardList .boardList_content_layer02_r {
 		height: 240px;
 		width: 44%;
@@ -137,7 +141,7 @@
 		background-size: cover;
 		background-position: center center;
 		box-sizing: border-box;
-		margin: 20px 3% ;
+		margin: 20px 3%;
 	}
 	#boardList .boardList_content_layer02_l {
 		height: 200px;
