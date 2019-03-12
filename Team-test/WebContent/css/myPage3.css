@@ -96,7 +96,7 @@
 		position: absolute;
 		top: 80px;
 		right: 0;
-		width: 100%;
+		width: 70%;
 		border: 1px solid red;
 		margin: 0;
 		padding: 0;
@@ -104,39 +104,38 @@
 	#myPage .detail_business_info {
 		display: block;
 		position: absolute;
-		top: 380px;
+		top: 480px;
 		right: 0;
-		width: 100%;
+		width: 70%;
 		border: 1px solid red;
 		margin: 0;
 		padding: 0;
 	}
-	#myPage .detail_business_info tr {
-		margin: 0;
-		padding: 0;
-	}
-	#myPage .detail_business_info td {
-		margin: 0;
-		padding: 0;
-	}
 	#myPage .myPage_table_top {
-		width: 200%;
+		width: 100%;
 		background-color: #ff5a5f;
 		color: #fff;
-		font-size: 1.3rem;	
+		font-size: 1.3rem;
 		font-weight: 600;
+		
 	}
-	
-	#myPage .table_bottom_border {
+	.mypage_title {
+		padding: 10px;
+	}
+	.info_left {
+		color: #b4b4b4;
+		font-weight: 600;
+		width: 200px;
 		border-bottom: 2px dotted #ccc;
+		padding: 10px;
 	}
-	#myPage .info_left {
-		width: 60%;
+	.info_right {
+		color: #484848;
+		font-weight: 600;
+		width: 400px;
+		border-bottom: 2px dotted #ccc;
+		padding: 10px;
 	}
-	#myPage .info_right {
-		width: 140%;
-	}
-	
 	footer {
 		margin-top: 210px;
 	}
