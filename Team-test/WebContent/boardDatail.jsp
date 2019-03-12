@@ -5,9 +5,31 @@
 <head>
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
-<link href="css/menuBar2.css" rel="stylesheet">
 <link href="css/boardDetail2.css" rel="stylesheet">
+<link href="css/menuBar3.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+	$(window).on('load', function () {
+	    load('#js-load', '5');
+	    $("#js-btn-wrap .button").on("click", function () {
+	        load('#js-load', '5', '#js-btn-wrap');
+	    })
+	});
+	 
+	function load(id, cnt, btn) {
+	    var girls_list = id + " .js-load:not(.active)";
+	    var girls_length = $(girls_list).length;
+	    var girls_total_cnt;
+	    if (cnt < girls_length) {
+	        girls_total_cnt = cnt;
+	    } else {
+	        girls_total_cnt = girls_length;
+	        $('.button').hide()
+	    }
+	    $(girls_list + ":lt(" + girls_total_cnt + ")").addClass("active");
+	}
+</script>
 </head>
 <body>
 	<div id="container">
@@ -122,25 +144,29 @@
 				<!-- 리뷰표시 -->
 				<section id="reviewArea">
 					<p>리뷰</p>
-					<table>
-						<!-- 리뷰갯수 마다 반복 -->
-						<tr>
-							<td class="reviewWriter">홍길동</td>
-							<td class="reviewContent">good~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</td>
-						</tr>
-						<tr>
-							<td class="reviewWriter">지나가던</td>
-							<td class="reviewContent">맛있숨1</td>
-						</tr>
-						<tr>
-							<td class="reviewWriter">글쓴이2</td>
-							<td class="reviewContent">존맛</td>
-						</tr>
-						<tr>
-							<td class="reviewWriter">글쓴이3</td>
-							<td class="reviewContent">비쌈</td>
-						</tr>
-					</table>
+					<div id="js-load" class="main">
+						<ul class="lists">
+							<li class="lists__item js-load"><table class="review_table"><tr><td class="review_id">이름!!!!!!!!</td><td class="review_content">내용!!!!!</td></tr></table></li>
+							<li class="lists__item js-load"><table class="review_table"><tr><td class="review_id">이름!!!!!!1111111111111111111!!</td><td class="review_content">내용!!!!!</td></tr></table></li>
+							<li class="lists__item js-load"><table class="review_table"><tr><td class="review_id">이름!!!!!!!!</td><td class="review_content">1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</td></tr></table></li>
+							<li class="lists__item js-load"><table class="review_table"><tr><td class="review_id">이름!!!!!!!!</td><td class="review_content">내용!!!!!</td></tr></table></li>
+							<li class="lists__item js-load"><table class="review_table"><tr><td class="review_id">이름!!!!!!!!</td><td class="review_content">내용!!!!!</td></tr></table></li>
+							<li class="lists__item js-load"><table class="review_table"><tr><td class="review_id">이름!!!!!!!!</td><td class="review_content">내용!!!!!</td></tr></table></li>
+							<li class="lists__item js-load"><table class="review_table"><tr><td class="review_id">이름!!!!!!!!</td><td class="review_content">내용!!!!!</td></tr></table></li>
+							<li class="lists__item js-load"><table class="review_table"><tr><td class="review_id">이름!!!!!!!!</td><td class="review_content">내용!!!!!</td></tr></table></li>
+							<li class="lists__item js-load"><table class="review_table"><tr><td class="review_id">이름!!!!!!!!</td><td class="review_content">내용!!!!!</td></tr></table></li>
+							<li class="lists__item js-load"><table class="review_table"><tr><td class="review_id">이름!!!!!!!!</td><td class="review_content">내용!!!!!</td></tr></table></li>
+							<li class="lists__item js-load"><table class="review_table"><tr><td class="review_id">이름!!!!!!!!</td><td class="review_content">내용!!!!!</td></tr></table></li>
+							<li class="lists__item js-load"><table class="review_table"><tr><td class="review_id">이름!!!!!!!!</td><td class="review_content">내용!!!!!</td></tr></table></li>
+							<li class="lists__item js-load"><table class="review_table"><tr><td class="review_id">이름!!!!!!!!</td><td class="review_content">내용!!!!!</td></tr></table></li>
+							<li class="lists__item js-load"><table class="review_table"><tr><td class="review_id">이름!!!!!!!!</td><td class="review_content">내용!!!!!</td></tr></table></li>
+							<li class="lists__item js-load"><table class="review_table"><tr><td class="review_id">이름!!!!!!!!</td><td class="review_content">내용!!!!!</td></tr></table></li>
+							<li class="lists__item js-load"><table class="review_table"><tr><td class="review_id">이름!!!!!!!!</td><td class="review_content">내용!!!!!</td></tr></table></li>
+						</ul>
+						<div id="js-btn-wrap" class="btn-wrap">
+							<a href="javascript:;" class="button"><img src="img/down3.png"></a>
+						</div>
+					</div>
 				</section>
 			</section>
 			 
