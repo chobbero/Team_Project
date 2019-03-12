@@ -1,0 +1,97 @@
+@charset "UTF-8";
+
+/*모바일 퍼스트*/
+#myPage  {
+	border: 1px solid red;
+	box-sizing: border-box;
+	margin: 0 auto 0px auto;
+	width: 100%;
+	height: 800px;
+	position: relative;
+	margin: 0 auto 0px auto;
+}
+
+.myInfo {
+	width: 100%;
+	height: 200px;
+	border: 1px solid red;
+}
+
+#myPage .myPage_list {
+	/* 	border: 1px solid red; */
+	list-style: none;
+}
+
+#myPage .myPage_list li {
+	border-bottom: 1px solid #ccc;
+	width: 86%;
+	height: 90px;
+	position: relative;
+	margin: 0 7%;
+}
+
+#myPage .myPage_list li div {
+	display: inline-block;
+	/* 	border: 1px solid blue; */
+	font-size: 1.2rem;
+	color: #484848;
+	font-weight: 600;
+	line-height: 90px;
+	height: 90px;
+}
+
+#myPage .myPage_list li img {
+	display: inline-block;
+	width: 34px;
+	height: 34px;
+	vertical-align: top;
+	position: absolute;
+	top: 28px;
+	right: 0px;
+	/* 	border: 1px solid blue; */
+}
+
+@MEDIA screen and (min-width:768px) {
+	#myPage {
+		/* 		border: 1px solid red; */
+		margin: 110px 20% 0 20%;
+		width: 60%;
+		height: 500px;
+	}
+	footer {
+		margin-top: 210px;
+	}
+}
+
+@MEDIA screen and (min-width:1024px) {
+	#myPage {
+		/* 		border: 1px solid red; */
+		margin: 130px 28% 0 28%;
+		width: 44%;
+		height: 550px;
+	}
+	#myPage .id {
+		padding: 20px;
+		margin: 8px 10%;
+		font-size: 18px;
+	}
+	#myPage .pass {
+		font-size: 18px;
+		padding: 20px;
+		margin: 8px 10%;
+	}
+	#myPage .submit_login {
+		height: 65px;
+		width: 80%;
+		font-size: 1.3rem;
+	}
+	#myPage .to_join {
+		font-size: 1rem;
+	}
+	#myPage .to_find {
+		font-size: 1rem;
+	}
+	footer {
+		margin-top: 170px;
+	}
+}
