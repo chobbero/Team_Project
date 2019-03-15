@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<!-- DBCP(커넥션 풀) 설정 -->
+	<Resource 
+		name="jdbc/MySQL"
+		auth="Container"
+		type="javax.sql.DataSource"
+		username="team_project"
+		password="1234"
+		driverClassName="com.mysql.jdbc.Driver"
+		factory="org.apache.tomcat.dbcp.dbcp2.BasicDataSourceFactory"
+		url="jdbc:mysql://localhost:3306/team_project"
+		maxActive="500"
+		maxIdle="100"	
+	/>
+</Context>
