@@ -78,7 +78,8 @@
 
 @MEDIA screen and (min-width:768px) {
 	#myPage {
-		width: 90%;
+		width: 92%;
+		margin: 0 6% 0 2%;
 		border: 1px solid red;
 	}
 	#myPage .myInfo {
@@ -92,7 +93,21 @@
 		width: 20%;
 	}
 	.list_imgs {
-		display: none;
+		visibility: hidden;
+	}
+	#myPage .myPage_list li {
+		height: 80px;
+	}
+	#myPage .myPage_list li div {
+		font-size: 1.1rem;
+		line-height: 80px;
+		height: 80px;
+	}
+	#myPage .myPage_list li:HOVER  {
+		border-bottom: 2.5px solid #ff5a5f;
+	}
+	#myPage .myPage_list li:HOVER>div {
+		font-size: 1.25rem;
 	}
 	#myPage .detail_ordinary_info {
 		display: block;
@@ -108,7 +123,7 @@
 	#myPage .detail_business_info {
 		display: block;
 		position: absolute;
-		top: 580px;
+		top: 540px;
 		right: 0;
 		width: 75%;
 		border: 1px solid red;
@@ -120,11 +135,12 @@
 		width: 100%;
 		background-color: #ff5a5f;
 		color: #fff;
-		font-size: 1.3rem;
+		font-size: 1.4rem;
 		font-weight: 600;
 	}
 	.mypage_title {
-		width: 100%; padding : 10px 20px;
+		width: 100%;
+		padding: 10px 20px;
 		box-sizing: border-box;
 		padding: 10px 20px;
 	}
@@ -134,26 +150,28 @@
 	.info_left {
 		border-bottom: 2px dotted #ccc;
 		padding: 10px;
+		width: 160px;
 	}
 	.info_left div {
 		color: #b4b4b4;
 		font-weight: 500;
 		width: 140px;
-		border: 1px solid red;
-		font-size: 1.2rem;
+/* 		border: 1px solid red; */
+		font-size: 1.15rem;
+		padding-left: 10px;
 	}
 	.info_right {
 		color: #484848;
 		font-weight: 500;
 		border-bottom: 2px dotted #ccc;
-		padding: 10px;
+		padding: 10px 0;
 	}
 	.info_right div {
 		color: #484848;
 		font-weight: 500;
 		width: 400px;
-		border: 1px solid blue;
-		font-size: 1.2rem;
+/* 		border: 1px solid blue; */
+		font-size: 1.15rem;
 	}
 	footer {
 		margin-top: 210px;
