@@ -5,15 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
-<link href="css/boardComment3.css" rel="stylesheet">
-<link href="css/menuBar2.css" rel="stylesheet">
+<link href="../css/boardComment3.css" rel="stylesheet">
+<link href="../css/menuBar2.css" rel="stylesheet">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/fontawesome-stars.css">
 <script type="text/javascript" src="css/jquery.barrating.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <header>
-		<jsp:include page="include/menuBar.jsp" />
+		<jsp:include page="../include/menuBar.jsp" />
 </header>
 <body>
 <script type="text/javascript"> $(function() { $('#example').barrating({ theme: 'fontawesome-stars' }); }); </script>
@@ -63,6 +63,6 @@
 		</section>
 </body>
 <footer>
-		<jsp:include page="include/footer.jsp" />
+		<jsp:include page="../include/footer.jsp" />
 </footer>
 </html>

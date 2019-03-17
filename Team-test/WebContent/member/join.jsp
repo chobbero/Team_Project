@@ -5,13 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
-<link href="css/Join2.css" rel="stylesheet">
-<link href="css/menuBar2.css" rel="stylesheet">
+<link href="../css/Join2.css" rel="stylesheet">
+<link href="../css/menuBar2.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 	<div id="container">
-		<jsp:include page="include/menuBar.jsp" />
+		<jsp:include page="../include/menuBar.jsp" />
 		<section id="JoinForm">
 			<div class="Join_title">Pick Pick 회원가입</div>
 			<form action="UserJoinPro.mb" method="post" name="JoinForm">
@@ -35,6 +35,6 @@
 			</form>
 		</section>
 		</div>
-		<jsp:include page="include/footer.jsp" />
+		<jsp:include page="../include/footer.jsp" />
 </body>
 </html>

@@ -16,10 +16,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
-<link href="css/boardList5.css" rel="stylesheet">
-<link href="css/menuBar2.css" rel="stylesheet">
+<link href="../css/boardList5.css" rel="stylesheet">
+<link href="../css/menuBar2.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="js/jquery-3.3.1.js"></script>
+<script src="../js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('.pick').click(function() {
@@ -54,7 +54,7 @@
 </head>
 <body>
 	<div id="container">
-		<jsp:include page="include/menuBar.jsp" />
+		<jsp:include page="../include/menuBar.jsp" />
 		<section id="boardList">
 			<div class="boardList_title">
 			<div class="t1"> 맛집 리얼 후기 </div>
@@ -98,7 +98,7 @@
 <%-- 		<%} %> --%>
 		</section>
 		
-		<jsp:include page="include/footer.jsp" />
+		<jsp:include page="../include/footer.jsp" />
 	</div>
 
 

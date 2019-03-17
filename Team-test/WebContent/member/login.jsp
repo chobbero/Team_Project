@@ -5,13 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
-<link href="css/login2.css" rel="stylesheet">
-<link href="css/menuBar2.css" rel="stylesheet">
+<link href="../css/login2.css" rel="stylesheet">
+<link href="../css/menuBar2.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 	<div id="container">
-		<jsp:include page="include/menuBar.jsp" />
+		<jsp:include page="../include/menuBar.jsp" />
 
 		<section id="loginForm">
 			<div class="login_title">Pick Pick 로그인</div>
@@ -33,7 +33,7 @@
 			</form>
 		</section>
 
-		<jsp:include page="include/footer.jsp" />
+		<jsp:include page="../include/footer.jsp" />
 	</div>
 
 
