@@ -24,7 +24,7 @@ String dbUser="team_project";
 String dbPass="1234";
 Connection con=DriverManager.getConnection(dbUrl,dbUser,dbPass);
 //3단계 sql select 
-String sql="select store_num, store_name from store where store_name like ?";
+String sql="select store_num, store_name, store_address from store where store_name like ?";
 PreparedStatement pstmt=con.prepareStatement(sql);
 pstmt.setString(1, "%"+searchValue+"%");
 //4단계 rs = 실행 결과 저장
@@ -37,6 +37,7 @@ while(rs.next()){
 	JSONObject store=new JSONObject();
 	store.put("store_num", rs.getInt("store_num"));
 	store.put("store_name",rs.getString("store_name"));
+	store.put("store_address",rs.getString("store_address"));
 	//배열한칸 저장
 	storeList.add(store);
 }
