@@ -6,8 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
-<link href="../css/main9_1.css" rel="stylesheet">
-<link href="../css/menuBar2.css" rel="stylesheet">
+<link href="../css/boardWrite3.css" rel="stylesheet">
+<link href="../css/menuBar3.css" rel="stylesheet">
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -39,7 +39,7 @@
 								//value : 실제 text태그에 들어갈 값
 								//본인은 둘다 똑같이 줬음
 								//화면에 보여지는 text가 즉, value가 되기때문 
-								label : item.store_name,
+								label : item.store_name +" / "+ item.store_address,
 								value : item.store_name,
 								store_num : item.store_num
 							}
@@ -64,36 +64,36 @@
 
 		<jsp:include page="../include/menuBar.jsp" />
 
-		<section id="writeForm">
+		<section id="boardDeatilContentArea">
 			<h2>게시판 글 등록</h2>
 			<form action="BoardWritePro.bo" method="post"
 				enctype="multipart/form-data" name="boardform">
 				<input type="text" name="store_num" id="store_num" >
 				<table>
 					<tr>
-						<td class="td_left"><label for="store_name">음식점 선택</label></td>
-						<td class="td_right"><input type="text" name="store_name"
-							id="store_name"></td>
+						<td class="menu"><label for="store_name">음식점 선택</label></td>
+						<td class="menuDetail"><input type="text" name="store_name"
+							id="store_name" class="a"></td>
 					</tr>
 					<tr>
-						<td class="td_left"><label for="board_name">글쓴이</label></td>
-						<td class="td_right"><input type="text" name="board_writer"
-							id="board_name" required="required"></td>
+						<td  class="menu"><label for="board_name">글쓴이</label></td>
+						<td class="menuDetail"><input type="text" name="user_id"
+							id="user_id" required="required" class="a"></td>
 					</tr>
 					<tr>
-						<td class="td_left"><label for="board_subject">제목</label></td>
-						<td class="td_right"><input type="text" name="board_subject"
-							id="board_subject" required="required"></td>
+						<td  class="menu"><label for="board_subject">제목</label></td>
+						<td class="menuDetail"><input type="text" name="board_subject"
+							id="board_subject" required="required" class="a"></td>
 					</tr>
 					<tr>
-						<td class="td_left"><label for="board_content">내용</label></td>
-						<td class="td_right"><textarea name="board_content"
+						<td  class="menu"><label for="board_content">내용</label></td>
+						<td class="menuDetail"><textarea name="board_content"
 								id="board_content" cols="40" rows="15" required="required"></textarea></td>
 					</tr>
 					<tr>
-						<td class="td_left"><label for="board_file">사진</label></td>
-						<td class="td_right"><input type="file" name="board_image"
-							id="board_file" required="required"></td>
+						<td  class="menu"><label for="board_file">사진</label></td>
+						<td class="menuDetail"><input type="file" name="board_image"
+							id="board_file" required="required" class="a"></td>
 					</tr>
 				</table>
 
