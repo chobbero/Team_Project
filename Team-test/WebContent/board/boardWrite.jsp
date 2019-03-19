@@ -39,6 +39,7 @@
 								//value : 실제 text태그에 들어갈 값
 								//본인은 둘다 똑같이 줬음
 								//화면에 보여지는 text가 즉, value가 되기때문 
+
 								label : item.store_name +" / "+ item.store_address,
 								value : item.store_name,
 								store_num : item.store_num
@@ -95,6 +96,12 @@
 						<td class="menuDetail"><input type="file" name="board_image"
 							id="board_file" required="required" class="a"></td>
 					</tr>
+					<div class="filebox">
+					<label for="ex_file">업로드</label> 
+					<input type="file" id="ex_file"> 
+					</div> 
+
+					
 				</table>
 
 				<input type="submit" value="등록">&nbsp;&nbsp; <input

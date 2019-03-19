@@ -63,7 +63,7 @@
 			<c:forEach begin="1" end="7" varStatus="status">
 			<div class="boardList_content">
 			<div class="boardList_content_layer01">
-			<a href="#" class="boardList_content_layer02_r" style=" background-image: url('img/1_c_f.jpg')"></a>
+			<a href="#" class="boardList_content_layer02_r" style=" background-image: url('../img/1_c_f.jpg')"></a>
 			<div class="boardList_content_layer02_l">
 			<a href="#"><span class="boardList_content_layer02_l_1">1. 해룡마라룽샤 </span></a>
 			<label for="pick"><img class="pick" src="img/heart.png"></label><input id="pick" type="checkbox" name="id", value="board_num">
