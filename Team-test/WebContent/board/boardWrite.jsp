@@ -16,9 +16,33 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
-	$(document).ready(
-			function() {
-
+	$(document).ready(function() {
+		
+		$('#writeF').submit(function(){
+		
+			var store=$('#store_num').val();
+			
+			if(store==""){
+				alert("음식점은 필수 입력사항입니다.");
+				$('#store_name').focus();
+				return false;
+			}
+			
+		});
+		
+		
+// 			$('#writeF').submit(function({
+					
+// 					if ($("#store_num").val()=="") {
+					
+// 						$('#store_name').focus();
+					
+// 					return false;
+					
+// 					} 
+// 				});
+	
+		
 				$('.test1').on(
 						'change',
 						function() { // 값이 변경되면 
@@ -100,6 +124,7 @@
 								$("#store_num").val(ui.item.store_num);
 							}
 						});
+				
 			});
 </script>
 </head>
@@ -111,17 +136,17 @@
 		<section id="boardWrite">
 			<h2>리얼 후기 작성</h2>
 			<form action="BoardWritePro.bo" method="post"
-				enctype="multipart/form-data" name="boardform">
-				<input type="hidden" name="store_num" id="store_num">
-				<input type="hidden" name="user_id" value="demian">
+				enctype="multipart/form-data" name="boardform" id="writeF">
+				<input type="hidden" name="store_num" id="store_num"> <input
+					type="hidden" name="user_id" value="demian">
 				<table>
 
 					<tr>
 						<td><label for="board_name" class="menu">제목</label></td>
 					</tr>
 					<tr>
-						<td><input type="text" name="board_subject" id="board_subject"
-							required="required" class="a"></td>
+						<td><input type="text" name="board_subject"
+							id="board_subject" required="required" class="a"></td>
 					</tr>
 					<tr>
 						<td><label for="store_name" class="menu">방문 음식점</label></td>
@@ -135,8 +160,8 @@
 					</tr>
 					<tr>
 
-						<td><input type="text" name="board_rating"
-							id="board_rating" required="required" class="a"></td>
+						<td><input type="text" name="board_rating" id="board_rating"
+							required="required" class="a"></td>
 					</tr>
 					<tr>
 						<td><label for="board_content" class="menu">내용</label></td>
@@ -178,8 +203,8 @@
 					</tr>
 
 				</table>
-				<input type="submit" value="등록" class="submit_com">
-				<input type="reset" value="다시쓰기" class="submit_re">
+				<input type="submit" value="등록" class="submit_com"> <input
+					type="reset" value="다시쓰기" class="submit_re">
 			</form>
 		</section>
 
