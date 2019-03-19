@@ -6,13 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
-<link href="css/boardWrite6.css" rel="stylesheet">
-<link href="css/menuBar3.css" rel="stylesheet">
-<link href="css/FileUpload2.css" rel="stylesheet">
+<link href="../css/boardWrite6.css" rel="stylesheet">
+<link href="../css/menuBar3.css" rel="stylesheet">
+<link href="../css/FileUpload2.css" rel="stylesheet">
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="js/jquery-3.3.1.js"></script>
+<script src="../js/jquery-3.3.1.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script type="text/javascript">
@@ -65,7 +65,7 @@
 								//json객체를 서버에서 내려받아서 리스트 뽑는 작업
 								$.ajax({
 									//호출할 URL
-									url : "search.jsp",
+									url : "../search.jsp",
 									//우선 jsontype json으로
 									dataType : "json",
 									// parameter 값이다. 여러개를 줄수도 있다.
@@ -113,7 +113,7 @@
 			<form action="BoardWritePro.bo" method="post"
 				enctype="multipart/form-data" name="boardform">
 				<input type="hidden" name="store_num" id="store_num">
-				<input type="hidden" name="user_id" value="demian">
+				<input type="hidden" name="user_id" value="">
 				<table>
 
 					<tr>
@@ -135,8 +135,8 @@
 					</tr>
 					<tr>
 
-						<td><input type="text" name="board_rating"
-							id="board_rating" required="required" class="a"></td>
+						<td><input type="text" name="board_subject"
+							id="board_subject" required="required" class="a"></td>
 					</tr>
 					<tr>
 						<td><label for="board_content" class="menu">내용</label></td>

@@ -36,14 +36,14 @@ public class BoardListService {
     public ArrayList<BoardBean> getArticleList(int page, int limit) throws Exception {
         ArrayList<BoardBean> articleList = null; // 게시물 목록을 저장할 변수
         
-        Connection con = getConnection();
-        BoardDAO boardDAO = BoardDAO.getInstance();
-        boardDAO.setConnection(con);
-        
-        // BoardDAO 객체의 selectArticleList() 메서드를 호출하여 게시물 목록 가져와서 articleList 변수에 저장
-        articleList = boardDAO.selectArticleList(page, limit); // 페이지번호, 페이지 당 게시물 수 전달
-        
-        close(con);
+//        Connection con = getConnection();
+//        BoardDAO boardDAO = BoardDAO.getInstance();
+//        boardDAO.setConnection(con);
+//        
+//        // BoardDAO 객체의 selectArticleList() 메서드를 호출하여 게시물 목록 가져와서 articleList 변수에 저장
+//        articleList = boardDAO.selectArticleList(page, limit); // 페이지번호, 페이지 당 게시물 수 전달
+//        
+//        close(con);
         
         return articleList;
     }
