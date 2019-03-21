@@ -67,16 +67,16 @@ public class BoardController extends HttpServlet {
             }
         } else if(command.equals("/BoardDetail.bo")) {
 
-            forward = new ActionForward();
-            forward.setPath("./board/boardDetail.jsp"); 
+//            forward = new ActionForward();
+//            forward.setPath("./board/boardDetail.jsp"); 
         	
-//            action = new BoardDetailAction();
-//            
-//            try {
-//                forward = action.execute(request, response);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
+            action = new BoardDetailAction();
+            
+            try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else if(command.equals("/BoardDeleteForm.bo")) {
             // board 폴더내의 qna_board_delete.jsp 파일로 포워딩
             // 단, 글 삭제를 위한 게시물 번호(board_num)와 글 삭제 후 페이징 처리를 위한 페이지번호(page)를 가져와서 request.setAttribute() 메서드로 저장하여 이동

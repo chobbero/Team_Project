@@ -28,7 +28,7 @@
 			<div class="Comment_title">Pick Pick 댓글 작성</div>
 			<form action="CommentPro.jsp" method="post" name="CommentForm">
 				<div class="Comment">
-					<div class="Comment_1">
+					<div class="Comment_1">	
 					<div class="Comment_store_star">
 						<div class="store">
 						@가게이름
