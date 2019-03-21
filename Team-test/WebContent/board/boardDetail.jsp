@@ -5,10 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
-<link href="../css/boardDetail2.css" rel="stylesheet">
-<link href="../css/menuBar3.css" rel="stylesheet">
+<link href="css/boardDetail2.css" rel="stylesheet">
+<link href="css/menuBar3.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
 	$(window).on('load', function () {
 	    load('#js-load', '5');
@@ -98,45 +98,49 @@
 			<!-- 주내용 -->
 			<section id="contentArea">
 				<article id="boardDeatilContentArea">
-					<div class="reviewWrite_favorite">
-						<div><a href="#"><img src="img/review.png"><br>리뷰쓰기</a></div>
-						<div><a href="#"><img src="img/recommendation.png"><br>즐겨찾기</a></div>
-					</div>
-					<p class="contentTitle">아웃백 스테이크 하우스 (부산역점)</p>
-					<p class="contentSubTitle">Outback Stake House (Pusan Station)</p>
-					<p class="contentETC">기타추가(좋아요 조회수 등등..)</p>
-					<hr>
 					<table>
-						<tr><td class="menu">주소</td><td class="menuDetail">부산광역시~~~~~~부산광역시~~~~~~부산광역시~~~~~~부산광역시~~~~~~부산광역시~~~~~~</td></tr>
-						<tr><td class="menu">전화번호</td><td class="menuDetail">000-0000-0000</td></tr>
-						<tr><td class="menu">음식종류</td><td class="menuDetail">양식</td></tr>
-						<tr><td class="menu">주차가능</td><td class="menuDetail">주차장</td></tr>
-						<tr><td class="menu">영업시간</td><td class="menuDetail">09:00 ~ 22:00</td></tr>
-						<tr><td class="menu">쉬는시간</td><td class="menuDetail">14:00 ~ 16:00</td></tr>
-						<tr><td class="menu">휴일</td><td class="menuDetail">연중휴무</td></tr>
-						<!-- 메뉴 수만큼 반복 -->
-						<tr>						
-						<td class="menu">메뉴</td>
-						<td class="menuDetail">허브 스테이크 1인분 (국내산)   50000원</td>
+						<tr><td colspan="5" id="contentTitle">존나 맛있는 곳 찾았다 ㅋㅋㅋㅋ</td></tr>
+						<tr id="contentSub">
+							<td id="contentWriter">와칸다포에버1231232</td>
+							<td id="contentTime">2019 / 01 / 10  10:33:21 </td>
+							<td id="contentViewCount">조회수(450)</td>
+							<td id="contentStar">추천(3)</td>
+							<td id="contentReviewCount">댓글(19)</td>
 						</tr>
-						<tr>
-						<td class="menu"></td>
-						<td class="menuDetail">치즈 샐러드 1인분 (국내산)   5000원</td>
-						</tr>
-						<tr>
-						<td class="menu"></td>
-						<td class="menuDetail">스테이크 1인분 (국내산)   100000원</td>
-						</tr>
+						<tr><td colspan="5" id="content">내용 Outback Stake House (Pusan Station)Outback Stake House (Pusan Station)Outback Stake House (Pusan Station)Outback Stake House (Pusan Station)Outback Stake House (Pusan Station)Outback Stake House (Pusan Station)Outback Stake House (Pusan Station)Outback Stake House (Pusan Station)Outback Stake House (Pusan Station)Outback Stake House (Pusan Station)
+						Outback Stake House (Pusan Station)
+						
+						ggg
+						
+						ㅎ
+						</td></tr>
 					</table>
+					<div class="reviewWrite_favorite">
+						<!-- <div><a href="#"><img src="img/review.png"><br>리뷰쓰기</a></div> -->
+						<!-- <div><a href="#"><img src="img/recommendation.png"><br>즐겨찾기</a></div> -->
+					</div>
 				</article>
 					
-				<!-- 기타정보 표시 (지도, 주변정보, 태그 등등..) -->
+				<!-- 매장 정보 표시 -->
 				<aside id="etcArea">
-					기타정보<br>
-					해당위치<br>
-					<img src="img/noodles.png">
-					<p>태그</p>
-					#스테이크, #양식, ....
+					<p class="storeInfo">매장 정보</p>
+					<p class="storeTitle">아웃백 스테이크 하우스 (부산역점)</p>
+					<p class="storeSubTitle">Outback Stake House (Pusan Station)</p>
+					<p class="storeETC">기타추가(좋아요 조회수 등등..)</p>
+					<hr>
+					<table>
+						<tr><td class="storeMenu">주소</td><td class="storeMenuDetail">부산광역시~~~~~~부산광역시~~~~~~부산광역시~~~~~~부산광역시~~~~~~부산광역시~~~~~~</td></tr>
+						<tr><td class="storeMenu">전화번호</td><td class="storeMenuDetail">000-0000-0000</td></tr>
+						<tr><td class="storeMenu">음식종류</td><td class="storeMenuDetail">양식</td></tr>
+						<tr><td class="storeMenu">주차가능</td><td class="storeMenuDetail">주차장</td></tr>
+						<tr><td class="storeMenu">영업시간</td><td class="storeMenuDetail">09:00 ~ 22:00</td></tr>
+						<tr><td class="storeMenu">쉬는시간</td><td class="storeMenuDetail">14:00 ~ 16:00</td></tr>
+						<tr><td class="storeMenu">휴일</td><td class="storeMenuDetail">연중휴무</td></tr>
+						<tr>						
+						<td class="storeMenu">대표메뉴</td>
+						<td class="storeMenuDetail">허브 스테이크 1인분 (국내산)   50000원</td>
+						</tr>
+					</table>
 				</aside>
 			</section>
 				

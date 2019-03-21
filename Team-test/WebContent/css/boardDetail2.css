@@ -12,28 +12,44 @@
 #contentArea {display: block;}
 #boardDeatilContentArea, #etcArea  {display: inline-block; margin: 10px 0; vertical-align: top;}
 
-#boardDeatilContentArea {width: 70%; text-align: left; padding: 15px;}
-.contentTitle {font-size: 30px; font-weight: bold;}
-.contentSubTitle {font-size: 15px; color: gray;}
-.contentETC {font-size: 20px; color: green; margin: 5px 0;}
+#boardDeatilContentArea {width: 70%; text-align: left; padding: 0 15px 15px 15px;}
+
+#boardDeatilContentArea table {margin: 0 5px 5px 5px; border-collapse: collapse;}
+#boardDeatilContentArea #contentTitle {text-align: center; font-size: 22px; font-weight:bold; height: 50px;}
+#boardDeatilContentArea #contentSub {font-size: 15px; background-color:#c0c0c0; height: 30px;}
+
+#boardDeatilContentArea #contentWriter {text-align: center; width: 100px; font-weight:bold;}
+#boardDeatilContentArea #contentTime {font-size: 12px; color:gray; text-align: left;}
+#boardDeatilContentArea #contentViewCount {width: 100px;}
+#boardDeatilContentArea #contentStar {width: 65px;}
+#boardDeatilContentArea #contentReviewCount {width: 65px;}
+#boardDeatilContentArea #content {padding-top: 10px; white-space: pre-line;}
+
+ 
+
+#etcArea {width:25%; background-color:#f8f8f8}
+
+.storeInfo {font-size: 25px; font-weight: bold;}
+.storeTitle {font-size: 14px; font-weight: bold;}
+.storeSubTitle {font-size: 11px; color: gray;}
+.storeETC {font-size: 13px; color: green; margin: 5px 0;}
+
 .reviewWrite_favorite {float: right; font-size: 13px;}
 .reviewWrite_favorite img {width: 50px; height: 50px;}
 .reviewWrite_favorite div {display: inline-block;}
 
 hr {margin: 5px;}
 
-table {margin: 25px 0; border-collapse: separate; border-spacing: 0 10px;}
-table .menu {min-width: 100px; font-weight: bold;}
-table .menuDetail {white-space: pre-line;}
-
-#etcArea {width:25%;}
+#etcArea table {font-size:12px; margin: 5px 0; border-collapse: separate; border-spacing: 0 10px;}
+#etcArea table .storeMenu {min-width: 50px; font-weight: bold;}
+#etcArea table .storeMenuDetail {white-space: pre-line;}
 
 /* 댓글 */
 #reviewArea {display: block;}
 
 /* 펼치기기능 */
 .js-load {display: none;}
-.js-load.active {display: block;}
+.js-load.active {display: block; white-space: pre-line;}
 .is_comp.js-load:after {display: none;}
 .btn-wrap, .lists, .main {display: block;}
 
@@ -65,11 +81,20 @@ table .menuDetail {white-space: pre-line;}
 	
 	#contentArea {}
 	
-	#boardDeatilContentArea {width: 70%;}
-	
-	table {margin: 25px 0;}
+	#boardDeatilContentArea {padding: 0 10px 10px 10px;}
+
+	#boardDeatilContentArea #contentTitle {height: 45px;}
+	#boardDeatilContentArea #contentSub {font-size: 14px;}
 	
 	#etcArea {width: 24%;}
+	
+	.storeInfo {font-size: 20px;}
+	.storeTitle {font-size: 13px;}
+	.storeSubTitle {font-size: 10px; color: gray;}
+	.storeETC {font-size: 12px; color: green; margin: 5px 0;}
+	
+	#etcArea table {margin: 0;}
+	
 	
 	.main {max-width: 710px;}
 	.review_table {max-width: 690px; margin: 10px 0;}
@@ -89,12 +114,10 @@ table .menuDetail {white-space: pre-line;}
 	.imageSildeBtn1 {position: absolute; top: 165px; right: 30px;}
 	.imageSildeBtn2 {position: absolute; top: 165px; left: 30px;}
 	
-	#contentArea {}
+	#contentArea {min-width: 617px;}
 	
 	#boardDeatilContentArea {width:95%;}
 	
-	table {margin: 10px 0;}
-	 
 	#etcArea {display: none;}
 	
 	#reviewArea {margin-bottom:100px;}
