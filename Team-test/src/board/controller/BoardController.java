@@ -66,6 +66,10 @@ public class BoardController extends HttpServlet {
                 e.printStackTrace();
             }
         } else if(command.equals("/BoardDetail.bo")) {
+
+//            forward = new ActionForward();
+//            forward.setPath("./board/boardDetail.jsp"); 
+        	
             action = new BoardDetailAction();
             
             try {

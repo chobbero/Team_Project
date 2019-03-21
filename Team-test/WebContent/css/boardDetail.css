@@ -15,7 +15,7 @@
 #boardDeatilContentArea {width: 70%; text-align: left; padding: 0 15px 15px 15px;}
 
 #boardDeatilContentArea table {margin: 0 5px 5px 5px; border-collapse: collapse;}
-#boardDeatilContentArea>table {min-width:695px;}
+#boardDeatilContentArea>table {width: 98%; min-width:695px;}
 #boardDeatilContentArea #contentTitle {text-align: center; font-size: 22px; font-weight:bold; height: 50px;}
 #boardDeatilContentArea #contentSub {font-size: 15px; background-color:#c0c0c0; height: 30px;}
 
@@ -83,7 +83,8 @@ hr {margin: 5px;}
 	#contentArea {}
 	
 	#boardDeatilContentArea {padding: 0 10px 10px 10px;}
-
+	
+	#boardDeatilContentArea>table {min-width:510px;}
 	#boardDeatilContentArea #contentTitle {height: 45px;}
 	#boardDeatilContentArea #contentSub {font-size: 14px;}
 	
@@ -118,6 +119,8 @@ hr {margin: 5px;}
 	#contentArea {min-width: 617px;}
 	
 	#boardDeatilContentArea {width:95%;}
+	
+	#boardDeatilContentArea>table {min-width:590px;}
 	
 	#etcArea {display: none;}
 	

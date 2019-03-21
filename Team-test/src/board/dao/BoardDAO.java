@@ -12,7 +12,9 @@ import javax.sql.DataSource;
 
 import static common.db.JdbcUtil.*;
 import board.vo.BoardBean;
+import board.vo.CommentBean;
 import board.vo.FileBean;
+import board.vo.StoreBean;
 
 public class BoardDAO {
     Connection con;
@@ -172,69 +174,233 @@ public class BoardDAO {
 //        return articleList;
 //    } // selectArticleList() 끝
 //    
-//    // 게시물 상세 내용을 조회하여 리턴
-//    public BoardBean selectArticle(int board_num) {
-//        PreparedStatement pstmt = null;
-//        ResultSet rs = null;
-//        
-//        BoardBean boardBean = null;
-//        
-//        try {
-//            // board 테이블의 board_num 값으로 전달된 레코드 조회
-//            String sql = "SELECT * FROM board WHERE board_num=?";
-//            
-//            pstmt = con.prepareStatement(sql);
-//            pstmt.setInt(1, board_num);
-//            rs = pstmt.executeQuery();
-//            
-//            // 조회 결과가 존재할 경우, 패스워드를 제외한 모든 컬럼 데이터를 가져와서 BoardBean 객체에 저장(BoardBean 객체 생성 필요)
-//            if(rs.next()) {
-//                boardBean = new BoardBean();
-//                
-//                boardBean.setBoard_num(rs.getInt("board_num"));
-//                boardBean.setBoard_name(rs.getString("board_name"));
-//                boardBean.setBoard_subject(rs.getString("board_subject"));
-//                boardBean.setBoard_content(rs.getString("board_content"));
-//                boardBean.setBoard_file(rs.getString("board_file"));
-//                boardBean.setBoard_re_ref(rs.getInt("board_re_ref"));
-//                boardBean.setBoard_re_lev(rs.getInt("board_re_lev"));
-//                boardBean.setBoard_re_seq(rs.getInt("board_re_seq"));
-//                boardBean.setBoard_readcount(rs.getInt("board_readcount"));
-//                boardBean.setBoard_date(rs.getDate("board_date"));
-//            }
-//            
-//        } catch (SQLException e) {
-//            System.out.println("selectArticle() 에러 : " + e.getMessage());
-//        } finally {
-//            close(pstmt);
-//            close(rs);
-//        }
-//        
-//        return boardBean;
-//    }
-//
-//    // 게시물 조회수 업데이트(증가)
-//    public int updateReadcount(int board_num) {
-//        PreparedStatement pstmt = null;
-//        
-//        int updateCount = 0; // 업데이트 된 조회수 저장 변수
-//        
-//        // board 테이블 board_num 에 해당하는 게시물의 readcount 컬럼값을 1 증가
-//        String sql = "UPDATE board SET board_readcount=board_readcount+1 WHERE board_num=?";
-//        
-//        try {
-//            pstmt = con.prepareStatement(sql);
-//            pstmt.setInt(1, board_num);
-//            updateCount = pstmt.executeUpdate(); // 조회수 증가 결과 정상적으로 증가된 조회수가 리턴되거나, 대상 게시물이 없을 경우 0 리턴
-//        } catch (SQLException e) {
-//            System.out.println("updateReadcount() 에러 : " + e.getMessage());
-//        } finally {
-//            close(pstmt);
-//        }
-//        
-//        return updateCount;
-//    }
-//    
+    
+    // 매장의 후기 갯수 조회
+ 	public int getBoardCount(int store_num) {
+ 		
+ 		int boardCount = 0;
+ 		PreparedStatement pstmt = null;
+ 		ResultSet rs = null;
+ 		
+ 		try {
+ 			String sql = "SELECT COUNT(*) FROM board where store_num = ?";
+ 			
+ 			pstmt = con.prepareStatement(sql);
+ 			pstmt.setInt(1, store_num);
+ 			rs = pstmt.executeQuery();
+ 			
+ 			if(rs.next()) {
+ 				boardCount = rs.getInt(1);
+ 			}
+ 			
+ 		} catch (SQLException e) {
+ 			System.out.println("getBoardCount() 에러 : " + e.getMessage());
+ 		} finally {
+ 			close(pstmt);
+ 			close(rs);
+ 		}
+ 		return boardCount;
+ 		
+ 	}
+
+	  // 게시물 조회수 증가
+	  public int updateReadcount(int board_num) {
+		  
+	      PreparedStatement pstmt = null;
+	      int updateCount = 0; 
+	      
+	      String sql = "UPDATE board SET board_readcount = board_readcount + 1 WHERE board_num = ?";
+	      
+	      try {
+	          pstmt = con.prepareStatement(sql);
+	          pstmt.setInt(1, board_num);
+	          updateCount = pstmt.executeUpdate();
+	      } catch (SQLException e) {
+	          System.out.println("updateReadcount() 에러 : " + e.getMessage());
+	      } finally {
+	          close(pstmt);
+	      }
+	      return updateCount;
+	      
+	  }
+	  
+    // 게시물 내용 가져오기
+    public BoardBean selectBoardArticle(int board_num) {
+    	
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        BoardBean boardBean = null;
+        
+        try {
+            String sql = "SELECT * FROM board WHERE board_num = ?";
+            
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, board_num);
+            rs = pstmt.executeQuery();
+            
+            if(rs.next()) {
+                boardBean = new BoardBean();
+                
+                boardBean.setBoard_num(rs.getInt("board_num"));
+                boardBean.setUser_id(rs.getString("user_id"));
+                boardBean.setStore_num(rs.getInt("store_num"));
+                boardBean.setBoard_subject(rs.getString("board_subject"));
+                boardBean.setBoard_content(rs.getString("board_content"));
+                boardBean.setBoard_rating(rs.getDouble("board_rating"));
+                boardBean.setBoard_like(rs.getInt("board_like"));
+                boardBean.setBoard_date(rs.getDate("board_date"));
+                boardBean.setBoard_readcount(rs.getInt("board_readcount"));
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("selectBoardArticle() 에러 : " + e.getMessage());
+        } finally {
+            close(pstmt);
+            close(rs);
+        }
+        return boardBean;
+        
+    }
+
+    // 매장 정보 가져오기
+	public StoreBean getStoreInfo(int store_num) {
+		
+		PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        StoreBean storeBean = null;
+        
+        try {
+            String sql = "SELECT * FROM store WHERE store_num = ?";
+            
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, store_num);
+            rs = pstmt.executeQuery();
+            
+            if(rs.next()) {
+            	storeBean = new StoreBean();
+                
+                storeBean.setStore_num(store_num);
+                storeBean.setStore_name(rs.getString("store_name"));
+                storeBean.setStore_address(rs.getString("store_address"));
+                storeBean.setStore_category(rs.getString("store_category"));
+                storeBean.setStore_menu(rs.getString("store_menu"));
+                storeBean.setStore_price(rs.getInt("store_price"));
+                storeBean.setStore_time(rs.getString("store_time"));
+                storeBean.setStore_image(rs.getString("store_image"));
+                storeBean.setStore_contact(rs.getString("store_contact"));
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("getStoreInfo() 에러 : " + e.getMessage());
+        } finally {
+            close(pstmt);
+            close(rs);
+        }
+        return storeBean;
+        
+	}
+	
+	// 게시글의 댓글 갯수 조회
+	public int getCommentCount(int board_num) {
+		
+		int commentCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "SELECT COUNT(*) FROM board_comment where board_num = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, board_num);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				commentCount = rs.getInt(1);
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("getCommentCount() 에러 : " + e.getMessage());
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		return commentCount;
+		
+	}
+
+	// 댓글 리스트 가져오기
+	public ArrayList<CommentBean> getBoardComment(int board_num) {
+		
+		PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        ArrayList<CommentBean> commentList = new ArrayList<CommentBean>();
+        CommentBean commentBean = null;
+        
+        try {
+            String sql = "SELECT * FROM board_comment WHERE board_num = ?";
+            
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, board_num);
+            rs = pstmt.executeQuery();
+            
+            while(rs.next()) {
+            	commentBean = new CommentBean();
+                
+            	commentBean.setComment_num(rs.getInt("comment_num"));
+            	commentBean.setUser_id(rs.getString("user_id"));
+            	commentBean.setBoard_num(board_num);
+            	commentBean.setComment_content(rs.getString("comment_content"));
+            	commentBean.setComment_date(rs.getDate("comment_date"));
+            	commentBean.setComment_like(rs.getString("comment_like"));
+            	
+            	commentList.add(commentBean);
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("getBoardComment() 에러 : " + e.getMessage());
+        } finally {
+            close(pstmt);
+            close(rs);
+        }
+		return commentList;
+		
+	}
+	
+	
+
+	// 이미지 파일 리스트 가져오기
+	public ArrayList<String> getImgFileList(int board_num) {
+		
+		PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        ArrayList<String> imgFileList = new ArrayList<String>();
+		
+        try {
+            String sql = "SELECT * FROM board_file WHERE board_num = ?";
+            
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, board_num);
+            rs = pstmt.executeQuery();
+            
+            while(rs.next()) {
+            	String imgFileName = rs.getString("image");
+            	
+            	imgFileList.add(imgFileName);
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("getImgFileList() 에러 : " + e.getMessage());
+        } finally {
+            close(pstmt);
+            close(rs);
+        }
+		
+		return imgFileList;
+		
+	}
+
+
+    
     
 }
 
