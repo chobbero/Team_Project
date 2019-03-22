@@ -18,9 +18,9 @@ public class BoardDetailAction implements Action {
     public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         System.out.println("BoardDetailAction"); // 위치확인용
         
-        int board_num = 2; // 하드코딩
+//        int board_num = 2; // 하드코딩
         
-//       int board_num = Integer.parseInt(request.getParameter("board_num"));
+       int board_num = Integer.parseInt(request.getParameter("board_num"));
         
         // boardList에서 board_num 값 가져오기 (현재 board_num 하드코딩)
         BoardDetailService boardDetailService = new BoardDetailService();

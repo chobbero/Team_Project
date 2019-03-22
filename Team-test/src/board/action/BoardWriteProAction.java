@@ -86,7 +86,7 @@ public class BoardWriteProAction implements Action {
             forward = new ActionForward();
             forward.setRedirect(true); // Redirect 방식 설정
             // ActionForward 객체의 setPath() 메서드를 사용하여 이동할 페이지 지정 => BoardList.bo
-            forward.setPath("BoardWriteForm.bo");
+            forward.setPath("./BoardList.bo");
         }
 
         return forward; // ActionForward 객체 리턴 => BoardFrontController 로 리턴
