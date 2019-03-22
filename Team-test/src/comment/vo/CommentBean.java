@@ -1,6 +1,6 @@
 package comment.vo;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class CommentBean {
 	private int comment_num;

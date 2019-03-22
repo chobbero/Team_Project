@@ -10,15 +10,14 @@ import java.util.ArrayList;
 
 import board.dao.BoardDAO;
 import board.vo.BoardBean;
-import board.vo.CommentBean;
 import board.vo.StoreBean;
+import comment.dao.CommentDAO;
+import comment.vo.CommentBean;
 
 public class BoardDetailService {
 
     // 게시물 내용 가져오기 및 조회수 증가 메서드
     public BoardBean getBoardArticle(int board_num) throws Exception {
-    	
-    	System.out.println("BoardDetailService");
     	
         Connection con = getConnection();
         BoardDAO boardDAO = BoardDAO.getInstance();
@@ -50,6 +49,8 @@ public class BoardDetailService {
         StoreBean storeBean = null;
         
         storeBean = boardDAO.getStoreInfo(store_num);
+        
+        close(con);
 		
 		return storeBean;
 	}
@@ -58,10 +59,12 @@ public class BoardDetailService {
 		
 		int commentCount = 0;
 		Connection con = getConnection();
-        BoardDAO boardDAO = BoardDAO.getInstance();
-        boardDAO.setConnection(con);
+		CommentDAO commentDAO = CommentDAO.getInstance();
+		commentDAO.setConnection(con);
 		
-        commentCount = boardDAO.getCommentCount(board_num);
+		commentCount = commentDAO.getCommentCount(board_num);
+		
+        close(con);
         
 		return commentCount;
 		
@@ -70,11 +73,14 @@ public class BoardDetailService {
 	public ArrayList<CommentBean> getBoardComment(int board_num) {
 		
 		Connection con = getConnection();
-        BoardDAO boardDAO = BoardDAO.getInstance();
-        boardDAO.setConnection(con);
-        ArrayList<CommentBean> commentList = null;
-        
-        commentList = boardDAO.getBoardComment(board_num);
+		ArrayList<CommentBean> commentList = null;
+		
+		CommentDAO commentDAO = CommentDAO.getInstance();
+		commentDAO.setConnection(con);
+		
+		commentList = commentDAO.getBoardComment(board_num);
+		
+        close(con);
 		
 		return commentList;
 		
@@ -88,6 +94,8 @@ public class BoardDetailService {
         ArrayList<String> imgFileList = null;
 		
 		imgFileList = boardDAO.getImgFileList(board_num);
+
+        close(con);
 		
 		return imgFileList;
 	}
@@ -101,7 +109,23 @@ public class BoardDetailService {
         
         boardCount = boardDAO.getBoardCount(store_num);
         
+        close(con);
+        
 		return boardCount;
+	}
+
+	public int getImgFileCount(int board_num) {
+		
+		Connection con = getConnection();
+        BoardDAO boardDAO = BoardDAO.getInstance();
+        boardDAO.setConnection(con);
+        int imgFileCount = 0;
+        
+        imgFileCount = boardDAO.getImgFileCount(board_num);
+        
+        close(con);
+        
+		return imgFileCount;
 	}
 
 }

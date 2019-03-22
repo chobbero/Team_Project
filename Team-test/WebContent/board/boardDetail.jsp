@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
-<link href="css/boardDetail2.css" rel="stylesheet">
+<link href="css/boardDetail.css" rel="stylesheet">
 <link href="css/menuBar3.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
@@ -30,6 +30,74 @@
 	    }
 	    $(review_list + ":lt(" + review_total_cnt + ")").addClass("active");
 	}
+	
+	// 이미지 애니매이션 레이어팝업 쿼리
+	function dialog() {
+
+	    var dialogBox = $('.dialog'),
+	        dialogClose = $('.dialog_close'),
+	        dialogTitle = $('.dialog_title'),
+	        dialogContent = $('.dialog_content'),
+	        dialogImg = $('.dialog_img');
+
+	    // 레이어 열기
+	    $('.dialog_trigger0').on('click', function(e) {
+	    	var imgSrc = $('.dialog_trigger0').attr("src");
+	    	$(dialogImg).attr("src", imgSrc);
+	    	dialogBox.toggleClass('dialog-active');
+	        e.stopPropagation()
+	    });
+	    
+	    $('.dialog_trigger1').on('click', function(e) {
+	    	var imgSrc = $('.dialog_trigger1').attr("src");
+	    	$(dialogImg).attr("src", imgSrc);
+	    	dialogBox.toggleClass('dialog-active');
+	        e.stopPropagation()
+	    });
+	    
+	    $('.dialog_trigger2').on('click', function(e) {
+	    	var imgSrc = $('.dialog_trigger2').attr("src");
+	    	$(dialogImg).attr("src", imgSrc);
+	    	dialogBox.toggleClass('dialog-active');
+	        e.stopPropagation()
+	    });
+	    
+	    $('.dialog_trigger3').on('click', function(e) {
+	    	var imgSrc = $('.dialog_trigger3').attr("src");
+	    	$(dialogImg).attr("src", imgSrc);
+	    	dialogBox.toggleClass('dialog-active');
+	        e.stopPropagation()
+	    });
+
+	    // 닫기 버튼 클릭시 레이어닫기
+	    dialogClose.on('click', function() {
+	        dialogBox.removeClass('dialog-active');
+	    });
+
+	    // esc누를시 레이어 닫기
+	    $(document).keyup(function(e) {
+	        if (e.keyCode === 27) {
+	            dialogBox.removeClass('dialog-active');
+	        }
+	    });
+
+	    // 대화상자 바깥쪽 클릭시 레이어 닫기
+	    $(document).on('click', function(e) {
+	        if ($(e.target).is(dialogBox) === false &&
+	            $(e.target).is(dialogTitle) === false &&
+	            $(e.target).is(dialogContent) === false &&
+	            $(e.target).is(dialogImg) === false) {
+	            dialogBox.removeClass("dialog-active");
+	        }
+	    });
+	    
+
+	};
+
+	// Run function when the document has loaded
+	$(function() {
+	    dialog();
+	});
 </script>
 </head>
 <body>
@@ -38,18 +106,25 @@
 		<jsp:include page="../include/menuBar.jsp" />
 		
 		<section id="board_frame">
-			<!-- 리뷰의 이미지만 표시(최대 4개 표시) -->
+		
+			<!-- 이미지 표시 -->
 			<aside id="contentImageArea1">
-				<c:forEach var="imgName" items="${img }">
-					<img src="./files/${imgName}">							
-				</c:forEach> 	
 			
-				<!-- 이미지 슬라이드 스크립트 구현 (보류)
-				<a class="imageSildeBtn1" onclick="plusDivs(1)">❯</a>
-				<a class="imageSildeBtn2" onclick="plusDivs(-1)">❮</a> -->
+				<!-- 이미지 반복문 -->
+				<c:forEach var="i" begin="0" end="${ic - 1}" step="1">
+					<img class="dialog_trigger${i }" src="./files/${img[i]}">
+				</c:forEach>
+
+				<!-- 이미지 팝업레이어 (4개) -->
+				<div class="dialog">
+					<span class="dialog_close">&#x2715;</span>
+					<h2 class="dialog_title">${bb.board_subject }</h2>
+					<img class="dialog_img" src="">
+				</div>	
+								
 			</aside>
 				
-			<!-- 화면크기에 따라 표시 width=767미만 -->
+			<!-- 화면크기에 따라 표시 width=767미만일때 표시 -->
 			<aside id="contentImageArea2">
 				
 				<c:forEach var="imgName" items="${img }">
@@ -58,6 +133,7 @@
 				
 				<a class="imageSildeBtn1" onclick="plusDivs(1)">❯</a>
 				<a class="imageSildeBtn2" onclick="plusDivs(-1)">❮</a>
+				<!-- 이미지 슬라이드 스크립트 -->
 				<script>
 					// 수동 이미지 슬라이드
 					var slideIndex = 1;
@@ -94,11 +170,15 @@
 		   				setTimeout(carousel, 5000);  // 5초마다 변경
 					}
 				</script>
-			</aside>
 				
-			<!-- 주내용 -->
+			</aside>
+			
+			<!-- 글목록 / 글수정 / 글삭제 / 리뷰쓰기 -->
+			
 			<section id="contentArea">
+				<!-- 주내용 -->
 				<article id="boardDeatilContentArea">
+				
 					<table>
 						<tr><td colspan="5" id="contentTitle">${bb.board_subject }</td></tr>
 						<tr id="contentSub">
@@ -110,10 +190,7 @@
 						</tr>
 						<tr><td colspan="5" id="content">${bb.board_content }</td></tr>
 					</table>
-					<div class="reviewWrite_favorite">
-						<!-- <div><a href="#"><img src="img/review.png"><br>리뷰쓰기</a></div> -->
-						<!-- <div><a href="#"><img src="img/recommendation.png"><br>즐겨찾기</a></div> -->
-					</div>
+					
 				</article>
 					
 				<!-- 매장 정보 표시 -->
@@ -121,26 +198,37 @@
 					<p class="storeInfo">매장 정보</p>
 					<p class="storeTitle">${sb.store_name }</p>
 					<!-- <p class="storeSubTitle">Outback Stake House (Pusan Station)</p> -->
-					<p class="storeETC">후기 갯수 (${bc })</p>
+					<p class="storeETC"><img src="img/happy.png">후기 갯수 (${bc })</p>
 					<hr>
 					<table>
 						<tr><td class="storeMenu">주소</td><td class="storeMenuDetail">${sb.store_address }</td></tr>
 						<tr><td class="storeMenu">전화번호</td><td class="storeMenuDetail">${sb.store_contact }</td></tr>
 						<tr><td class="storeMenu">음식종류</td><td class="storeMenuDetail">${sb.store_category }</td></tr>
 						<tr><td class="storeMenu">영업시간</td><td class="storeMenuDetail">${sb.store_time }</td></tr>
-					<!--	<tr><td class="storeMenu">주차가능</td><td class="storeMenuDetail">주차장</td></tr>
-					 	<tr><td class="storeMenu">쉬는시간</td><td class="storeMenuDetail">14:00 ~ 16:00</td></tr>
-						<tr><td class="storeMenu">휴일</td><td class="storeMenuDetail">연중휴무</td></tr> -->
 						<tr><td class="storeMenu">대표메뉴</td><td class="storeMenuDetail">${sb.store_menu } ${sb.store_price }원</td></tr>
 					</table>
 				</aside>
+				
+				<!-- 버튼 -->
+				<div id="buttonArea">
+				
+					<a><img class="btnBoardList" src="img/threebars.png"></a>
+					<a><img class="btnBoardInsert" src="img/edit_board_mypage.png"></a>
+					<a><img class="btnBoardDelete" src="img/trashcan.png"></a>
+					<a><img class="btnCommentWrite" src="img/review.png"></a>
+					
+				</div>
+				
 			</section>
 				
 			<!-- 리뷰표시 -->
 			<section id="reviewArea">
 				<hr>
 				<div id="js-load" class="main">
-					<p>리뷰 (${cc })</p>
+					<p><c:choose>
+						<c:when test="${cc eq 0 }">리뷰가 없어요 ㅠㅠ</c:when>
+						<c:otherwise>리뷰 (${cc })</c:otherwise>
+					</c:choose></p>
 					<ul class="lists">
 						<c:forEach var="cb" items="${cl }">
 							<li class="lists__item js-load">
