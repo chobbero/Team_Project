@@ -5,10 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
-<link href="../css/boardComment3.css" rel="stylesheet">
-<link href="../css/menuBar2.css" rel="stylesheet">
+<link href="css/boardComment3.css" rel="stylesheet">
+<link href="css/menuBar3.css" rel="stylesheet">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/fontawesome-stars.css">
 <script type="text/javascript" src="css/jquery.barrating.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -16,10 +15,6 @@
 		<jsp:include page="../include/menuBar.jsp" />
 </header>
 <body>
-<script type="text/javascript"> $(function() { $('#example').barrating({ theme: 'fontawesome-stars' }); }); </script>
-
-
-<!-- https://lemontia.tistory.com/444        <<<< 요 사이트 보고 했어요 -->
 <%
 	
 	

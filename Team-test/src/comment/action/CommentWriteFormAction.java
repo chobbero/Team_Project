@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import board.vo.BoardBean;
 import comment.service.CommentWriteFormService;
 import comment.vo.ActionForward;
+import comment.vo.MemberBean;
 
 public class CommentWriteFormAction implements Action {
     @Override
@@ -29,8 +30,10 @@ public class CommentWriteFormAction implements Action {
         } else {
             CommentWriteFormService commentWriteFormService = new CommentWriteFormService();
             BoardBean boardBean = commentWriteFormService.boardInfo(board_num);
-
+            MemberBean memberBean = commentWriteFormService.userInfo(user_id);
+            
             request.setAttribute("boardBean", boardBean);
+            request.setAttribute("memberBean", memberBean);
 
             forward.setPath("./comment/commentWrite.jsp");
 

@@ -7,60 +7,58 @@
 <title>Pick_Pick</title>
 <link href="css/boardComment3.css" rel="stylesheet">
 <link href="css/menuBar3.css" rel="stylesheet">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/fontawesome-stars.css">
-<script type="text/javascript" src="css/jquery.barrating.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.eval_l').click(function() {
+			$('.eval_l').css("background-image", "url('img/like_comment.png')");
+			$('.eval_d').css("background-image", "url('img/unfilled_unlike_comment.png')");
+		});
+
+		$('.eval_d').click(function() {
+			$('.eval_d').css("background-image", "url('img/dislike_comment.png')");
+			$('.eval_l').css("background-image", "url('img/unfilled_like_comment.png')");
+
+		});
+	});
+</script>
+
 </head>
 <header>
 	<jsp:include page="../include/menuBar.jsp" />
 </header>
 <body>
-	<script type="text/javascript">
-		$(function() {
-			$('#example').barrating({
-				theme : 'fontawesome-stars'
-			});
-		});
-	</script>
-
-
-	<!-- https://lemontia.tistory.com/444        <<<< 요 사이트 보고 했어요 -->
-	<%
-	    
-	%>
 	<section id="CommentForm">
-		<div class="Comment_title">Pick Pick 댓글 작성</div>
+		<div class="Comment_title">Pick Pick 댓글</div>
 		<form action="CommentWritePro.co" method="post" name="CommentForm">
+			<input type="hidden" name="user_id" value="${memberBean.user_id } ">
+			<input type="hidden" name="board_num"
+				value="${boardBean.board_subject}">
+
 			<div class="Comment">
 				<div class="Comment_1">
 					<div class="Comment_store_star">
-						<div class="store">
-							${boardBean.board_subject}
-							<%-- 						<%=dao.store_name() %> --%>
-						</div>
+						<div class="store">${boardBean.board_subject}</div>
 						<div class="star">
-							<!-- 						<img class="starimg" alt="star" src="img/star.png" width="80px"> -->
-							<select id="example" name="">
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-							</select>
+							<label class="eval_l" for="like"></label><input id="like"
+								type="radio" name="comment_like" value="Y"> <label
+								class="eval_d" for="dislike"></label><input id="dislike"
+								type="radio" name="comment_like" value="N">
 						</div>
 						<div class="store2">에 대한 솔직한 리뷰를 써주세요.</div>
 					</div>
 					<div class="Comment_2">
-						<div class="user">
-							@유저닉네임
-							<%-- 					<%=dao.user_nickname %> --%>
-						</div>
-						<textarea class="commentBox" rows="6" cols="35"></textarea>
+						<div class="user">@ ${memberBean.user_nickname }</div>
+						<textarea class="commentBox" rows="6" cols="35"
+							name="comment_content" placeholder="여러분의 소중한 리뷰를 남겨주세요."></textarea>
 					</div>
 					<div class="com">
 						<input class="submit submit_com" type="submit" value="확 인">
-						<input class="submit submit_re" type="submit" value="취 소">
+						<input class="submit submit_re" type="reset" value="취 소">
 					</div>
 				</div>
 		</form>

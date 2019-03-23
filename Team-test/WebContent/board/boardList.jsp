@@ -9,12 +9,15 @@
 <%
 	ArrayList<ListBean> list = (ArrayList<ListBean>) request.getAttribute("ListBean");
 	PageInfo info = (PageInfo) request.getAttribute("pageInfo");
+// 	String id =	(String)session.getAttribute("id");
+	String id = "demian";
 
 	int nowPage = info.getPage(); // 현재 페이지
 	int listCount = info.getListCount(); // 전체 게시물 개수
 	int startPage = info.getStartPage(); // 해당 페이지의 첫번째 페이지 수
 	int endPage = info.getEndPage(); // 해당 페이지의 마지막 페이지 수
 	int maxPage = info.getMaxPage(); // 전체 페이지 수
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -28,30 +31,32 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('.pick').click(function() {
+			
 			var img = $(this).attr("src");
+			
 			var id = $(this).parent().next().attr("name");
 			var board_num = $(this).parent().next().attr("value");
+			
 			if (img == "img/heart.png") {
 				$(this).attr("src", "img/filled_heart.png");
-				// 				$.ajax({
-				// 					url: "pick_like.jsp",
-				// 					type: "POST",
-				// 					dataType: "json",
-				// 					data: {
-				// 						'id': id , 'board_num':board_num
-				// 					}
-
-				// 				});
+								$.ajax({
+									url: "./pick_like.jsp",
+									type: "POST",
+									dataType: "json",
+									data: {
+										'id': id , 'board_num':board_num
+									}
+								});
 			} else if (img == "img/filled_heart.png") {
 				$(this).attr("src", "img/heart.png");
-				// 				$.ajax({
-				// 					url: "pick_like.jsp",
-				// 					type: "POST",
-				// 					dataType: "json",
-				// 					data: {
-				// 						'id': id , 'board_num':board_num
-				// 					}
-				// 				});
+								$.ajax({
+									url: "./pick_unlike.jsp",
+									type: "POST",
+									dataType: "json",
+									data: {
+										'id': id , 'board_num':board_num
+									}
+								});
 			}
 		});
 	});
@@ -85,7 +90,7 @@
 				 <label for="pick">
 				 <img class="pick" src="img/heart.png">
 				 </label>
-				<input id="pick" type="checkbox" name="id" value="board_num">
+				<input id="pick" type="checkbox" name="<%=id %>" value="<%=list.get(i).getBoard_num()%>">
 				<div class="boardList_content_layer02_l_2"><%=list.get(i).getStore_address()%></div>
 				<div class="boardList_content_layer02_l_3">
 				# <%=list.get(i).getStore_category()%>

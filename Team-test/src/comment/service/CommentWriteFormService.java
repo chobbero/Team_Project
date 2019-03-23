@@ -3,6 +3,7 @@ package comment.service;
 
 import board.vo.BoardBean;
 import comment.dao.CommentDAO;
+import comment.vo.MemberBean;
 
 import static common.db.JdbcUtil.close;
 import static common.db.JdbcUtil.commit;
@@ -24,4 +25,17 @@ public class CommentWriteFormService {
 		
 		return boardBean;
 	}
+
+    public MemberBean userInfo(String user_id) {
+        
+        Connection con = getConnection();
+        CommentDAO commentDAO = CommentDAO.getInstance();
+        commentDAO.setConnection(con);
+        
+        MemberBean memberBean = commentDAO.userInfo(user_id);
+        
+        close(con);
+        
+        return memberBean;
+    }
 }

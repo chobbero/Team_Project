@@ -18,7 +18,7 @@
     String dbPass = "1234";
     Connection con = DriverManager.getConnection(dbUrl, dbUser, dbPass);
     //3단계 sql select 
-    String sql = "insert into pick values(?,?)";
+    String sql = "delete from pick where user_id=? and board_num=?";
     PreparedStatement pstmt = con.prepareStatement(sql);
     pstmt.setString(1, id);
     pstmt.setInt(2, board_num);

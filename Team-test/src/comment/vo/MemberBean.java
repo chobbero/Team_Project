@@ -1,4 +1,4 @@
-package member.vo;
+package comment.vo;
 
 public class MemberBean {
 

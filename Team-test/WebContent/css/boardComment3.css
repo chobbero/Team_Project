@@ -3,10 +3,10 @@
 
 /*모바일 퍼스트*/
 #CommentForm {
-/* 		border: 2px solid red; */
+	/* 		border: 2px solid red; */
 	box-sizing: border-box;
 	width: 100%;
-	height: 550px;
+	min-height: 600px;
 	position: relative;
 }
 
@@ -15,17 +15,17 @@
 	position: relative;
 	vertical-align: top;
 	height: auto;
-/* 	border: 3px solid purple; */
+	/* 	border: 3px solid purple; */
 }
 
- .Comment_1 {
+.Comment_1 {
 	width: 100%;
 	height: 90px;
-/* 			border: 1px solid blue; */
+	/* 			border: 1px solid blue; */
 }
 
 #CommentForm .Comment_title {
-	font-size: 1.3rem;
+	font-size: 1.6rem;
 	padding: 20px;
 	background-color: #fff;
 	color: #ff5a5f;
@@ -34,87 +34,131 @@
 	border-bottom: 1px solid #ccc;
 }
 
- .Comment_store_star{
+.Comment_store_star {
 	display: inline-block;
 	width: 100%;
-	border: 1px solid blue;
-	
+	line-height: 15px;
+	height: 80px;
+	/* 	border: 1px solid blue; */
 }
 
 .Comment_store_star .store {
-	font-size: 1.2rem;
-	padding: 10px;
+	font-size: 1.3rem;
+	padding: 10px 10px 10px 15px;
 	background-color: #fff;
 	color: #ff8000;
 	margin-bottom: 5px;
-	font-weight: normal;
+	font-weight: 600;
 	display: inline-block;
-/* 	border: 1px solid blue; */
+	/* 	border: 1px solid blue; */
+	width: 60%;
 }
 
 .Comment_store_star .star {
 	display: inline-block;
-	float: right;
-	border: 1px solid blue;
+	position: absolute;
+	top: 12px;
+	right: 20px;
+	/* 		border: 1px solid blue; */
 	padding: 3px;
+}
+
+.eval_l {
+	cursor: pointer;
+	display: inline-block;
+	background-image: url("../img/unfilled_like_comment.png");
+	width: 26px;
+	height: 26px;
+	background-size: cover;
+	margin-right: 17px;
+}
+
+.eval_d {
+	cursor: pointer;
+	display: inline-block;
+	background-image: url("../img/unfilled_unlike_comment.png");
+	width: 26px;
+	height: 26px;
+	background-size: cover;
+}
+
+#like {
+	display: none;
+}
+
+#dislike {
+	display: none;
 }
 
 .store2 {
 	font-size: 0.9rem;
-	padding: 5px 2px 5px 10px ;
+	padding: 5px 2px 5px 15px;
 	background-color: #fff;
 	color: #808080;
 	margin-bottom: 50px;
 	font-weight: normal;
 }
 
-
-.star_rating {font-size:0; letter-spacing:-4px;}
-.star_rating a {
-    font-size:22px;
-    letter-spacing:0;
-    display:inline-block;
-    margin-left:5px;
-    color:#ccc;
-    text-decoration:none;
+.star_rating {
+	font-size: 0;
+	letter-spacing: -4px;
 }
-.star_rating a:first-child {margin-left:0;}
-.star_rating a.on {color:#777;}
 
+.star_rating a {
+	font-size: 22px;
+	letter-spacing: 0;
+	display: inline-block;
+	margin-left: 5px;
+	color: #ccc;
+	text-decoration: none;
+}
 
+.star_rating a:first-child {
+	margin-left: 0;
+}
 
- .Comment_2 {
-	width: 100%;
+.star_rating a.on {
+	color: #777;
+}
+
+.Comment_2 {
 	position: relative;
-/* 	border: 1px solid yellow; */
+	/* 	border: 1px solid yellow; */
+	width: 100%;
 }
 
 .user {
-/* 	border: 1px solid orange; */
+	/* 		border: 1px solid orange; */
 	box-sizing: border-box;
 	width: 80%;
 	font-weight: 600;
-	color: #484848;
-	padding: 10px 0 10px 10px;
-	margin: 2px auto 5px 10%;
-	letter-spacing: 0.5px;
-	float: left;
+	color: #686868;
+	padding: 10px;
+	margin: 0 10%;
+	font-size: 1.05rem;
 }
 
 .commentBox {
+	border: 1px solid #ccc;
+	border-radius: 5px;
 	box-sizing: border-box;
 	width: 80%;
-	height: 130px;
-	font-weight: 600;
+	height: 150px;
+	font-weight: 500;
 	color: #484848;
-	padding: 0 0 12px 5%;
-	margin: 2px auto 20px 10%;
-	letter-spacing: 0.5px;
+	padding: 10px;
+	margin: 0 10% 30px 10%;
 	resize: none;
+	font-size: 1.15rem;
+	line-height: 25px;
+	letter-spacing: 0.5px;
+	box-sizing: border-box;
 }
 
-.com{
-		border: 1px solid red;
+.com {
+	margin: 0 auto;
+	width: 100%;
+	/* 	border: 1px solid red; */
 }
 
 .submit_com {
@@ -124,7 +168,7 @@
 	width: 37%;
 	font-size: 1.3rem;
 	font-weight: 600;
-	margin: 5px auto 5px 30px;
+	margin: 10px 3% 5px 9%;
 	color: white;
 	background: #ff5a5f;
 	display: inline-block;
@@ -137,31 +181,39 @@
 	width: 37%;
 	font-size: 1.3rem;
 	font-weight: 600;
-	margin: 5px auto 5px 25px;
+	margin: 10px 9% 5px 3%;
 	color: #ff5a5f;
 	background: #ffffff;
 	display: inline-block;
 }
 
-
-
 @MEDIA screen and (min-width:768px) {
 	#CommentForm {
 		/* 		border: 1px solid red; */
-		margin: 100px 20% 50px 20%;
+		margin: 100px 20% 0px 20%;
 		width: 60%;
-		height: 700px;
+		height: 600px;
 		padding-bottom: inherit;
 	}
-
-.submit_com {
-	margin: 5px auto 5px 50px;
+	.Comment_store_star {
+		width: 90%;
+		margin: 0 5%;
+/* 		border: 1px solid red; */
+	}
+	.Comment_store_star .star {
+		top: 12px;
+		right: 40px;
+	}
+	.Comment_2 {
+		margin: 20px 0;
+	}
+	.commentBox {
+		height: 200px;
+	}
+	.com {
+		
+	}
 }
-
-.submit_re {
-	margin: 5px auto 5px 30px;
-}
-
 
 @MEDIA screen and (min-width:1024px) {
 	#CommentForm {
@@ -170,11 +222,13 @@
 		width: 50%;
 		height: 750px;
 	}
-.submit_com {
-	margin: 5px auto 5px 70px;
-}
-
-.submit_re {
-	margin: 5px auto 5px 50px;
-}
+	
+	.Comment_store_star .star {
+		top: 12px;
+		right: 50px;
+	}
+	
+	.com {
+		margin-top: 60px;
+	}
 }

@@ -65,7 +65,7 @@ public class BoardDetailAction implements Action {
         
         
         // 경로 지정
-        forward.setPath("/board/boardDetail.jsp");
+        forward.setPath("./board/boardDetail.jsp");
         
         return forward; // ActionForward 객체 리턴
     }

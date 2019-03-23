@@ -12,6 +12,7 @@ import javax.sql.DataSource;
 
 import board.vo.BoardBean;
 import comment.vo.CommentBean;
+import comment.vo.MemberBean;
 
 public class CommentDAO {
     Connection con;
@@ -69,6 +70,40 @@ public class CommentDAO {
     }
     // 해당 게시물의 정보받기 끝
 
+    // 댓글 작성자 정보 가져오기
+    public MemberBean userInfo(String user_id) {
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        MemberBean memberBean = null;
+
+        try {
+            String sql = "SELECT * from user where user_id = ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, user_id);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                memberBean = new MemberBean();
+
+                memberBean.setUser_id(rs.getString("user_id"));
+                memberBean.setUser_pw(rs.getString("user_pw"));
+                memberBean.setUser_name(rs.getString("user_name"));
+                memberBean.setUser_birth(rs.getString("user_birth"));
+                memberBean.setUser_email(rs.getString("user_email"));
+                memberBean.setUser_phone(rs.getString("user_phone"));
+                memberBean.setUser_nickname(rs.getString("user_nickname"));
+                memberBean.setUser_coupon(rs.getString("user_coupon"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(pstmt);
+            close(rs);
+        }
+
+        return memberBean;
+    }
+
     // 댓글 데이터 넣기 시작
 
     public int insertComment(CommentBean commentBean) {
@@ -98,70 +133,70 @@ public class CommentDAO {
     }
     // 댓글 데이터 넣기 끝
 
-	// 게시글의 댓글 갯수 조회
-	public int getCommentCount(int board_num) {
+    // 게시글의 댓글 갯수 조회
+    public int getCommentCount(int board_num) {
 
-		int commentCount = 0;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
+        int commentCount = 0;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
 
-		try {
-			String sql = "SELECT COUNT(*) FROM board_comment where board_num = ?";
+        try {
+            String sql = "SELECT COUNT(*) FROM board_comment where board_num = ?";
 
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, board_num);
-			rs = pstmt.executeQuery();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, board_num);
+            rs = pstmt.executeQuery();
 
-			if (rs.next()) {
-				commentCount = rs.getInt(1);
-			}
+            if (rs.next()) {
+                commentCount = rs.getInt(1);
+            }
 
-		} catch (SQLException e) {
-			System.out.println("getCommentCount() 에러 : " + e.getMessage());
-		} finally {
-			close(pstmt);
-			close(rs);
-		}
-		return commentCount;
+        } catch (SQLException e) {
+            System.out.println("getCommentCount() 에러 : " + e.getMessage());
+        } finally {
+            close(pstmt);
+            close(rs);
+        }
+        return commentCount;
 
-	}
+    }
 
-	// 댓글 리스트 가져오기
-	public ArrayList<CommentBean> getBoardComment(int board_num) {
+    // 댓글 리스트 가져오기
+    public ArrayList<CommentBean> getBoardComment(int board_num) {
 
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		ArrayList<CommentBean> commentList = new ArrayList<CommentBean>();
-		CommentBean commentBean = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        ArrayList<CommentBean> commentList = new ArrayList<CommentBean>();
+        CommentBean commentBean = null;
 
-		try {
-			String sql = "SELECT * FROM board_comment WHERE board_num = ?";
+        try {
+            String sql = "SELECT * FROM board_comment WHERE board_num = ?";
 
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, board_num);
-			rs = pstmt.executeQuery();
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, board_num);
+            rs = pstmt.executeQuery();
 
-			while (rs.next()) {
-				commentBean = new CommentBean();
+            while (rs.next()) {
+                commentBean = new CommentBean();
 
-				commentBean.setComment_num(rs.getInt("comment_num"));
-				commentBean.setUser_id(rs.getString("user_id"));
-				commentBean.setBoard_num(board_num);
-				commentBean.setComment_content(rs.getString("comment_content"));
-				commentBean.setComment_date(rs.getTimestamp("comment_date"));
-				commentBean.setComment_like(rs.getString("comment_like"));
+                commentBean.setComment_num(rs.getInt("comment_num"));
+                commentBean.setUser_id(rs.getString("user_id"));
+                commentBean.setBoard_num(board_num);
+                commentBean.setComment_content(rs.getString("comment_content"));
+                commentBean.setComment_date(rs.getTimestamp("comment_date"));
+                commentBean.setComment_like(rs.getString("comment_like"));
 
-				commentList.add(commentBean);
-			}
+                commentList.add(commentBean);
+            }
 
-		} catch (SQLException e) {
-			System.out.println("getBoardComment() 에러 : " + e.getMessage());
-		} finally {
-			close(pstmt);
-			close(rs);
-		}
-		return commentList;
+        } catch (SQLException e) {
+            System.out.println("getBoardComment() 에러 : " + e.getMessage());
+        } finally {
+            close(pstmt);
+            close(rs);
+        }
+        return commentList;
 
-	}
-    
+    }
+
 }
