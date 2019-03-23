@@ -21,8 +21,8 @@ public class CommentWriteFormAction implements Action {
 //        String user_id = (String)session.getAttribute("id");
         ActionForward forward = new ActionForward();
 
-//        int board_num = Integer.parseInt(request.getParameter("board_num"));
-        int board_num = 1;
+        int board_num = Integer.parseInt(request.getParameter("board_num"));
+//        int board_num = 1;
         String user_id = "demian";
 
         if (user_id == null) {

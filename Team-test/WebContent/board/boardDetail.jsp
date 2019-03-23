@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
-<link href="css/boardDetail.css" rel="stylesheet">
+<link href="css/boardDetail2.css" rel="stylesheet">
 <link href="css/menuBar3.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
@@ -97,6 +97,41 @@
 	// Run function when the document has loaded
 	$(function() {
 	    dialog();
+	});
+</script>
+
+<!-- 찜하기 제이쿼리 -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.pick').click(function() {
+			
+			var img = $(this).attr("src");
+			
+			var id = $(this).parent().next().attr("name");
+			var board_num = $(this).parent().next().attr("value");
+			
+			if (img == "img/heart.png") {
+				$(this).attr("src", "img/filled_heart.png");
+								$.ajax({
+									url: "./pick_like.jsp",
+									type: "POST",
+									dataType: "json",
+									data: {
+										'id': id , 'board_num':board_num
+									}
+								});
+			} else if (img == "img/filled_heart.png") {
+				$(this).attr("src", "img/heart.png");
+								$.ajax({
+									url: "./pick_unlike.jsp",
+									type: "POST",
+									dataType: "json",
+									data: {
+										'id': id , 'board_num':board_num
+									}
+								});
+			}
+		});
 	});
 </script>
 </head>
@@ -212,10 +247,14 @@
 				<!-- 버튼 -->
 				<div id="buttonArea">
 				
+					<a href='<c:url value="./BoardWriteForm.bo" />'><img class="btnBoardInsert" src="img/boardWrite_l_gray.png"></a>
+					<a href='<c:url value="./CommentWriteForm.co?board_num=${bb.board_num }" />'><img class="btnCommentWrite" src="img/comments.png"></a>
+					<label for="pick">
+				 	<img class="pick" src="img/heart.png">
+					</label>
+					<input id="pick" type="checkbox" name="demian" value="${bb.board_num }">
 					<a><img class="btnBoardList" src="img/threebars.png"></a>
-					<a><img class="btnBoardInsert" src="img/edit_board_mypage.png"></a>
 					<a><img class="btnBoardDelete" src="img/trashcan.png"></a>
-					<a><img class="btnCommentWrite" src="img/review.png"></a>
 					
 				</div>
 				

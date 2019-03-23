@@ -35,9 +35,10 @@
 	<section id="CommentForm">
 		<div class="Comment_title">Pick Pick 댓글</div>
 		<form action="CommentWritePro.co" method="post" name="CommentForm">
+		
 			<input type="hidden" name="user_id" value="${memberBean.user_id } ">
 			<input type="hidden" name="board_num"
-				value="${boardBean.board_subject}">
+				value="${boardBean.board_num}">
 
 			<div class="Comment">
 				<div class="Comment_1">

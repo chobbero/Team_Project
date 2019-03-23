@@ -7,26 +7,24 @@ import comment.dao.CommentDAO;
 import comment.vo.CommentBean;
 
 public class CommentWriteProService {
-	public boolean insertComment (CommentBean commentBean) {
-		
+    public boolean insertComment(CommentBean commentBean) {
+        boolean isCheck = false;
+
         Connection con = getConnection();
         CommentDAO commentDAO = CommentDAO.getInstance();
         commentDAO.setConnection(con);
-        
-        
-        boolean isCheck = false;
-        
-        
+
         int insertCount = commentDAO.insertComment(commentBean);
-        
-        if(insertCount > 0 ) {
-        	isCheck =true;
-        }else {
-        	isCheck = false;
+
+        if (insertCount > 0) {
+            commit(con);
+            isCheck = true;
+        } else {
+            rollback(con);
         }
-        
+
         close(con);
-        
+
         return isCheck;
-	}
+    }
 }

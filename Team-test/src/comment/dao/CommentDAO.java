@@ -126,7 +126,6 @@ public class CommentDAO {
             e.printStackTrace();
         } finally {
             close(pstmt);
-            close(rs);
         }
 
         return insertCount;
