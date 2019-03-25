@@ -1,4 +1,4 @@
-package member.controller;
+package mypage.controller;
 
 import java.io.IOException;
 
@@ -9,13 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.action.Action;
-import member.action.UserJoinProAction;
-import member.action.UserLoginProAction;
-import member.vo.ActionForward;
+import mypage.action.Action;
+import mypage.action.MyPageAction;
+import mypage.vo.ActionForward;
 
-@WebServlet("*.mb")
-public class MemberController extends HttpServlet {
+@WebServlet("*.mp")
+public class MypageController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -42,36 +41,34 @@ public class MemberController extends HttpServlet {
         Action action = null;
         ActionForward forward = null;
 
-        if (command.equals("/UserJoinForm.mb")) {
-            forward = new ActionForward();
-            forward.setPath("./member/join.jsp");
-        } else if (command.equals("/main.mb")) {
-            forward = new ActionForward();
-            forward.setPath("./main.jsp");
-        } else if (command.equals("/UserJoinPro.mb")) {
-            action = new UserJoinProAction();
-
-            try {
-                forward = action.execute(request, response); // BoardWriteProAction 객체의 execute() 메서드 호출
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        } else if (command.equals("/UserLoginForm.mb")) {
-            forward = new ActionForward();
-            forward.setPath("./member/login.jsp");
-        } else if (command.equals("/UserLoginPro.mb")) {
-            action = new UserLoginProAction();
-            
+        if (command.equals("/myPage.mp")) {
+            action = new MyPageAction();
             try {
                 forward = action.execute(request, response);
             } catch (Exception e) {
+                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+
         }
 
-        
-        
+//        else if (command.equals("/businessJoinForm.mp")) {
+//            forward = new ActionForward();
+//            forward.setPath("./businessChange.jsp");
+//        } else if (command.equals("/businessJoinPro.mp")) {
+//
+//            action = new BusinessJoinProAction();
+//
+//            // Action 클래스의 execute() 메서드를 호출하여 request(요청), response(응답) 객체를 전달한 뒤
+//            // 요청된 작업을 처리한 후 ActionForward 객체를 리턴 => throws 키워드를 통해 예외처리가 위임되어있음
+//            try {
+//                forward = action.execute(request, response); // BoardWriteProAction 객체의 execute() 메서드 호출
+//                // execute() 메서드 실행 후 ActionForward 객체를 리턴받아 포워딩
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+
         if (forward != null) {
             if (forward.isRedirect()) {
                 response.sendRedirect(forward.getPath());
@@ -82,7 +79,5 @@ public class MemberController extends HttpServlet {
                 System.out.println("dispatch 방식으로 포워딩 : " + forward.getPath());
             }
         }
-
     }
-
 }

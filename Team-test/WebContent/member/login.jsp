@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
-<link href="${pageContext.request.contextPath}/css/login2.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/menuBar2.css" rel="stylesheet">
+<link href="./css/login2.css" rel="stylesheet">
+<link href="./css/menuBar3.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -15,17 +15,17 @@
 
 		<section id="loginForm">
 			<div class="login_title">Pick Pick 로그인</div>
-			<form action="./UserLoginProAction.mb" method="post" name="loginForm">
+			<form action="./UserLoginPro.mb" method="post" name="loginForm">
 				<div class="login">
 					<div class="input_info">
 						<input class="id" type="text" maxlength="16" placeholder="ID"
 							name="id"> 
 							<input class="pass" type="password"
-							maxlength="16" placeholder="   PASSWORD" name="pass"> 
+							maxlength="16" placeholder="PASSWORD" name="pass"> 
 							<input class="submit_login" type="submit" value="로그인">
 					</div>
 					<div class="join_find">
-					<a class="to_join" href="member/join.jsp">회원가입</a>
+					<a class="to_join" href="./UserJoinForm.mb">회원가입</a>
 					<a class="to_find" href="#">계정찾기</a>
 					</div>
 				</div>

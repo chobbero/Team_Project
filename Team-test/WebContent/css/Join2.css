@@ -41,7 +41,7 @@
 
 #JoinForm .phone {
 	box-sizing: border-box;
-	width: 43%;
+	width: 49%;
 	font-weight: 600;
 	color: #484848;
 	padding: 12px 0 12px 5%;
@@ -61,7 +61,7 @@
 	vertical-align: top;
 	height: 43px;
 	box-sizing: border-box;
-	width: 36%;
+	width: 30%;
 	padding: 12px 0;
 	display: inline-block;
 }

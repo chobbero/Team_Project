@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
-<link href="../css/myPage4.css" rel="stylesheet">
-<link href="../css/menuBar3.css" rel="stylesheet">
+<link href="css/myPage4.css" rel="stylesheet">
+<link href="css/menuBar3.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -16,9 +16,9 @@
 		<section id="myPage">
 		
 			<div class="myInfo">
-			<div class="myInfo_name">안녕하세요.<br> 저는 김성민입니다.</div>
-			<div class="myInfo_email">stranger_m@naver.com</div>
-			<div class="myInfo_birth">1991.11.06</div>
+			<div class="myInfo_name">안녕하세요.<br> 저는 ${mb.user_name}입니다.</div>
+			<div class="myInfo_email">${mb.user_email }</div>
+			<div class="myInfo_birth">${mb.user_birth }</div>
 			</div>
 		
 			<ul class="myPage_list">
@@ -34,22 +34,22 @@
 			<td colspan="2" class="mypage_title"><div>기본정보</div></td>
 			</tr>
 			<tr>
-			<td class="info_left"><div>ID</div></td><td class="info_right"><div>demian</div></td>
+			<td class="info_left"><div>ID</div></td><td class="info_right"><div>${mb.user_id }</div></td>
 			</tr>
 			<tr>
-			<td class="info_left"><div>이름</div></td><td class="info_right"><div>김성민</div></td>
+			<td class="info_left"><div>이름</div></td><td class="info_right"><div>${mb.user_name }</div></td>
 			</tr>
 			<tr>
-			<td class="info_left"><div>생년월일</div></td><td class="info_right"><div>1991.11.06</div></td>
+			<td class="info_left"><div>생년월일</div></td><td class="info_right"><div>${mb.user_birth }</div></td>
 			</tr>
 			<tr>
-			<td class="info_left"><div>이메일</div></td><td class="info_right"><div>stranger_m@naver.com</div></td>
+			<td class="info_left"><div>이메일</div></td><td class="info_right"><div>${mb.user_email }</div></td>
 			</tr>
 			<tr >
-			<td class="info_left"><div>전화번호</div></td><td class="info_right"><div>010-7186-606</div></td>
+			<td class="info_left"><div>전화번호</div></td><td class="info_right"><div>${mb.user_phone }</div></td>
 			</tr>
 			<tr>
-			<td class="info_left"><div>닉네임</div></td><td class="info_right"><div>빨리 수료하자!!</div></td>
+			<td class="info_left"><div>닉네임</div></td><td class="info_right"><div>${mb.user_nickname }</div></td>
 			</tr>
 			</table>
 			

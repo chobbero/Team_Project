@@ -3,6 +3,7 @@ package member.vo;
 public class MemberBean {
 
     private String user_id;
+    private String user_grade;
     private String user_pw;
     private String user_name;
     private String user_birth;
@@ -13,6 +14,14 @@ public class MemberBean {
 
     public String getUser_id() {
         return user_id;
+    }
+
+    public String getUser_grade() {
+        return user_grade;
+    }
+
+    public void setUser_grade(String user_grade) {
+        this.user_grade = user_grade;
     }
 
     public void setUser_id(String user_id) {

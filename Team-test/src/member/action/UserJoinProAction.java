@@ -25,6 +25,7 @@ public class UserJoinProAction implements Action {
 
         memberBean = new MemberBean();
         memberBean.setUser_id(request.getParameter("user_id"));
+        memberBean.setUser_grade(request.getParameter("user_grade"));
         memberBean.setUser_pw(request.getParameter("user_pw"));
         memberBean.setUser_name(request.getParameter("user_name"));
         memberBean.setUser_birth(request.getParameter("user_birth"));

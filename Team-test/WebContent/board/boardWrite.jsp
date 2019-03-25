@@ -89,7 +89,7 @@
 								//json객체를 서버에서 내려받아서 리스트 뽑는 작업
 								$.ajax({
 									//호출할 URL
-									url : "search.jsp",
+									url : "./search_store.jsp",
 									//우선 jsontype json으로
 									dataType : "json",
 									// parameter 값이다. 여러개를 줄수도 있다.

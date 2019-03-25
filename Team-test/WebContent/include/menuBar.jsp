@@ -17,7 +17,7 @@
 						<div class="nav_text">검색하기</div>
 					</div>
 			</a></li>
-			<li><a href="#">
+			<li><a href="./BoardList.bo">
 					<div class="nav_wrap">
 						<img class="nav_img" alt="review" src="img/review.png">
 						<div class="nav_text">리얼후기</div>
@@ -36,8 +36,8 @@
 					</div>
 			</a></li>
 			<c:choose>
-				<c:when test="${info !=null }">
-					<li><a href="#">
+				<c:when test="${sessionScope.user_id !=null }">
+					<li><a href="./myPage.mp">
 							<div class="nav_wrap">
 								<img class="nav_img" alt="MyPage" src="img/MyPage.png">
 								<div class="nav_text">마이페이지</div>
@@ -45,7 +45,7 @@
 					</a></li>
 				</c:when>
 				<c:otherwise>
-					<li><a href="#">
+					<li><a href="./UserLoginForm.mb">
 							<div class="nav_wrap">
 								<img class="nav_img" alt="Log_in" src="img/log_in.png">
 								<div class="nav_text">로그인</div>
