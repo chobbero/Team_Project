@@ -20,9 +20,10 @@ public class BoardDetailAction implements Action {
         
 //        int board_num = 2; // 하드코딩
         
-       int board_num = Integer.parseInt(request.getParameter("board_num"));
-        
         // boardList에서 board_num 값 가져오기 (현재 board_num 하드코딩)
+        int board_num = Integer.parseInt(request.getParameter("board_num"));
+                
+        // 인스턴스 생성
         BoardDetailService boardDetailService = new BoardDetailService();
         
         // 후기 가져오기

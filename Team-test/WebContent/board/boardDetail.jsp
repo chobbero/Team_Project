@@ -6,8 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
-<link href="css/boardDetail2.css" rel="stylesheet">
-<link href="css/menuBar3.css" rel="stylesheet">
+<link href="css/boardDetail.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
@@ -215,7 +214,15 @@
 				<article id="boardDeatilContentArea">
 				
 					<table>
-						<tr><td colspan="5" id="contentTitle">${bb.board_subject }</td></tr>
+						<tr>
+							<td colspan="4" id="contentTitle">${bb.board_subject }</td>
+							<td>
+							<label for="pick">
+						 	<img class="pick" src="img/heart.png">
+							</label>
+							<input id="pick" type="checkbox" name="demian" value="${bb.board_num }"> <!-- name?(하드코딩?) -->
+							</td>
+						</tr>
 						<tr id="contentSub">
 							<td id="contentWriter">${bb.user_id }</td>
 							<td id="contentTime">${bb.board_date }</td>
@@ -247,17 +254,11 @@
 				<!-- 버튼 -->
 				<div id="buttonArea">
 				
+					<a href='<c:url value="./BoardList.bo"/>'><img class="btnBoardList" src="img/threebars.png"></a>
 					<a href='<c:url value="./BoardWriteForm.bo" />'><img class="btnBoardInsert" src="img/boardWrite_l_gray.png"></a>
-					<a href='<c:url value="./CommentWriteForm.co?board_num=${bb.board_num }" />'><img class="btnCommentWrite" src="img/comments.png"></a>
-					<label for="pick">
-				 	<img class="pick" src="img/heart.png">
-					</label>
-					<input id="pick" type="checkbox" name="demian" value="${bb.board_num }">
-					<a><img class="btnBoardList" src="img/threebars.png"></a>
 					<a><img class="btnBoardDelete" src="img/trashcan.png"></a>
 					
 				</div>
-				
 			</section>
 				
 			<!-- 리뷰표시 -->
@@ -268,6 +269,13 @@
 						<c:when test="${cc eq 0 }">리뷰가 없어요 ㅠㅠ</c:when>
 						<c:otherwise>리뷰 (${cc })</c:otherwise>
 					</c:choose></p>
+					<a href='<c:url value="./CommentWriteForm.co?board_num=${bb.board_num }" />'>
+						<ul>
+							<li><img class="btnCommentWrite" src="img/comments.png" title="리뷰"></li>
+						    <li>리뷰쓰기</li>
+						</ul>
+					</a>
+					
 					<ul class="lists">
 						<c:forEach var="cb" items="${cl }">
 							<li class="lists__item js-load">

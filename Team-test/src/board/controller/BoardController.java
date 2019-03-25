@@ -14,6 +14,7 @@ import board.action.BoardDeleteProAction;
 import board.action.BoardDetailAction;
 import board.action.BoardListAction;
 import board.action.BoardWriteProAction;
+import board.action.SearchAction;
 import board.vo.ActionForward;
 
 
@@ -94,8 +95,15 @@ public class BoardController extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } 
-        
+        } else if(command.equals("/Search.bo")) {
+        	action = new SearchAction();
+            
+            try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         
         // ActionForward 객체 정보를 사용하여 포워딩 처리
         // isRedirect() 메서드 실행 결과가 true 일 경우 Redirect 방식으로 포워딩

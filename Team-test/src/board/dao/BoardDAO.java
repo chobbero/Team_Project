@@ -344,6 +344,179 @@ public class BoardDAO {
 		}
 		return imgFileCount;
 	}
+	
+	// 검색 게시물 갯수 조회
+    public int getSearchCount(String search, String category) {
+    	
+        int SearchCount = 0;
+        
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        
+        if (category.length() == 0 || category.equals(null) || category == null) {
+        	return SearchCount = -1; 
+        }
+        
+        try {
+        	
+        	String sql = "";
+        	
+        	switch (category) {
+			case "subject" : // 글제목
+				sql = "SELECT COUNT(*) FROM board WHERE board_subject like ?";
+				break;
+			case "content" : // 글내용
+				sql = "SELECT COUNT(*) FROM board WHERE board_content like ?";
+				break;
+			case "store" : // 상호명
+				sql = "SELECT COUNT(*) FROM store WHERE store_name like ?";
+				break;
+            }
+        	
+        	System.out.println(sql);
+        	
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, "%" + search + "%");
+            rs = pstmt.executeQuery();
+            
+            if(rs.next()) {
+            	SearchCount = rs.getInt(1);
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("SearchCount() 에러 : " + e.getMessage());
+        } finally {
+            close(pstmt);
+            close(rs);
+        }
+        
+        return SearchCount;
+    }
+
+    // 검색 목록 조회(게시글)
+	public ArrayList<BoardBean> getSearchList(String search, String category) {
+		
+		ArrayList<BoardBean> SearchList = new ArrayList<BoardBean>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = "";
+
+			switch (category) {
+			case "subject": // 글제목
+				sql = "SELECT * FROM board WHERE board_subject like ?";
+				break;
+			case "content": // 글내용
+				sql = "SELECT * FROM board WHERE board_content like ?";
+				break;
+			}
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%" + search + "%");
+			rs = pstmt.executeQuery();
+
+			// 카테고리에 따라 다른 리스트 전달
+			while (rs.next()) {
+				BoardBean boardBean = new BoardBean();
+
+				boardBean.setBoard_num(rs.getInt("board_num"));
+				boardBean.setUser_id(rs.getString("user_id"));
+				boardBean.setBoard_subject(rs.getString("board_subject"));
+				boardBean.setBoard_content(rs.getString("board_content"));
+				boardBean.setBoard_rating(rs.getDouble("board_rating"));
+				boardBean.setBoard_like(rs.getInt("board_like"));
+				boardBean.setBoard_date(rs.getDate("board_date"));
+				boardBean.setBoard_readcount(rs.getInt("board_readcount"));
+
+				SearchList.add(boardBean);
+
+			}
+		} catch (SQLException e) {
+			System.out.println("getSearchList() 에러 : " + e.getMessage());
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+
+		return SearchList;
+	}
+	
+	// 검색 목록 조회 (매장)
+	public ArrayList<StoreBean> getSearchList2(String search) {
+
+		ArrayList<StoreBean> SearchList = new ArrayList<StoreBean>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = "SELECT * FROM store WHERE store_name like ?";
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, "%" + search + "%");
+			rs = pstmt.executeQuery();
+
+			// 카테고리에 따라 다른 리스트 전달
+			while (rs.next()) {
+				StoreBean storeBean = new StoreBean();
+
+				storeBean.setStore_num(rs.getInt("store_num"));
+				storeBean.setStore_name(rs.getString("store_name"));
+				storeBean.setStore_address(rs.getString("store_address"));
+				storeBean.setStore_category(rs.getString("store_category"));
+				storeBean.setStore_menu(rs.getString("store_menu"));
+				storeBean.setStore_price(rs.getInt("store_price"));
+				storeBean.setStore_time(rs.getString("store_time"));
+				storeBean.setStore_image(rs.getString("store_image"));
+				storeBean.setStore_contact(rs.getString("store_contact"));
+
+				SearchList.add(storeBean);
+			}
+		} catch (SQLException e) {
+			System.out.println("getSearchList2() 에러 : " + e.getMessage());
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		return SearchList;
+		
+	}
+	
+	// 이미지 파일 리스트 가져오기(검색결과)
+	public ArrayList<FileBean> getImgFileList2(int board_num) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<FileBean> imgFileList = new ArrayList<FileBean>();
+		FileBean fileBean = null;
+		
+		try {
+			String sql = "SELECT * FROM board_file WHERE board_num = ?";
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, board_num);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				fileBean = new FileBean();
+				
+				fileBean.setBoard_num(rs.getInt("board_num"));
+				fileBean.setImage(rs.getString("image"));
+
+				imgFileList.add(fileBean);
+			}
+
+		} catch (SQLException e) {
+			System.out.println("getImgFileList() 에러 : " + e.getMessage());
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		return imgFileList;
+
+	}
+	
+	
 }
 
 

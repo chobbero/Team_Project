@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link href="css/menuBar.css" rel="stylesheet">
 <header>
 	<a href="https://www.naver.com/" class="logo_link">
 		<div id="logo">

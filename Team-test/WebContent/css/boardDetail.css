@@ -2,6 +2,7 @@
 
 #board_frame {text-align: center; margin-top: 90px;}
 
+/* 본 내용 */
 #contentImageArea1 {display: block; width: 100%;}
 #contentImageArea1>img {width: 240px; height: 150px;}
 .imageSildeBtn1 {position: absolute; top: 150px; right: 2%;}
@@ -16,7 +17,7 @@
 
 #boardDeatilContentArea table {margin: 0 5px 5px 5px; border-collapse: collapse;}
 #boardDeatilContentArea>table {width: 98%; min-width:695px;}
-#contentTitle {text-align: center; font-size: 22px; font-weight:bold; height: 50px;}
+#contentTitle {text-align: center; font-size: 27px; font-weight:bold; height: 60px;}
 #contentSub {font-size: 15px; background-color:#c0c0c0; height: 30px;}
 
 #contentWriter {text-align: center; width: 100px; font-weight:bold;}
@@ -30,7 +31,7 @@
 #content {padding-top: 10px; white-space: pre-line;}
 
  
-
+/* 매장정보 */
 #etcArea {width:25%; background-color:#f8f8f8}
 
 .storeInfo {font-size: 25px; font-weight: bold;}
@@ -45,11 +46,21 @@ hr {margin: 5px;}
 #etcArea table .storeMenu {min-width: 50px; font-weight: bold;}
 #etcArea table .storeMenuDetail {white-space: pre-line; width:100%;}
 
+
+/* 찜하기  */
+.pick {width: 40px;	height: 40px;}
+.pick:HOVER {cursor: pointer;}
+#pick {display: none;}
+
 /* 버튼 */
 #buttonArea img{width:50px; height:50px;}
 
 /* 댓글 */
 #reviewArea {display: block;}
+#js-load>p {display:inline-block; float:left;}
+#js-load>a {display: inline-block; float: right;}
+#js-load>a>ul {list-style: none; font-size:11px; font-weight: bold;}
+.btnCommentWrite {width:45px; height:45px;}
 
 /* 펼치기기능 */
 .js-load {display: none;}
@@ -59,8 +70,8 @@ hr {margin: 5px;}
 
 /* 댓글 디자인 */
 .main {max-width: 950px; margin: 0 auto;}
-.lists {margin-bottom: 1rem; padding: 0;}
-.lists__item {padding: 0 15px; background: #f5f5f5;}
+.lists {margin-bottom: 1rem; padding: 0; clear: both;}
+.lists__item {margin-top: 10px; padding: 0 15px; background: #f5f5f5;}
 .lists__item:nth-child(2n) {background: #c0c0c0; color: #fff;}
 
 #js-load>p {font-size:25px; font-weight:bold; margin-top: 10px; text-align: left;}
