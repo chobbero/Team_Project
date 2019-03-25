@@ -34,13 +34,21 @@
 
 			<div class="search_bar">
 
-				<form action="" method="post" name="search">
+				<form action='<c:url value="./Search.bo"/>' method="post" name="search">
 
 					<div class="search_bar_text">추천 음식점을 Pick 하세요.</div>
 					<div class="search_input_wrap">
 						<img class="search_input_logo" alt="" src="img/bar_logo.png">
-						<input class="search_input" type="text">
+						<input class="search_input" type="text" name="search_input">
 					</div>
+					
+					<select name="category" >
+						<optgroup label="카테고리">
+							<option value="subject">글제목</option>
+    						<option value="content">글내용</option>
+							<option value="store">상호명</option>
+						</optgroup>
+					</select>
 
 					<button type="submit" class="search_btn_icon">
 						<img class="btn_for_search" alt="search" src="img/Search.png">
