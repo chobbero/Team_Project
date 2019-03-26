@@ -8,7 +8,6 @@
 	width: 100%;
 	height: 750px;
 	position: relative;
-	margin: 0 auto 0px auto;
 }
 
 .myInfo {
@@ -80,7 +79,9 @@
 	#myPage {
 		width: 92%;
 		margin: 0 6% 0 2%;
-		border: 1px solid red;
+/* 		border: 1px solid red; */
+		min-height: 700px;
+		margin-bottom: 0px;
 	}
 	#myPage .myInfo {
 		display: none;
@@ -89,7 +90,7 @@
 		position: absolute;
 		top: 120px;
 		left: 0;
-		border: 1px solid red;
+/* 		border: 1px solid red; */
 		width: 20%;
 	}
 	.list_imgs {
@@ -103,7 +104,7 @@
 		line-height: 80px;
 		height: 80px;
 	}
-	#myPage .myPage_list li:HOVER  {
+	#myPage .myPage_list li:HOVER {
 		border-bottom: 2.5px solid #ff5a5f;
 	}
 	#myPage .myPage_list li:HOVER>div {
@@ -112,22 +113,22 @@
 	#myPage .detail_ordinary_info {
 		display: block;
 		position: absolute;
-		top: 120px;
+		top: 140px;
 		right: 0;
 		overflow: hidden;
 		width: 75%;
-		border: 1px solid red;
-		margin: 0;
-		padding: 0;
+/* 		border: 1px solid red; */
+/* 		margin-bottom: 100px; */
+/* 		padding-bottom: 60px; */
 	}
 	#myPage .detail_business_info {
 		display: block;
 		position: absolute;
-		top: 540px;
+		top: 640px;
 		right: 0;
 		width: 75%;
-		border: 1px solid red;
-		margin: 0;
+/* 		border: 1px solid red; */
+		margin-bottom: 40px;
 		padding: 0;
 		overflow: hidden;
 	}
@@ -142,21 +143,23 @@
 		width: 100%;
 		padding: 10px 20px;
 		box-sizing: border-box;
-		padding: 10px 20px;
+		height: 70px;
+/* 		border: 1px solid blue; */
+		border-radius: 15px 0 0 0 ;
 	}
 	.mypage_title div {
 		width: 700px;
 	}
 	.info_left {
 		border-bottom: 2px dotted #ccc;
-		padding: 10px;
+		padding: 20px 10px 15px 10px;
 		width: 160px;
 	}
 	.info_left div {
 		color: #b4b4b4;
 		font-weight: 500;
 		width: 140px;
-/* 		border: 1px solid red; */
+		/* 		border: 1px solid red; */
 		font-size: 1.15rem;
 		padding-left: 10px;
 	}
@@ -164,28 +167,70 @@
 		color: #484848;
 		font-weight: 500;
 		border-bottom: 2px dotted #ccc;
-		padding: 10px 0;
+		padding: 20px 10px 15px 10px;
 	}
 	.info_right div {
 		color: #484848;
 		font-weight: 500;
 		width: 400px;
-/* 		border: 1px solid blue; */
+		/* 		border: 1px solid blue; */
 		font-size: 1.15rem;
+		padding-left: 20px;
 	}
 	footer {
-		margin-top: 210px;
+		margin-top: 270px;
 	}
 }
 
 @MEDIA screen and (min-width:1024px) {
 	#myPage {
 		/* 		border: 1px solid red; */
-		margin: 130px 28% 0 28%;
-		width: 44%;
-		height: 550px;
+		margin: 0px 7% 0 7%;
+		width: 86%;
+		min-height: 600px;
+	}
+	.mypage_title {
+		padding: 10px 30px;
+		font-size: 1.5rem;
+	}
+	#myPage .myPage_list {
+		width: 18%;
+	}
+	#myPage .detail_ordinary_info {
+		top: 140px;
+	}
+	.list_imgs {
+		visibility: visible;
+	}
+	.info_left {
+		border-bottom: 2px dotted #ccc;
+		padding: 20px 10px 15px 10px;
+		width: 160px;
+	}
+	.info_left div {
+		color: #b4b4b4;
+		font-weight: 500;
+		width: 140px;
+		/* 		border: 1px solid red; */
+		font-size: 1.15rem;
+		padding-left: 10px;
+	}
+	.info_right {
+		color: #484848;
+/* 		width: 500px; */
+		font-weight: 500;
+		border-bottom: 2px dotted #ccc;
+		padding: 20px 10px 15px 10px;
+	}
+	.info_right div {
+		color: #484848;
+		font-weight: 500;
+		width: 500px;
+		/* 		border: 1px solid blue; */
+		font-size: 1.15rem;
+		padding-left: 20px;
 	}
 	footer {
-		margin-top: 170px;
+		margin-top: 270px;
 	}
 }

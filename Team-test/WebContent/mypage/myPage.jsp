@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,11 +23,11 @@
 			</div>
 		
 			<ul class="myPage_list">
-			<a href="#"><li><div>프로필 수정</div><img class="list_imgs" src="../img/edit_profile.png"/></li></a>
-			<a href="#"><li><div>Pick리스트</div><img class="list_imgs" src="../img/mypage_heart.png"/></li></a>
-			<a href="#"><li><div>게시글 수정</div><img class="list_imgs" src="../img/edit_board_mypage.png"/></li></a>
-			<a href="#"><li><div>회원전환</div><img class="list_imgs" src="../img/change_to_business.png"/></li></a>
-			<a href="#"><li><div>로그아웃</div><img class="list_imgs" src="../img/logout_mypage.png"/></li></a>
+			<a href="#"><li><div>프로필 수정</div><img class="list_imgs" src="img/edit_profile.png"/></li></a>
+			<a href="#"><li><div>Pick리스트</div><img class="list_imgs" src="img/mypage_heart.png"/></li></a>
+			<a href="#"><li><div>게시글 수정</div><img class="list_imgs" src="img/edit_board_mypage.png"/></li></a>
+			<a href="#"><li><div>회원전환</div><img class="list_imgs" src="img/change_to_business.png"/></li></a>
+			<a href="#"><li><div>로그아웃</div><img class="list_imgs" src="img/logout_mypage.png"/></li></a>
 			</ul>
 			
 			<table class="detail_ordinary_info">
@@ -53,6 +54,7 @@
 			</tr>
 			</table>
 			
+			<c:if test="${sessionScope.user_grade=='B'}">
 			<table class="detail_business_info">
 			<tr class="myPage_table_top">
 			<td colspan="2" class="mypage_title"><div>사업자정보</div></td>
@@ -70,7 +72,8 @@
 			<td class="info_left"><div>전환일자</div></td><td class="info_right"><div>2019.03.13</div></td>
 			</tr>
 			</table>
-			
+			</c:if>
+
 		</section>
 
 		<jsp:include page="../include/footer.jsp" />
