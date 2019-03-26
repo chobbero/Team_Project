@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
 <link href="../css/store.css" rel="stylesheet">
-<link href="../css/menuBar2.css" rel="stylesheet">
+<link href="../css/menuBar3.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
