@@ -17,7 +17,7 @@ public class SearchAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		System.out.println("SearchAction"); // 위치확인용
+//		System.out.println("SearchAction"); // 위치확인용
 		
 		// 인스턴스 생성
 		SearchService SearchService = new SearchService();
@@ -28,12 +28,12 @@ public class SearchAction implements Action {
 		// 검색어 가져오기
 		String search = request.getParameter("search_input");
 		search.trim(); // 앞뒤 공백 제거
-		System.out.println("검색어 : " + search); // 검색어 확인용
+//		System.out.println("검색어 : " + search); // 검색어 확인용
 		
 		// 게시글 검색 갯수 조회 (카테고리 전달)
 		int searchCount = 0;
 		searchCount = SearchService.getSearchCount(search, category);
-		System.out.println("갯수 : " + searchCount); // 검색 게시물 갯수 확인용
+//		System.out.println("갯수 : " + searchCount); // 검색 게시물 갯수 확인용
 		
 		ArrayList<BoardBean> SearchList = null;
 		ArrayList<StoreBean> SearchList2 = null;
@@ -46,21 +46,23 @@ public class SearchAction implements Action {
 				
 				SearchList = new ArrayList<BoardBean>();
 				
-				// 
+				// 검색 게시물 가져오기
 				SearchList = SearchService.getSearchList(search, category);
+
+				// 검색 게시물 이미지 파일명 가져오기 (한장)
 				int ImgFileCount = 0;
 				ArrayList<FileBean> imgFileList = new ArrayList<FileBean>();
 				for (BoardBean bb : SearchList) {
-					
 					ImgFileCount = SearchService.getImgFileCount(bb.getBoard_num());
 					System.out.println("글번호 : " + bb.getBoard_num() + " 이미지 갯수 : " + ImgFileCount);
 					
-					
 					if (ImgFileCount > 0) {
-						imgFileList = SearchService.getImgFileList(bb.getBoard_num());
-						request.setAttribute("imgFileList", imgFileList);
+						// 여러장을 가져와야할 때는 반복문 추가 사용
+						imgFileList.add(SearchService.getImgFileName(bb.getBoard_num())); 
 					}
 				}
+				
+				request.setAttribute("imgFileList", imgFileList);
 				request.setAttribute("searchList", SearchList);
 				
 			} else if (category.equals("store")) { // 매장 검색
@@ -68,6 +70,7 @@ public class SearchAction implements Action {
 				SearchList2 = new ArrayList<StoreBean>();
 				SearchList2 = SearchService.getSearchList2(search);
 				request.setAttribute("searchList2", SearchList2);
+				
 			}
 		}
 		

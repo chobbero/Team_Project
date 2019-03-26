@@ -39,23 +39,21 @@
 					<div class="search_bar_text">추천 음식점을 Pick 하세요.</div>
 					<div class="search_input_wrap">
 						<img class="search_input_logo" alt="" src="img/bar_logo.png">
+						<select name="category" class="search_category">
+							<optgroup label="검색">
+								<option value="subject" <c:if test="${category.equals('subject') }">selected</c:if>>글제목</option>
+		    					<option value="content" <c:if test="${category.equals('content') }">selected</c:if>>글내용</option>
+								<option value="store" <c:if test="${category.equals('store') }">selected</c:if>>매장명</option>
+							</optgroup>
+						</select>
 						<input class="search_input" type="text" name="search_input">
+	
 					</div>
-					
-					<select name="category" >
-						<optgroup label="카테고리">
-							<option value="subject">글제목</option>
-    						<option value="content">글내용</option>
-							<option value="store">상호명</option>
-						</optgroup>
-					</select>
-
 					<button type="submit" class="search_btn_icon">
 						<img class="btn_for_search" alt="search" src="img/Search.png">
 					</button>
 
 					<button type="submit" class="search_btn_text">검색</button>
-
 				</form>
 			</div>
 

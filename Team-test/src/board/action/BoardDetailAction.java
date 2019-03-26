@@ -63,8 +63,7 @@ public class BoardDetailAction implements Action {
         request.setAttribute("bc", boardCount);
         request.setAttribute("ic", imgFileCount);
         request.setAttribute("cc", commentCount);
-        
-        
+
         // 경로 지정
         forward.setPath("./board/boardDetail.jsp");
         

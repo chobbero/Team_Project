@@ -10,6 +10,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
+	// 더보기 아이콘 기능
 	$(window).on('load', function () {
 	    load('#js-load', '5');
 	    $("#js-btn-wrap .button").on("click", function () {

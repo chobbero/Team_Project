@@ -98,6 +98,7 @@ public class BoardDetailService {
         close(con);
 		
 		return imgFileList;
+		
 	}
 
 	public int getBoardCount(int store_num) {
@@ -112,6 +113,7 @@ public class BoardDetailService {
         close(con);
         
 		return boardCount;
+		
 	}
 
 	public int getImgFileCount(int board_num) {
@@ -126,6 +128,7 @@ public class BoardDetailService {
         close(con);
         
 		return imgFileCount;
+		
 	}
 
 }

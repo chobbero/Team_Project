@@ -1,31 +1,62 @@
 @charset "UTF-8";
 
-#searchResultView {border:1px solid black; padding: 0 3%;}
-#searchTitle {margin: 5% 2.5%; font-size: 25px; font-weight: bold;}
+a:link {color: black;}
+a:visited {color: black;}
+a:active {color: black;}
 
-/* 검색창*/
+/* 검색 */
 #search {height: 300px;	width: 100%; background-image: url("../img/search_main_img.jpg") !important;
-	     background-size: cover; background-repeat: no-repeat; background-position: center; top: 80px;}
+	     background-size: cover; background-repeat: no-repeat; background-position: center;}
 .search_bar_text {color: #fff; font-size: 2.7rem; width: 90%; margin: 20px 5% 20px 5%;}
 .search_bar {position: absolute; top: 90px; width: 100%; display: block; border: none; display: block;}
-.search_input_wrap {background-color: #fff;	width: 78%;	height: 75px; margin: 10px 10px 10px 5%; position: relative; display: inline-block; top: 4px;}
+.search_input_wrap {background-color: #fff;	width: 78%;	height: 75px; margin: 10px 10px 10px 5%; position: relative; display: inline-block; top: 4px; overflow: hidden; border-radius: 5px;}
 .search_input_logo {height: 25px; padding: 15px; border-radius: 5px; position: relative; top: 10px; left: 10px;}
 .search_category {position: relative; top: -11px; height: 40px; left: 5px; padding-left: 5px;}
-.search_input {width: 73%; height: 40px; display: inline; background-color: #fff; position: absolute; top: 16px; left: 160px;}
-.search_btn_icon {height: 76px; width: 76px; display: inline-block;	border-radius: 5px;}
+.search_input {width: 75%; height: 40px; display: inline; background-color: #fff; position: absolute; top: 18px; left: 160px; border: none; font-size:30px;}
+.search_btn_icon {height: 76px; width: 76px; display: inline-block;	border-radius: 5px; position: relative; top: -29px;}
 .search_btn_text {display: none;}
+
+/* 검색 결과 */
+#searchResultView {padding: 0 5%;  text-align: center;}
+#searchTitle {margin: 5% 2.5% 2.5% 2.5%; font-size: 25px; font-weight: bold; text-align: left; padding-bottom: 10px;}
+#searchResult {display: inline-block;}
+
+.searchTable {border-collapse: collapse; margin: 30px 0; word-break: break-all;}
+.searchTableCell {padding-right: 40px;}
+.searchListImg {width:440px; height:275px;}
+.vertical {vertical-align: top;}
+.searchTableCell2 {text-align: left;}
+.searchSubject {font-size: 35px; font-weight: bold; padding-bottom: 15px;}
+.searchAddress, .searchContact, .searchTime, .searchMenu, .searchUser, .searchCount, .searchContent {font-size: 20px; color: #737373;}
+
+/* 펼치기기능 */
+.searchTable {display: none;}
+.searchTable.active {display: block;}
+.is_comp.searchTable:after {display: none;}
+#js-btn-wrap {display: block;}
 
 footer {position: relative; top: 80px;}
 
 @MEDIA screen and (max-width:1023px) {
 	
+	/* 검색 */
 	#search .search_bar {margin: 0 8% 0 12%; width: 80%;}
 	#search .search_bar_text {font-size: 2.5rem; margin: 15px 5%;}
 	.search_input_wrap {height: 65px;}
 	.search_input_logo {top: 5px; left: 5px;}
 	.search_category {top: -17px; height: 35px;}
-	.search_input {width: 63%; height: 32px; top: 15px; left: 160px;}
-	.search_btn_icon {height: 65px; width: 65px; padding-top: 7px;}
+	.search_input {width: 70%; height: 35px; top: 16px; left: 160px;  font-size:25px;}
+	.search_btn_icon {height: 65px; width: 65px; padding-top: 7px; top: -20px;}
+	
+	/* 검색 결과 */
+	#searchResultView {padding: 0 3%}
+	
+	#searchTitle {font-size: 23px;}
+	.searchTable {margin: 20px 0;}
+	.searchTableCell {padding-right: 30px;}
+	.searchListImg {width:300px; height:187.5px;}
+	.searchSubject {font-size: 27px;}
+	.searchAddress, .searchContact, .searchTime, .searchMenu, .searchUser, .searchCount, .searchContent {font-size: 17px;}
 	
 	footer {bottom: 30px;}
 	
@@ -33,15 +64,23 @@ footer {position: relative; top: 80px;}
 
 @MEDIA all and (max-width:767px) {
 	
+	/* 검색 */
 	#search {padding-bottom: 30px;}
 	#search .search_bar {max-width:610px; width: 610px; top: 120px;}
 	#search .search_bar_text {color: #484848; font-size: 2rem; font-weight: bold;}
 	#search .search_input_wrap {border-radius: 5px; width: 90%; height: 55px;}
 	#search .search_input_logo {top: 0px; left: 3px;}
 	#search .search_category {top: -21px;}
-	#search .search_input {width: 67.5%; top: 11px;}
+	#search .search_input {width: 67.5%; top: 11px;  font-size:23px;}
 	#search .search_btn_icon {display: none;}
 	#search .search_btn_text {width: 90%; height: 55px; border: none; border-radius: 5px; background-color: #ff5a5f; display: block; margin: 0 5%; color: #fff; font-weight: bold; font-size: 1.15em; cursor: pointer;}
+	
+	/* 검색 결과 */
+	#searchResultView {margin-bottom: 80px;}
+	
+	#searchTitle {font-size: 20px;}
+	.searchTableCell {padding-right: 20px;}
+	.searchListImg {width:260px; height:162.5px;}
 	
 	footer {top: 80px;}
 	

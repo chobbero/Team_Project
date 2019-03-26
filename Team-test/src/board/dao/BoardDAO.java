@@ -373,8 +373,6 @@ public class BoardDAO {
 				break;
             }
         	
-        	System.out.println(sql);
-        	
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, "%" + search + "%");
             rs = pstmt.executeQuery();
@@ -404,12 +402,12 @@ public class BoardDAO {
 			String sql = "";
 
 			switch (category) {
-			case "subject": // 글제목
-				sql = "SELECT * FROM board WHERE board_subject like ?";
-				break;
-			case "content": // 글내용
-				sql = "SELECT * FROM board WHERE board_content like ?";
-				break;
+				case "subject": // 글제목 검색
+					sql = "SELECT * FROM board WHERE board_subject like ?";
+					break;
+				case "content": // 글내용 검색
+					sql = "SELECT * FROM board WHERE board_content like ?";
+					break;
 			}
 
 			pstmt = con.prepareStatement(sql);
@@ -482,12 +480,11 @@ public class BoardDAO {
 		
 	}
 	
-	// 이미지 파일 리스트 가져오기(검색결과)
-	public ArrayList<FileBean> getImgFileList2(int board_num) {
+	// 검색 게시물 이미지 파일명 가져오기 (한장)
+	public FileBean getImgFileName(int board_num) {
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		ArrayList<FileBean> imgFileList = new ArrayList<FileBean>();
 		FileBean fileBean = null;
 		
 		try {
@@ -498,21 +495,21 @@ public class BoardDAO {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
+				
 				fileBean = new FileBean();
 				
 				fileBean.setBoard_num(rs.getInt("board_num"));
 				fileBean.setImage(rs.getString("image"));
 
-				imgFileList.add(fileBean);
 			}
 
 		} catch (SQLException e) {
-			System.out.println("getImgFileList() 에러 : " + e.getMessage());
+			System.out.println("getImgFileName() 에러 : " + e.getMessage());
 		} finally {
 			close(pstmt);
 			close(rs);
 		}
-		return imgFileList;
+		return fileBean;
 
 	}
 	
