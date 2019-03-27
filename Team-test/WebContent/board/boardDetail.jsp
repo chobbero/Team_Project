@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
 <link href="css/boardDetail.css" rel="stylesheet">
-<link href="css/menuBar3.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
@@ -209,8 +208,6 @@
 				
 			</aside>
 			
-			<!-- 글목록 / 글수정 / 글삭제 / 리뷰쓰기 -->
-			
 			<section id="contentArea">
 				<!-- 주내용 -->
 				<article id="boardDeatilContentArea">
@@ -263,18 +260,18 @@
 				</div>
 			</section>
 				
-			<!-- 리뷰표시 -->
+			<!-- 댓글 표시 -->
 			<section id="reviewArea">
 				<hr>
 				<div id="js-load" class="main">
 					<p><c:choose>
-						<c:when test="${cc eq 0 }">리뷰가 없어요 ㅠㅠ</c:when>
-						<c:otherwise>리뷰 (${cc })</c:otherwise>
+						<c:when test="${cc eq 0 }">댓글이 없어요 ㅠㅠ</c:when>
+						<c:otherwise>댓글 (${cc })</c:otherwise>
 					</c:choose></p>
 					<a href='<c:url value="./CommentWriteForm.co?board_num=${bb.board_num }" />'>
 						<ul>
-							<li><img class="btnCommentWrite" src="img/comments.png" title="리뷰"></li>
-						    <li>리뷰쓰기</li>
+							<li><img class="btnCommentWrite" src="img/comments.png" title="댓글"></li>
+						    <li>댓글쓰기</li>
 						</ul>
 					</a>
 					
@@ -283,7 +280,8 @@
 							<li class="lists__item js-load">
 								<table class="review_table"><tr>
 									<td class="review_id">${cb.user_id}</td>
-									<td class="review_content">${cb.comment_content }</td>
+									<td class="review_content">${cb.comment_content }
+									</td>
 								</tr></table>
 							</li>
 						</c:forEach>

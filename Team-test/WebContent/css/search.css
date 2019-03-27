@@ -17,7 +17,7 @@ a:active {color: black;}
 .search_btn_text {display: none;}
 
 /* 검색 결과 */
-#searchResultView {padding: 0 5%;  text-align: center;}
+#searchResultView {padding: 0 5%;  text-align: center; margin-bottom: 100px;}
 #searchTitle {margin: 5% 2.5% 2.5% 2.5%; font-size: 25px; font-weight: bold; text-align: left; padding-bottom: 10px;}
 #searchResult {display: inline-block;}
 
@@ -35,7 +35,7 @@ a:active {color: black;}
 .is_comp.searchTable:after {display: none;}
 #js-btn-wrap {display: block;}
 
-footer {position: relative; top: 80px;}
+footer {position: fixed; bottom: 0; background:white; width:100%;}
 
 @MEDIA screen and (max-width:1023px) {
 	
@@ -49,7 +49,7 @@ footer {position: relative; top: 80px;}
 	.search_btn_icon {height: 65px; width: 65px; padding-top: 7px; top: -20px;}
 	
 	/* 검색 결과 */
-	#searchResultView {padding: 0 3%}
+	#searchResultView {padding: 0 3%;}
 	
 	#searchTitle {font-size: 23px;}
 	.searchTable {margin: 20px 0;}
@@ -57,8 +57,6 @@ footer {position: relative; top: 80px;}
 	.searchListImg {width:300px; height:187.5px;}
 	.searchSubject {font-size: 27px;}
 	.searchAddress, .searchContact, .searchTime, .searchMenu, .searchUser, .searchCount, .searchContent {font-size: 17px;}
-	
-	footer {bottom: 30px;}
 	
 }
 
@@ -76,12 +74,10 @@ footer {position: relative; top: 80px;}
 	#search .search_btn_text {width: 90%; height: 55px; border: none; border-radius: 5px; background-color: #ff5a5f; display: block; margin: 0 5%; color: #fff; font-weight: bold; font-size: 1.15em; cursor: pointer;}
 	
 	/* 검색 결과 */
-	#searchResultView {margin-bottom: 80px;}
+	#searchResultView {margin-bottom: 90px;}
 	
 	#searchTitle {font-size: 20px;}
 	.searchTableCell {padding-right: 20px;}
 	.searchListImg {width:260px; height:162.5px;}
-	
-	footer {top: 80px;}
 	
 }

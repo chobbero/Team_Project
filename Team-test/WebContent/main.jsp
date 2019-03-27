@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
 <link href="css/main9_1.css" rel="stylesheet">
-<link href="css/menuBar3.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="js/jquery-3.3.1.js"></script>
 <script type="text/javascript">

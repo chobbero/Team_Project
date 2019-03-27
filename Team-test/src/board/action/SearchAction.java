@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.service.BoardDetailService;
 import board.service.SearchService;
 import board.vo.ActionForward;
 import board.vo.BoardBean;
@@ -26,9 +25,8 @@ public class SearchAction implements Action {
 		String category = request.getParameter("category");
 		
 		// 검색어 가져오기
-		String search = request.getParameter("search_input");
-		search.trim(); // 앞뒤 공백 제거
-//		System.out.println("검색어 : " + search); // 검색어 확인용
+		String search = request.getParameter("search_input").trim(); // 공백 제거
+//		System.out.println("검색어 : " + search); // 검색어 확인용 
 		
 		// 게시글 검색 갯수 조회 (카테고리 전달)
 		int searchCount = 0;

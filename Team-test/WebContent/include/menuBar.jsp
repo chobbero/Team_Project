@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link href="css/menuBar.css" rel="stylesheet">
+<link href="css/menuBar3.css" rel="stylesheet">
 <header>
-	<a href="https://www.naver.com/" class="logo_link">
+	<a href="./main" class="logo_link">
 		<div id="logo">
 			<img class="logo_img" alt="logo" src="img/logo_pink.png"> <img
 				class="logo_img_wh" alt="logo" src="img/logo.png">
@@ -11,7 +11,7 @@
 	</a>
 	<nav>
 		<ul>
-			<li><a href="https://www.naver.com/">
+			<li><a href="./Search.bo">
 					<div class="nav_wrap">
 						<img class="nav_img" alt="search" src="img/search_nav.png">
 						<div class="nav_text">검색하기</div>

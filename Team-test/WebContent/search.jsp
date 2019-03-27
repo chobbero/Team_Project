@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
 <link href="css/search.css" rel="stylesheet">
-<link href="css/menuBar3.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="js/jquery-3.3.1.js"></script>
 <script type="text/javascript">
@@ -27,10 +26,10 @@
 	// 더보기 아이콘 기능
 	$(window).on('load', function () {
 		// 처음 로딩할 게시물 갯수
-	    load('#searchResult', '5'); 
+	    load('#searchResult', '1'); 
 	    $("#js-btn-wrap .button").on("click", function () {
 	    	// 버튼 클릭시 추가 로딩할 게시물 갯수
-	        load('#searchResult', '5', '#js-btn-wrap');
+	        load('#searchResult', '1', '#js-btn-wrap');
 	    })
 	});
 	 
@@ -46,6 +45,18 @@
 	    }
 	    $(search_list + ":lt(" + search_total_cnt + ")").addClass("active");
 	}
+	
+	// 검색어 공백 처리
+	function ckBlank() {
+		if($('.search_input').val().trim() == "") {
+		    alert("검색어를 입력해 주세요.");
+		    $('.search_input').focus();
+		    return false;
+		} else {
+			$('.search_input').val() = $('.search_input').val().trim();
+			return true;
+		}
+	}
 </script>
 </head>
 <body>
@@ -53,7 +64,7 @@
 		<jsp:include page="include/menuBar.jsp" />
 		<section id="search">
 			<div class="search_bar">
-				<form action='<c:url value="./Search.bo"/>' method="post" name="search">
+				<form action='<c:url value="./Search.bo"/>' method="post" name="search" onsubmit="return ckBlank()">
 
 					<div class="search_bar_text">추천 음식점을 Pick 하세요.</div>
 					<div class="search_input_wrap">
@@ -65,7 +76,7 @@
 								<option value="store" <c:if test="${category.equals('store') }">selected</c:if>>매장명</option>
 							</optgroup>
 						</select>
-						<input class="search_input" type="text" name="search_input">
+						<input class="search_input" type="text" name="search_input" required="required" maxlength="50">
 					</div>
 					<button type="submit" class="search_btn_icon">
 						<img class="btn_for_search" alt="search" src="img/Search.png">
@@ -76,16 +87,19 @@
 		</section>
 		
 		<section id="searchResultView">
+			<!-- 검색어 유무에 따른 제목 노출 -->
 			<div id="searchTitle">
 				<c:choose>
-					<c:when test="${searchCount eq 0 }">검색 결과가 없어요 ㅠㅠ</c:when>
-					<c:otherwise><p>검색어 : "${search }" (${searchCount })</p></c:otherwise>
+					<c:when test="${search != null }">
+							<p>검색어 : "${search }" (${searchCount })</p>
+							<c:if test="${searchCount eq 0 }">검색 결과가 없어요 ㅠㅠ</c:if>
+					</c:when>
+					<c:otherwise><p>검색어를 입력하세요 :D</p></c:otherwise>
 				</c:choose>
 			</div>
 			
-			<hr>
-			
 			<div id="searchResult">
+				<hr>
 				<!-- 게시글(제목,내용) 검색결과 -->
 				<c:forEach var="sl" items="${searchList }">
 					<table class="searchTable">
@@ -126,7 +140,6 @@
 				</div>
 			</div>
 		</section>
-		
 		<jsp:include page="include/footer.jsp" />
 	</div>
 </body>

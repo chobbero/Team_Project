@@ -67,14 +67,19 @@ public class BoardController extends HttpServlet {
                 e.printStackTrace();
             }
         } else if(command.equals("/BoardDetail.bo")) {
-
-            action = new BoardDetailAction();
-            
-            try {
-                forward = action.execute(request, response);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        	// board_num값이 없을 시 boardList로 이동
+        	if (request.getParameter("board_num") != null) {
+	            action = new BoardDetailAction();
+	            
+	            try {
+	                forward = action.execute(request, response);
+	            } catch (Exception e) {
+	                e.printStackTrace();
+	            }
+        	} else {
+        		forward = new ActionForward();
+                forward.setPath("/BoardList.bo");
+        	}
         } else if(command.equals("/BoardDeleteForm.bo")) {
             // board 폴더내의 qna_board_delete.jsp 파일로 포워딩
             // 단, 글 삭제를 위한 게시물 번호(board_num)와 글 삭제 후 페이징 처리를 위한 페이지번호(page)를 가져와서 request.setAttribute() 메서드로 저장하여 이동
@@ -96,13 +101,19 @@ public class BoardController extends HttpServlet {
                 e.printStackTrace();
             }
         } else if(command.equals("/Search.bo")) {
-        	action = new SearchAction();
-            
-            try {
-                forward = action.execute(request, response);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        	// 검색어 유무에 따른 페이지 이동
+        	if (request.getParameter("search_input") != null) {
+	        	action = new SearchAction();
+	            
+	            try {
+	                forward = action.execute(request, response);
+	            } catch (Exception e) {
+	                e.printStackTrace();
+	            }
+        	} else {
+                forward = new ActionForward();
+                forward.setPath("/search.jsp");
+        	}
         }
         
         // ActionForward 객체 정보를 사용하여 포워딩 처리
