@@ -108,7 +108,7 @@ public class BoardDAO {
             }
             
         } catch (SQLException e) {
-            System.out.println("selectListCount() 에러 : " + e.getMessage());
+            System.out.println("getBoardListCount() 에러 : " + e.getMessage());
         } finally {
             close(pstmt);
             close(rs);
@@ -156,7 +156,7 @@ public class BoardDAO {
                 list.add(listBean);
             }
         } catch (SQLException e) {
-            System.out.println("getBoardList() 에러 : " + e.getMessage());
+            System.out.println("getList() 에러 : " + e.getMessage());
         } finally {
             close(pstmt);
             close(rs);
