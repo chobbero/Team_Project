@@ -127,10 +127,15 @@
 }
 
 #boardList .boardList_content_layer02_l_4 {
-	/* 	border: 1px solid red; */
+/* 		border: 1px solid red; */
 	font-size: 1rem;
-	color: #484848;
+	color: #585858;
 	margin: 15px 5%;
+	height: 148px;
+	overflow: hidden;
+	line-height: 1.35rem;
+	word-spacing: 1px;
+	letter-spacing: 0.5px;
 }
 
 #pageList {
