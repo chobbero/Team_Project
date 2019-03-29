@@ -50,7 +50,14 @@ public class MypageController extends HttpServlet {
                 e.printStackTrace();
             }
 
+        } else if (command.equals("/UserUpdateForm.mp")) {
+        	forward = new ActionForward();
+        	forward.setPath("./mypage/user_update.jsp");
+        } else if (command.equals("/UserDeleteForm.mp")) {
+        	forward = new ActionForward();
+        	forward.setPath("./mypage/user_delete.jsp");
         }
+
 
 //        else if (command.equals("/businessJoinForm.mp")) {
 //            forward = new ActionForward();
