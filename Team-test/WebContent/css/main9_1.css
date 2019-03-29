@@ -147,6 +147,7 @@ section#search .search_btn_text {
 	height: 80px;
 	margin-bottom: 25px;
 	position: relative;
+	padding-top: 25px;
 }
 
 #rank .ranks_img {
@@ -174,6 +175,11 @@ section#search .search_btn_text {
 	left: 110px;
 	width: 65%;
 	/* 		border: 1px solid red; */
+}
+
+.rank1 a {
+	text-decoration: none;
+	color: chocolate;
 }
 
 #rank .down_scroll {

@@ -75,7 +75,9 @@
 					</div>
 
 					<div class="rank1_desc">
-						${topStoreReview.board_subject }<br>
+						공감수 (${topStoreReview.board_like })개의 게시물<br>
+						<a href="<c:url value='/BoardDetail.bo?board_num=${topStoreReview.board_num }'/>">
+						${topStoreReview.board_subject }</a><br>
 						# ${rankList.get(0).store_category }<br>
 						${rankList.get(0).store_contact }<br>
 						${rankList.get(0).store_address }<br>추천
