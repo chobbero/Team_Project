@@ -65,32 +65,31 @@
 
 				<div class="rank1">
 
-					<a href="#"><img class="rank1_img" alt="no.1" src="img/ex2.jpg"></a>
+					<a href="#"><img class="rank1_img" alt="no.1" src="files/${rankList.get(0).store_image }"></a>
 
 					<div class="rank1_sub">
 
 						<img class="crown" alt="crown" src="img/crown.png">
 
-						<div class="rank1_title">1. 맛집이름</div>
+						<div class="rank1_title">1. <a href="<c:url value='/BoardDetail.bo?board_num=${topStoreReview.board_num }'/>">${rankList.get(0).store_name }</a></div>
 					</div>
 
 					<div class="rank1_desc">
-						# 일식<br>전화번호<br>주소<br>추천
+						${topStoreReview.board_subject }<br>
+						# ${rankList.get(0).store_category }<br>
+						${rankList.get(0).store_contact }<br>
+						${rankList.get(0).store_address }<br>추천
 					</div>
 					<img class="down_scroll" alt="down_scroll" src="img/down5.png">
 				</div>
-				<%
-				    for (int i = 2; i <= 10; i++) {
-				%>
-				<div class="rankOthers">
-					<a href="#"><img class="ranks_img" alt="no.1" src="img/ex.jpg"></a>
-					<div class="ranks_title"><%=i%>. 맛집이름
+				<c:forEach var="rankList" items="${rankList }" begin="1" varStatus="i">
+					<div class="rankOthers">
+						<a href="#"><img class="ranks_img" alt="no.1" src="files/${rankList.store_image }"></a>
+						<div class="ranks_title">${i.index + 1 }. ${rankList.store_name }
+						</div>
+						<div class="ranks_desc"># ${rankList.store_category }</div>
 					</div>
-					<div class="ranks_desc"># 일식</div>
-				</div>
-				<%
-				    }
-				%>
+				</c:forEach>
 			</div>
 		</section>
 

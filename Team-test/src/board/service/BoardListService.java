@@ -39,5 +39,18 @@ public class BoardListService {
 
 		return list;
 	}
+	
+	public ArrayList<StoreBean> getRankList() throws Exception {
+		ArrayList<StoreBean> rankList = null;
 
+		Connection con = getConnection();
+		BoardDAO boardDAO = BoardDAO.getInstance();
+		boardDAO.setConnection(con);
+
+		rankList = boardDAO.getRankList();
+
+		close(con);
+
+		return rankList;
+	}
 }

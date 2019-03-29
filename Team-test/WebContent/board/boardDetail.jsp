@@ -144,19 +144,20 @@
 		
 			<!-- 이미지 표시 -->
 			<aside id="contentImageArea1">
-			
-				<!-- 이미지 반복문 -->
-				<c:forEach var="i" begin="0" end="${ic - 1}" step="1">
-					<img class="dialog_trigger${i }" src="./files/${img[i]}">
-				</c:forEach>
-
-				<!-- 이미지 팝업레이어 (4개) -->
-				<div class="dialog">
-					<span class="dialog_close">&#x2715;</span>
-					<h2 class="dialog_title">${bb.board_subject }</h2>
-					<img class="dialog_img" src="">
-				</div>	
-								
+				<!-- 이미지 있을 시에만 실행 -->
+				<c:if test="${ic >0 }"> 
+					<!-- 이미지 반복문 -->
+					<c:forEach var="i" begin="0" end="${ic - 1}" step="1">
+						<img class="dialog_trigger${i }" src="./files/${img[i]}">
+					</c:forEach>
+						
+					<!-- 이미지 팝업레이어 (4개) -->
+					<div class="dialog">
+						<span class="dialog_close">&#x2715;</span>
+						<h2 class="dialog_title">${bb.board_subject }</h2>
+						<img class="dialog_img" src="">
+					</div>	
+				</c:if>				
 			</aside>
 				
 			<!-- 화면크기에 따라 표시 width=767미만일때 표시 -->

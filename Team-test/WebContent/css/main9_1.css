@@ -135,6 +135,9 @@ section#search .search_btn_text {
 	top: 50px;
 	left: 200px;
 	line-height: 25px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 #rank .rankOthers {

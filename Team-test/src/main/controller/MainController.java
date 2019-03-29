@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.action.BoardWriteProAction;
 import main.action.Action;
+import main.action.MainAction;
 import main.vo.ActionForward;
 
 @WebServlet("/main")
@@ -37,19 +38,14 @@ public class MainController extends HttpServlet {
         
         ActionForward forward = null;
         
-        forward = new ActionForward();
-        forward.setPath("main.jsp"); 
+        Action action = null;
+        action = new MainAction(); 
         
-//        Action action = null;
-//        action = new MainAction(); 
-//        
-//        try {
-//            forward = action.execute(request, response); 
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-        
-        
+        try {
+            forward = action.execute(request, response); 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         
         // ActionForward 객체 정보를 사용하여 포워딩 처리
         // isRedirect() 메서드 실행 결과가 true 일 경우 Redirect 방식으로 포워딩

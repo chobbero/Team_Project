@@ -513,7 +513,80 @@ public class BoardDAO {
 
 	}
 	
+	// 후기 많은 TOP 10 의 맛집 리스트 가져오기
+	public ArrayList<StoreBean> getRankList() {
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        ArrayList<StoreBean> rankList = new ArrayList<StoreBean>();
+
+
+        try {
+        	
+            String sql = "SELECT * FROM store s ORDER BY (SELECT count(*) FROM board b WHERE b.store_num = s.store_num) DESC LIMIT 10";
+            pstmt = con.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                StoreBean StoreBean = new StoreBean();
+
+                StoreBean.setStore_num(rs.getInt("store_num"));
+                StoreBean.setStore_name(rs.getString("store_name"));
+                StoreBean.setStore_address(rs.getString("store_address"));
+                StoreBean.setStore_category(rs.getString("store_category"));
+                StoreBean.setStore_menu(rs.getString("store_menu"));
+                StoreBean.setStore_price(rs.getInt("store_price"));
+                StoreBean.setStore_time(rs.getString("store_time"));
+                StoreBean.setStore_image(rs.getString("store_image"));
+                StoreBean.setStore_contact(rs.getString("store_contact"));
+
+                rankList.add(StoreBean);
+            }
+        } catch (SQLException e) {
+            System.out.println("getRankList() 에러 : " + e.getMessage());
+        } finally {
+            close(pstmt);
+            close(rs);
+        }
+        return rankList;
+    }
 	
+	// TOP1 맛집의 '좋아요' 가장 높은 게시물 내용 가져오기
+	public BoardBean selectTopBoardArticle(int topStoreNum) {
+
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		BoardBean boardBean = null;
+
+		try {
+			String sql = "SELECT * FROM board WHERE store_num = ? ORDER by board_like DESC LIMIT 1";
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, topStoreNum);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				boardBean = new BoardBean();
+
+				boardBean.setBoard_num(rs.getInt("board_num"));
+				boardBean.setUser_id(rs.getString("user_id"));
+				boardBean.setStore_num(rs.getInt("store_num"));
+				boardBean.setBoard_subject(rs.getString("board_subject"));
+				boardBean.setBoard_content(rs.getString("board_content"));
+				boardBean.setBoard_rating(rs.getDouble("board_rating"));
+				boardBean.setBoard_like(rs.getInt("board_like"));
+				boardBean.setBoard_date(rs.getDate("board_date"));
+				boardBean.setBoard_readcount(rs.getInt("board_readcount"));
+			}
+
+		} catch (SQLException e) {
+			System.out.println("selectTopBoardArticle() 에러 : " + e.getMessage());
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		return boardBean;
+
+	}
 }
 
 

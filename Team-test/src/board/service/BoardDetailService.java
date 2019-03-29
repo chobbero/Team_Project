@@ -130,5 +130,19 @@ public class BoardDetailService {
 		return imgFileCount;
 		
 	}
+	
+	// 게시물 내용 가져오기 및 조회수 증가 메서드
+    public BoardBean getTopBoardArticle(int topStoreNum) throws Exception {
+    	
+        Connection con = getConnection();
+        BoardDAO boardDAO = BoardDAO.getInstance();
+        boardDAO.setConnection(con);
+        BoardBean boardBean = null;
+        
+        boardBean = boardDAO.selectTopBoardArticle(topStoreNum);
 
+        close(con);
+        
+        return boardBean;
+    }
 }
