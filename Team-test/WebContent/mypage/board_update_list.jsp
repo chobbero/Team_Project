@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>Pick_Pick</title>
 <link href="css/myPage4.css" rel="stylesheet">
-<link href="css/user_update.css" rel="stylesheet">
+<link href="css/board_update.css" rel="stylesheet">
 <link href="css/menuBar3.css" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
@@ -32,33 +32,27 @@
 			<a href="#"><li><div>로그아웃</div><img class="list_imgs" src="img/logout_mypage.png"/></li></a>
 			</ul>
 			
-			<section id="JoinForm">
+			<div class="pick_title">내가 찜한 가게</div>
+			
+			<table class="pick_table">
+			
+			<c:forEach begin="1" end="7">
+			<tr class="pick_list">
+			<td class="subject"><div>맛있는 맛집!</div></td>
+			<td class="writer"><div>홍길동</div></td>
+			<td class="date"><div>2019.03.31</div></td>
+			<td class="delete">
+			<a href="#">삭제</a>
+			</td>
+			<td class="update">
+			<a href="./BoardUpdateForm.mp">수정</a>
+			</td>
+			</tr>
+			</c:forEach>
+			
+			</table>
 		
-			<div class="Join_title">프로필 수정</div>
-			
-			<form action="./UserUpdatePro.mb" method="post" name="JoinForm">
-			
-				<div class="Join">
-				
-					<input class="a dupli_check disabled" type="text" maxlength="16" value="user_id" name="user_id" required="required" disabled="disabled"> 
-					
-					<input class="a nick_check" type="text" maxlength="16" placeholder="닉네임" name="user_nickname" required="required">
-					
-					<input class="a" type="text" maxlength="16" placeholder="이름" name="user_name" required="required">
-					
-					<input class="a" type="date" maxlength="16" placeholder="oooo-oo-oo(생년월일)" name="user_birth" required="required">	
-						
-					<input class="a" type="text" maxlength="16" placeholder="전화번호" name="user_phone" required="required">
-					
-					<input class="a" type="email" placeholder="이메일 입력" name="user_email" required="required">
-					
-					<input class="submit_Join" type="submit" value="회원 정보 수정">
-					
-				</div>
-
-			</form>
-		</section>	
-			
+		
 		</section>
 
 		<jsp:include page="../include/footer.jsp" />

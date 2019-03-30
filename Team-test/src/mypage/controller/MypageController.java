@@ -56,6 +56,12 @@ public class MypageController extends HttpServlet {
         } else if (command.equals("/UserDeleteForm.mp")) {
         	forward = new ActionForward();
         	forward.setPath("./mypage/user_delete.jsp");
+        } else if (command.equals("/boardUpdateListForm.mp")) {
+            forward = new ActionForward();
+            forward.setPath("./mypage/board_update_list.jsp");
+        } else if (command.equals("/BoardUpdateForm.mp")) {
+            forward = new ActionForward();
+            forward.setPath("./mypage/board_update.jsp");
         }
 
 

@@ -23,6 +23,7 @@ String board_num = request.getParameter("board_num");
 		<section id="myPage">
 			
 			<div class="pick_title">내가 찜한 가게</div>
+			
 			<table class="pick_table" border="1">
 			<tr class="pick_list">
 			<td class="store"><div>a</div></td><td class="writer"><div>홍길동</div></td><td class="delete">
