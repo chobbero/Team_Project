@@ -9,8 +9,8 @@
 <%
 	ArrayList<ListBean> list = (ArrayList<ListBean>) request.getAttribute("ListBean");
 	PageInfo info = (PageInfo) request.getAttribute("pageInfo");
-// 	String id =	(String)session.getAttribute("id");
-	String id = "demian";
+	String id =	(String)session.getAttribute("user_id");
+// 	String id = "demian";
 
 	int nowPage = info.getPage(); // 현재 페이지
 	int listCount = info.getListCount(); // 전체 게시물 개수
@@ -71,7 +71,9 @@
 			<div class="boardList_title">
 				<div class="t1">리얼 후기</div>
 				<div class="t2">"솔직하고 믿을 수 있는 리뷰"</div>
+				<c:if test="${sessionScope.user_id !=null }">
 				<a class="toWriteForm" href='<c:url value="/BoardWriteForm.bo"/>'></a>
+				</c:if>
 			</div>
 			
 			<!-- 메인이미지,가게명,가게주소,음식분류,내용 -->
@@ -87,9 +89,11 @@
 				<a href="BoardDetail.bo?board_num=<%=list.get(i).getBoard_num()%>&page=<%=nowPage%>">
 				<span class="boardList_content_layer02_l_1"><%=list.get(i).getBoard_subject()%>
 				</span></a>
+				<c:if test="${sessionScope.user_id !=null }">
 				 <label for="pick">
 				 <img class="pick" src="img/heart.png">
 				 </label>
+				 </c:if>
 				<input id="pick" type="checkbox" name="<%=id %>" value="<%=list.get(i).getBoard_num()%>">
 				<div class="boardList_content_layer02_l_2"><%=list.get(i).getStore_address()%></div>
 				<div class="boardList_content_layer02_l_3">

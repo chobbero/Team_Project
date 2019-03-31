@@ -137,8 +137,8 @@
 			<h2>리얼 후기 작성</h2>
 			<form action="BoardWritePro.bo" method="post"
 				enctype="multipart/form-data" name="boardform" id="writeF">
-				<input type="hidden" name="store_num" id="store_num"> <input
-					type="hidden" name="user_id" value="demian">
+				<input type="hidden" name="store_num" id="store_num">
+				 <input	type="hidden" name="user_id" value="${sessionScope.user_id }">
 				<table>
 
 					<tr>

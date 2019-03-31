@@ -18,12 +18,12 @@ public class CommentWriteFormAction implements Action {
         // HttpSession 객체를 request 객체로부터 전달받기
         // HttpSession 객체의 setAttribute() 메서드를 사용하여 아이디 속성 저장
         HttpSession session = request.getSession();
-//        String user_id = (String)session.getAttribute("id");
+        String user_id = (String)session.getAttribute("user_id");
         ActionForward forward = new ActionForward();
 
         int board_num = Integer.parseInt(request.getParameter("board_num"));
 //        int board_num = 1;
-        String user_id = "demian";
+//        String user_id = "demian";
 
         if (user_id == null) {
             forward.setPath("./board/boardDatail.jsp");

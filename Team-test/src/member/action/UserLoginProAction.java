@@ -42,7 +42,7 @@ public class UserLoginProAction implements Action {
         ActionForward forward = new ActionForward();
 
         forward.setRedirect(true);
-        forward.setPath("./main.mb");
+        forward.setPath("./main");
 
         return forward;
     }

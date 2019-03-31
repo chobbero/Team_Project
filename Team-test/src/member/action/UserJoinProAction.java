@@ -47,7 +47,7 @@ public class UserJoinProAction implements Action {
             forward = new ActionForward();
             forward.setRedirect(true);
 
-            forward.setPath("main.mb");
+            forward.setPath("main");
         }
 
         return forward;

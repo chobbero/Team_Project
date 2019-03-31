@@ -217,10 +217,12 @@
 						<tr>
 							<td colspan="4" id="contentTitle">${bb.board_subject }</td>
 							<td>
+							<c:if test="${sessionScope.user_id !=null }">
 							<label for="pick">
 						 	<img class="pick" src="img/heart.png">
 							</label>
-							<input id="pick" type="checkbox" name="demian" value="${bb.board_num }"> <!-- name?(하드코딩?) -->
+							<input id="pick" type="checkbox" name="${sessionScope.user_id }" value="${bb.board_num }"> <!-- name?(하드코딩?) -->
+							</c:if>
 							</td>
 						</tr>
 						<tr id="contentSub">
@@ -255,8 +257,12 @@
 				<div id="buttonArea">
 				
 					<a href='<c:url value="./BoardList.bo"/>'><img class="btnBoardList" src="img/threebars.png"></a>
+					<c:if test="${sessionScope.user_id !=null }">
 					<a href='<c:url value="./BoardWriteForm.bo" />'><img class="btnBoardInsert" src="img/boardWrite_l_gray.png"></a>
+					</c:if>
+					<c:if test="${sessionScope.user_id !=null }">
 					<a><img class="btnBoardDelete" src="img/trashcan.png"></a>
+					</c:if>
 					
 				</div>
 			</section>
@@ -271,17 +277,37 @@
 					</c:choose></p>
 					<a href='<c:url value="./CommentWriteForm.co?board_num=${bb.board_num }" />'>
 						<ul>
+							<c:if test="${sessionScope.user_id !=null }">
 							<li><img class="btnCommentWrite" src="img/comments.png" title="댓글"></li>
 						    <li>댓글쓰기</li>
+						    </c:if>
 						</ul>
 					</a>
 					
 					<ul class="lists">
 						<c:forEach var="cb" items="${cl }">
 							<li class="lists__item js-load">
-								<table class="review_table"><tr>
+								<table class="review_table">
+								<tr>
 									<td class="review_id">${cb.user_id}</td>
-									<td class="review_content">${cb.comment_content }
+									<td class="review_content">
+									${cb.comment_content } 
+									</td>
+									<td class="review_like">
+									<c:choose>
+									<c:when test="${cb.comment_like =='Y' }">
+									<img alt="like" src='<c:url value="./img/like_comment.png" />' >
+									</c:when>
+									<c:when test="${cb.comment_like =='N' }">
+									<img alt="like" src='<c:url value="./img/dislike_comment.png" />'>
+									</c:when>
+									<c:otherwise>
+									<img alt="null">
+									</c:otherwise>
+									</c:choose>
+									</td>
+									<td class="review_date">
+									${cb.comment_date }
 									</td>
 								</tr></table>
 							</li>

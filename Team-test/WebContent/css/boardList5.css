@@ -166,7 +166,7 @@
 	}
 	#boardList .boardList_content {
 		/* 	border: 1px solid blue; */
-		height: 560px;
+		min-height: 520px;
 	}
 	#boardList .boardList_content_layer02_r {
 		margin: 30px 3% 20px 3%;

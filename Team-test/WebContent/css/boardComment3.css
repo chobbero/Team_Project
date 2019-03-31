@@ -50,8 +50,9 @@
 	margin-bottom: 5px;
 	font-weight: 600;
 	display: inline-block;
-	/* 	border: 1px solid blue; */
+/* 		border: 1px solid blue; */
 	width: 60%;
+	line-height: 1.7rem;
 }
 
 .Comment_store_star .star {

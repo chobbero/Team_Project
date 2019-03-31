@@ -17,7 +17,7 @@
 				$('.container_rank').css('height', '200px');
 				$('.rankOthers').css('display', 'none');
 			} else {
-				$('.container_rank').css('height', '1140px');
+				$('.container_rank').css('height', '1350px');
 				$('.rankOthers').toggle('slow');
 			}
 		});
@@ -65,7 +65,7 @@
 
 				<div class="rank1">
 
-					<a href="#"><img class="rank1_img" alt="no.1" src="files/${rankList.get(0).store_image }"></a>
+					<a href="<c:url value='/BoardDetail.bo?board_num=${topStoreReview.board_num }'/>"><img class="rank1_img" alt="no.1" src="files/${rankList.get(0).store_image }"></a>
 
 					<div class="rank1_sub">
 

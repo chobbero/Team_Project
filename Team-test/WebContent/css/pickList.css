@@ -12,24 +12,85 @@
 }
 
 .pick_title {
+	border-radius:5px;
+	height: 70px;
+	line-height:70px;
 	width: 100%;
-	font-size: 1.2rem;
-	font-weight: 500;
+	font-size: 1.6rem;
+	font-weight: 600;
 	text-align: center;
 	color: #ffffff;
 	background: #ff5a5f;
 }
-
 .pick_table {
-	/* 		border: 1px solid blue; */
-	padding: 10px 2px;
-	width: 86%;
-	margin: 20px 5% 0 5%;
+/* 			border: 1px solid blue; */
+	padding: 0;
+	width: 90%;
+	margin: 20px 0 40px 5%;
+}
+
+.pick_table .listImage {
+	vertical-align: top;
+	display: inline-block;
+	height: 100px;
+	width: 25%;
+/* 	border: 1px solid red; */
+}
+
+.pick_table .listImage img {
+	height: 100px;
+	width: 98%;
+/* 	border: 1px solid red; */
+}
+
+.pick_table .listDetail {
+	vertical-align: top;
+	display: inline-block;
+	height: 100px;
+	width: 58%;
+/* 	border: 1px solid red; */
+	padding-bottom: 10px;
+}
+.pSubject {
+	color:#ff8000;
+}
+.pick_table .deleteList label{
+	color:#ccc;
+	font-weight: 600;
+	margin-bottom: 15px;
+	display: block;
+	
+}
+.pick_table .deleteList {
+	vertical-align: top;
+	display: inline-block;
+	height: 100px;
+	line-height: 100px;
+	width: 12%;
+/* 	border: 1px solid red; */
+	color: #ccc;
+	font-weight: 600;
+	text-align: center;
+}
+
+
+.pick:HOVER span {
+	color:#ff8000;
+	cursor: pointer;
+}
+
+#pick {
+	display: none;
 }
 
 .pick_table .pick_list {
-	border: 1px solid green;
-	width: 86%;
+	display: block;
+/* 	border: 1px solid green; */
+	width: 100%;
+	border-bottom: 1px solid #ccc;
+/* border: 1px solid red; */
+	margin: 0 ;
+	padding: 0;
 }
 
 .writer {
@@ -82,89 +143,78 @@
 
 @MEDIA screen and (min-width:768px) {
 	#myPage {
-		width: 90%;
-		border: 1px solid red;
-		top: 100px;
+		width: 92%;
+		margin: 0 6% 0 2%;
+/* 		border: 1px solid red; */
+		min-height: 700px;
+		margin-bottom: 0px;
+		position: relative;
 	}
 	#myPage .myPage_list {
 		position: absolute;
-		top: 70px;
+		top: 120px;
 		left: 0;
-		border: 1px solid blue;
-		width: 25%;
-	}
-	#myPage .pick_tablemedia {
-		display: block;
-	}
-	#myPage .pick_tablemedia {
-		border: 1px solid orange;
-		padding: 20px;
-		width: 60%;
-		top: 300px;
-		margin: 45px 2% 0 30%;
-		height: 500px;
-	}
-	.pick_tablemedia .pick_titleme {
-		background-color: #ff5a5f;
-		color: #FFFFFF;
-		width: 100%;
-		border: 1px solid green;
-		padding-left: 20px;
-		text-align: center;
-		font-size: 1.5rem;
-		height: 10px;
-	}
-	.pick_tablemedia .pick_list2 {
-		height: 10px;
-	}
-	.writer2 {
-		text-align: center;
+/* 		border: 1px solid red; */
 		width: 20%;
 	}
-	.delete2 {
-		text-align: center;
-		width: 10%;
+	.list_imgs {
+		visibility: hidden;
+	}
+	#myPage .myPage_list li {
+		height: 80px;
+	}
+	#myPage .myPage_list li div {
+		font-size: 1.1rem;
+		line-height: 80px;
+		height: 80px;
+	}
+	#myPage .myPage_list li:HOVER {
+		border-bottom: 2.5px solid #ff5a5f;
+	}
+	#myPage .myPage_list li:HOVER>div {
+		font-size: 1.25rem;
 	}
 	footer {
 		margin-top: 210px;
 	}
 	#myPage .pick_title {
-		display: none;
+		position: absolute;
+		top: 140px;
+		right: 0;
+		width: 75%;
 	}
 	#myPage .pick_table {
-		display: none;
+		display: block;
+		position: absolute;
+		top: 200px;
+		right: 0;
+		overflow: hidden;
+		width: 75%;
 	}
 }
 
 @MEDIA screen and (min-width:1024px) {
-	#myPage {
-		border: 1px solid red;
-		margin: 20px 28% 0 20%;
-		width: 80%;
-		height: 600px;
+	.list_imgs {
+		visibility: visible;
 	}
-	#myPage .myPage_list {
+	
+		#myPage .pick_title {
 		position: absolute;
-		top: 70px;
-		left: 0;
-		border: 1px solid blue;
-		width: 18%;
+		top: 140px;
+		right: 0;
+		width: 70%;
 	}
+	#myPage .pick_table {
+		display: block;
+		position: absolute;
+		top: 200px;
+		right: 0;
+		overflow: hidden;
+		width: 70%;
+	}
+	
 	footer {
 		margin-top: 170px;
 	}
-	#myPage .pick_title {
-		display: none;
-	}
-	#myPage .pick_table {
-		display: none;
-	}
-	#myPage .pick_tablemedia {
-		border: 1px solid orange;
-		padding: 20px;
-		width: 60%;
-		top: 100px;
-		margin: 45px 2% 0 20%;
-		height: 500px;
-	}
+	
 }

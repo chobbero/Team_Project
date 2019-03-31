@@ -75,6 +75,7 @@ section#search .search_btn_text {
 	border-bottom: 1px solid #ccc;
 	min-height: 180px;
 	margin-top: 30px;
+	
 }
 
 #rank .title {
@@ -121,10 +122,10 @@ section#search .search_btn_text {
 #rank .rank1_title {
 	font-size: 1.3rem;
 	font-weight: 600;
-	/* 		border: 1px solid red; */
+/* 			border: 1px solid red; */
 	display: inline-block;
 	vertical-align: top;
-	width: 230px;
+	width: 400px;
 }
 
 #rank .rank1_desc {
@@ -381,7 +382,7 @@ section#search .search_btn_text {
 	}
 	#rank .container_rank {
 		border: none;
-		height: 1180px;
+		min-height: 1180px;
 	}
 	#rank .rankOthers {
 		display: block;

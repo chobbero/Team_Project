@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import mypage.action.Action;
 import mypage.action.MyPageAction;
+import mypage.action.PickListAction;
 import mypage.vo.ActionForward;
 
 @WebServlet("*.mp")
@@ -46,7 +47,6 @@ public class MypageController extends HttpServlet {
             try {
                 forward = action.execute(request, response);
             } catch (Exception e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
 
@@ -62,6 +62,13 @@ public class MypageController extends HttpServlet {
         } else if (command.equals("/BoardUpdateForm.mp")) {
             forward = new ActionForward();
             forward.setPath("./mypage/board_update.jsp");
+        } else if (command.equals("/PickList.mp")) {
+            action = new PickListAction();
+            try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
 
