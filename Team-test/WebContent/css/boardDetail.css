@@ -165,8 +165,8 @@ footer {position: fixed; bottom: 0; background:white; width:100%;}
 	.review_table {max-width: 570px; margin: 10px 0;}
 	.review_id {max-width: 80px; min-width: 80px;}
 	.review_content {max-width: 470px; min-width: 470px;}
+	
 }
-
 
 /* 이미지 팝업레이어 */
 .dialog_trigger1, .dialog_trigger2, .dialog_trigger3, .dialog_trigger0 {
@@ -186,7 +186,6 @@ footer {position: fixed; bottom: 0; background:white; width:100%;}
 }
 .dialog_trigger:focus {outline: 0;}
 .dialog_trigger:active {transform: translateY(-3px); -webkit-transform: translateY(-3px);}
-
 .dialog {
   background: #f1f1f1;
   width: 65%;
@@ -200,10 +199,9 @@ footer {position: fixed; bottom: 0; background:white; width:100%;}
   opacity: 0;
   -webkit-transition: all 180ms ease-in;
   transition: all 180ms ease-in;
+  z-index: 9999;
 }
-
-.dialog img {margin-top: 30px; width: 100%;}
-
+.dialog img {margin-top: 30px; width: 100%; max-width: 800px; max-height: 500px;}
 .dialog.dialog-active {
   top: 18%;
   visibility: visible;
@@ -214,9 +212,7 @@ footer {position: fixed; bottom: 0; background:white; width:100%;}
 .dialog .dialog_close {
   font-size: 2rem;
   line-height: 2rem;
-  position: absolute;
-  right: 15px;
-  top: 15px;
+  float:right;
   cursor: pointer;
   padding: 15px;
   -webkit-transition: color 150ms ease;
@@ -232,7 +228,4 @@ footer {position: fixed; bottom: 0; background:white; width:100%;}
   border-bottom: 2px solid #333333;
 }
 .dialog .dialog_content {font-size: 1.1rem; line-height: 2rem;}
-
-@media (max-width: 600px) {
-  .dialog {width: 90%; left: calc(50% - 45%);}
-}
+	
