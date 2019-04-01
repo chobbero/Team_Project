@@ -111,6 +111,7 @@ public class MypageController extends HttpServlet {
             }
         }
         
+        
 
 
 //        else if (command.equals("/businessJoinForm.mp")) {
