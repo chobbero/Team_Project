@@ -2,7 +2,6 @@
 /* 		border: 1px solid blue; */
 
 /*모바일 퍼스트*/
-
 #JoinForm {
 	/* 	border: 1px solid red; */
 	box-sizing: border-box;
@@ -13,7 +12,8 @@
 }
 
 #JoinForm .Join {
-	width: 100%;
+	width: 90%;
+	margin: 0 5%;
 	/* 		border: 1px solid red; */
 }
 
@@ -89,7 +89,7 @@
 }
 
 .disabled {
-	background-color: #fff;
+	background-color: #f4f4f4;
 	color: #808080;
 	border: 1px solid #808080;
 }
@@ -98,14 +98,22 @@
 	#JoinForm {
 		display: block;
 		position: absolute;
-		top: 140px;
+		top: 100px;
 		right: 0;
-		overflow: hidden;
+		/* 		overflow: hidden; */
 		width: 75%;
-/* 				border: 1px solid red; */
+		text-align: center;
+		/* 				border: 1px solid red; */
+	}
+	#JoinForm .Join {
+		position: absolute;
+		left: -35%;
+		width: 100%;
+		/* 			border: 1px solid red; */
 	}
 	#JoinForm .a {
 		padding: 15px 0 15px 5%;
+		width: 450px;
 		font-size: 14px;
 	}
 	#JoinForm .phone {
@@ -117,32 +125,49 @@
 		padding: 15px 0;
 		font-size: 14px;
 	}
+	#JoinForm .submit_Join {
+		width: 450px;
+	}
+	#JoinForm .Join_title {
+		text-align: left;
+	}
 }
 
 @MEDIA screen and (min-width:1024px) {
 	#JoinForm {
 		display: block;
 		position: absolute;
-		top: 140px;
-		right: 10%;
-		overflow: hidden;
-		width: 60%;
-/* 				border: 1px solid red; */
+		top: 100px;
+		right: 0;
+		/* 		overflow: hidden; */
+		width: 75%;
+		text-align: center;
+		/* 				border: 1px solid red; */
+	}
+	#JoinForm .Join {
+		position: absolute;
+		left: -35%;
+		width: 100%;
+		/* 			border: 1px solid red; */
 	}
 	#JoinForm .a {
-		padding: 17px 0 17px 5%;
-		font-size: 15px;
+		padding: 15px 0 15px 5%;
+		width: 600px;
+		font-size: 14px;
 	}
 	#JoinForm .phone {
-		width: 48%;
-		font-size: 15px;
-		padding: 17px 0 17px 5%;
+		padding: 15px 0 15px 5%;
+		font-size: 14px;
 	}
 	#JoinForm .num {
-		margin: 5px 0 5px 1%;
-		font-size: 15px;
-		height: 53px;
-		padding: 17px 0;
-		width: 30%;
+		height: 49px;
+		padding: 15px 0;
+		font-size: 14px;
+	}
+	#JoinForm .submit_Join {
+		width: 600px;
+	}
+	#JoinForm .Join_title {
+		text-align: left;
 	}
 }

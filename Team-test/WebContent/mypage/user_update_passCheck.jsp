@@ -17,11 +17,24 @@
 
 		<section id="myPage">
 		
-			<div class="myInfo">
-			<div class="myInfo_name">안녕하세요.<br> 저는 ${mb.user_name}입니다.</div>
-			<div class="myInfo_email">${mb.user_email }</div>
-			<div class="myInfo_birth">${mb.user_birth }</div>
-			</div>
+			<section id="JoinForm">
+		
+			<div class="Join_title">회원 정보 수정</div>
+			
+			<form action="IdCheckPro.mp" method="post" name="JoinForm">
+			
+				<div class="Join">
+				
+					<input class="a dupli_check disabled" type="text" maxlength="16" value="<%=session.getAttribute("user_id") %>" name="user_id" required="required" readonly="readonly"> 
+					
+					<input class="a pw_check1" type="password" maxlength="16" placeholder="비밀번호" name="user_pw" required="required">
+					
+					<input class="submit_Join" type="submit" value="확인">
+					
+				</div>
+
+			</form>
+		</section>	
 		
 			<ul class="myPage_list">
 			<a href="./IdCheck.mp"><li><div>프로필 수정</div><img class="list_imgs" src="img/edit_profile.png"/></li></a>
@@ -32,24 +45,24 @@
 			<a href="./Logout.mp"><li><div>로그아웃</div><img class="list_imgs" src="img/logout_mypage.png"/></li></a>
 			</ul>
 			
-			<section id="JoinForm">
+<!-- 			<section id="JoinForm"> -->
 		
-			<div class="Join_title">회원 정보 수정</div>
+<!-- 			<div class="Join_title">회원 정보 수정</div> -->
 			
-			<form action="IdCheckPro.mp" method="post" name="JoinForm">
+<!-- 			<form action="IdCheckPro.mp" method="post" name="JoinForm"> -->
 			
-				<div class="Join">
+<!-- 				<div class="Join"> -->
 				
-					<input class="a dupli_check disabled" type="text" maxlength="16" value="<%=session.getAttribute("user_id") %>" name="user_id" required="required" disabled="disabled"> 
+<%-- 					<input class="a dupli_check disabled" type="text" maxlength="16" value="<%=session.getAttribute("user_id") %>" name="user_id" required="required" disabled="disabled">  --%>
 					
-					<input class="a pw_check1" type="password" maxlength="16" placeholder="비밀번호" name="user_pw" required="required">
+<!-- 					<input class="a pw_check1" type="password" maxlength="16" placeholder="비밀번호" name="user_pw" required="required"> -->
 					
-					<input class="submit_Join" type="submit" value="확인">
+<!-- 					<input class="submit_Join" type="submit" value="확인"> -->
 					
-				</div>
+<!-- 				</div> -->
 
-			</form>
-		</section>	
+<!-- 			</form> -->
+<!-- 		</section>	 -->
 			
 		</section>
 

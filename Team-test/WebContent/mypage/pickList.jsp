@@ -39,7 +39,7 @@
 		
 		<section id="myPage">
 			
-			<div class="pick_title">내가 찜한 가게</div>
+			<div class="pick_title">Pick 리스트</div>
 			
 			<table class="pick_table" >
 			
@@ -50,7 +50,10 @@
 			<div class="listWrap">
 			
 			<div class="listImage">
-			<a href="BoardDetail.bo?board_num=${picklist.board_num}"><img alt="" src='<c:url value="./files/${picklist.store_image }"/>'></a>
+			<a href="BoardDetail.bo?board_num=${picklist.board_num}" >
+<%-- 			style="background-image : url('<c:url value="./files/${picklist.store_image }"/>'); " --%>
+			<img alt="" src='<c:url value="./files/${picklist.store_image }"/>'>
+			</a>
 			</div>
 			
 			
