@@ -10,8 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mypage.action.Action;
+import mypage.action.LogoutAction;
 import mypage.action.MyPageAction;
 import mypage.action.PickListAction;
+import mypage.action.UserDeleteProAction;
+import mypage.action.UserUpdateFormAction;
+import mypage.action.UserUpdateProAction;
 import mypage.vo.ActionForward;
 
 @WebServlet("*.mp")
@@ -50,12 +54,6 @@ public class MypageController extends HttpServlet {
                 e.printStackTrace();
             }
 
-        } else if (command.equals("/UserUpdateForm.mp")) {
-        	forward = new ActionForward();
-        	forward.setPath("./mypage/user_update.jsp");
-        } else if (command.equals("/UserDeleteForm.mp")) {
-        	forward = new ActionForward();
-        	forward.setPath("./mypage/user_delete.jsp");
         } else if (command.equals("/boardUpdateListForm.mp")) {
             forward = new ActionForward();
             forward.setPath("./mypage/board_update_list.jsp");
@@ -69,7 +67,50 @@ public class MypageController extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        } else if (command.equals("/Logout.mp")) {
+        	action = new LogoutAction();
+        	try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (command.equals("/UserUpdateForm.mp")) {
+        	
+        	action = new UserUpdateFormAction();
+            try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (command.equals("/UserDeleteForm.mp")) {
+        	forward = new ActionForward();
+        	forward.setPath("./mypage/user_delete.jsp");
+        } else if (command.equals("/IdCheck.mp")) {
+        	forward = new ActionForward();
+        	forward.setPath("./mypage/user_update_passCheck.jsp");
+        } else if (command.equals("/IdCheckPro.mp")) {
+        	action = new UserUpdateFormAction();
+        	try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else if (command.equals("/UserUpdatePro.mp")) {
+        	action = new UserUpdateProAction();
+        	try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }else if (command.equals("/UserDeletePro.mp")) {
+        	action = new UserDeleteProAction();
+        	try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
+        
 
 
 //        else if (command.equals("/businessJoinForm.mp")) {

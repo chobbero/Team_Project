@@ -34,9 +34,9 @@
 			
 			<section id="JoinForm">
 		
-			<div class="Join_title">회원 탈퇴</div>
+			<div class="Join_title">회원 정보 수정</div>
 			
-			<form action="UserDeletePro.mp" method="post" name="JoinForm">
+			<form action="IdCheckPro.mp" method="post" name="JoinForm">
 			
 				<div class="Join">
 				
@@ -44,7 +44,7 @@
 					
 					<input class="a pw_check1" type="password" maxlength="16" placeholder="비밀번호" name="user_pw" required="required">
 					
-					<input class="submit_Join" type="submit" value="회원 탈퇴">
+					<input class="submit_Join" type="submit" value="확인">
 					
 				</div>
 

@@ -10,11 +10,8 @@ import java.util.ArrayList;
 
 import javax.sql.DataSource;
 
-import board.vo.BoardBean;
 import board.vo.ListBean;
-import comment.vo.CommentBean;
-import comment.vo.MemberBean;
-import mypage.vo.PickBean;
+import member.vo.MemberBean;
 
 public class MyPageDAO {
     Connection con;
@@ -77,5 +74,133 @@ public class MyPageDAO {
             close(rs);
         }
         return PickList;
+    }
+    
+    // 마이페이지에 쓸 정보 가져가기
+    public MemberBean getMember(String user_id) {
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String sql = "";
+        MemberBean memberBean = null;
+        try {
+            sql = "select * from user where user_id=?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, user_id);
+
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                memberBean = new MemberBean();
+
+                memberBean.setUser_id(rs.getString("user_id"));
+                memberBean.setUser_grade(rs.getString("user_grade"));
+                memberBean.setUser_pw(rs.getString("user_pw"));
+                memberBean.setUser_name(rs.getString("user_name"));
+                memberBean.setUser_birth(rs.getString("user_birth"));
+                memberBean.setUser_email(rs.getString("user_email"));
+                memberBean.setUser_phone(rs.getString("user_phone"));
+                memberBean.setUser_nickname(rs.getString("user_nickname"));
+                memberBean.setUser_coupon(rs.getString("user_coupon"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close(pstmt);
+            close(rs);
+        }
+
+        return memberBean;
+    }
+    
+    //회원정보 수정
+    public int updateUser(MemberBean mb)throws Exception {
+        PreparedStatement pstmt = null;
+      
+        int check = 0;
+        try {
+            String sql = "update user set user_name=?, user_birth=?, user_phone=?, user_email=? where user_id=?";
+            pstmt = con.prepareStatement(sql);
+            
+    		System.out.println("DB");
+    		System.out.println(sql);
+    		System.out.println(mb.getUser_id());
+    		System.out.println(mb.getUser_name());
+    		System.out.println(mb.getUser_phone());
+    		System.out.println(mb.getUser_birth());
+    		System.out.println(mb.getUser_email());
+    		
+            pstmt.setString(1, mb.getUser_name());
+            pstmt.setString(2, mb.getUser_birth());
+            pstmt.setString(3, mb.getUser_phone());
+            pstmt.setString(4, mb.getUser_email());
+            pstmt.setString(5, mb.getUser_id());
+
+            check = pstmt.executeUpdate();
+            System.out.println("DB check : "+check);
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close(pstmt);
+        }
+        return check;
+    	
+    }
+    
+    //삭제전 비밀번호 확인
+    public MemberBean userCheck(String user_id, String user_pw) throws Exception{
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String sql = "";
+        MemberBean memberBean = null;
+        try {
+            sql = "select * from user where user_id=? and user_pw=?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, user_id);
+            pstmt.setString(2, user_pw);
+
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                memberBean = new MemberBean();
+
+                memberBean.setUser_id(rs.getString("user_id"));
+                memberBean.setUser_grade(rs.getString("user_grade"));
+                memberBean.setUser_pw(rs.getString("user_pw"));
+                memberBean.setUser_name(rs.getString("user_name"));
+                memberBean.setUser_birth(rs.getString("user_birth"));
+                memberBean.setUser_email(rs.getString("user_email"));
+                memberBean.setUser_phone(rs.getString("user_phone"));
+                memberBean.setUser_nickname(rs.getString("user_nickname"));
+                memberBean.setUser_coupon(rs.getString("user_coupon"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close(pstmt);
+            close(rs);
+        }
+        return memberBean;
+    }
+    
+    //회원정보 삭제
+    public int deleteUser(String user_id){
+        PreparedStatement pstmt = null;
+        int result = 0;
+        
+        try {
+        	
+        	String sql = "delete from user where user_id = ?";
+        	pstmt = con.prepareStatement(sql);
+        	pstmt.setString(1, user_id);
+        	result = pstmt.executeUpdate();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close(pstmt);
+        }
+        
+        return result;
     }
 }
