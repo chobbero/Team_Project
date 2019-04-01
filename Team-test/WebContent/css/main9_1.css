@@ -125,7 +125,6 @@ section#search .search_btn_text {
 /* 			border: 1px solid red; */
 	display: inline-block;
 	vertical-align: top;
-	width: 400px;
 }
 
 #rank .rank1_desc {
@@ -404,7 +403,7 @@ section#search .search_btn_text {
 		vertical-align: top;
 		margin-left: 50%;
 		position: relative;
-		top: -420px;
+		top: -360px;
 		display: inline-block;
 		/* 		border: 1px solid red; */
 		width: 49%;

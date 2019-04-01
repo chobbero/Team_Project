@@ -22,6 +22,18 @@
 			}
 		});
 	});
+	
+	// 검색어 공백 처리
+	function ckBlank() {
+		if($('.search_input').val().trim() == "") {
+		    alert("검색어를 입력해 주세요.");
+		    $('.search_input').focus();
+		    return false;
+		} else {
+			$('.search_input').val() = $('.search_input').val().trim();
+			return true;
+		}
+	}
 </script>
 </head>
 <body>
@@ -33,7 +45,7 @@
 
 			<div class="search_bar">
 
-				<form action='<c:url value="./Search.bo"/>' method="post" name="search">
+				<form action='<c:url value="./Search.bo"/>' method="post" name="search" onsubmit="return ckBlank()">
 
 					<div class="search_bar_text">추천 음식점을 Pick 하세요.</div>
 					<div class="search_input_wrap">
@@ -45,13 +57,11 @@
 								<option value="store" <c:if test="${category.equals('store') }">selected</c:if>>매장명</option>
 							</optgroup>
 						</select>
-						<input class="search_input" type="text" name="search_input">
-	
+						<input class="search_input" type="text" name="search_input" required="required" maxlength="50">
 					</div>
 					<button type="submit" class="search_btn_icon">
 						<img class="btn_for_search" alt="search" src="img/Search.png">
 					</button>
-
 					<button type="submit" class="search_btn_text">검색</button>
 				</form>
 			</div>
@@ -94,7 +104,7 @@
 				</c:forEach>
 			</div>
 		</section>
-
+	
 		<section id="category">
 
 			<div class="title">원하는 메뉴를 고르세요.</div>
@@ -135,9 +145,8 @@
 				<img class="img_for_region" src="img/region.jpg">
 			</div>
 		</section>
-		
+	</div>
 		<jsp:include page="include/footer.jsp" />
 		
-	</div>
 </body>
 </html>
