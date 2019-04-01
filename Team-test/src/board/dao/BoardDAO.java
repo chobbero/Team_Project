@@ -587,6 +587,72 @@ public class BoardDAO {
 		return boardBean;
 
 	}
+	
+	 public int updateBoard(BoardBean boardBean) {
+	        PreparedStatement pstmt = null;
+	        int result = 0;
+	        
+	        try {
+	            String sql = "update board set board_subject = ?, board_content = ? where board_num = ?";
+	            pstmt = con.prepareStatement(sql);
+	            
+	            System.out.println("DAO에서 board_num : "+ boardBean.getBoard_num());
+	            pstmt.setString(1, boardBean.getBoard_subject());
+	            pstmt.setString(2, boardBean.getBoard_content());
+	            pstmt.setInt(3, boardBean.getBoard_num());
+	            result = pstmt.executeUpdate();
+	            System.out.println(result);
+	        } catch (SQLException e) {
+	            System.out.println("updateBoard() 에러 : " + e.getMessage());
+	        } finally {
+	            close(pstmt);
+	        }
+	        return result;
+	    }
+	    
+	    public int deleteBoard(int board_num) {
+	        PreparedStatement pstmt = null;
+	        int result = 0;
+	        
+	        try {
+	            String sql = "DELETE FROM board WHERE board_num = ?";
+	            pstmt = con.prepareStatement(sql);
+	            pstmt.setInt(1, board_num);
+	            result = pstmt.executeUpdate();
+	            System.out.println(result);
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        } finally {
+	            close(pstmt);
+	        }
+	        return result;
+	    }
+	    
+	    public boolean userCheck(String id, String pass) {
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
+	        
+	        boolean result = false;
+	        
+	        try {
+	            String sql = "SELECT * FROM user WHERE user_id = ?";
+	            pstmt = con.prepareStatement(sql);
+	            pstmt.setString(1, id);
+	            rs = pstmt.executeQuery();
+	            
+	            if(rs.next()) {
+	                if(pass.equals(rs.getString("user_pass")));{
+	                    result = true;
+	                }
+	            }
+	        } catch (SQLException e) {
+	            System.out.println("userCheck() 에러 : " + e.getMessage());
+	        } finally {
+	            close(pstmt);
+	            close(rs);
+	        }
+	        return result;
+	    }
 }
 
 

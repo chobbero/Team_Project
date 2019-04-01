@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import mypage.action.Action;
 import mypage.action.LogoutAction;
 import mypage.action.MyPageAction;
+import mypage.action.MyPageListAction;
 import mypage.action.PickListAction;
 import mypage.action.UserDeleteProAction;
 import mypage.action.UserUpdateFormAction;
@@ -54,9 +55,6 @@ public class MypageController extends HttpServlet {
                 e.printStackTrace();
             }
 
-        } else if (command.equals("/boardUpdateListForm.mp")) {
-            forward = new ActionForward();
-            forward.setPath("./mypage/board_update_list.jsp");
         } else if (command.equals("/BoardUpdateForm.mp")) {
             forward = new ActionForward();
             forward.setPath("./mypage/board_update.jsp");
@@ -109,7 +107,15 @@ public class MypageController extends HttpServlet {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }
+        }else if (command.equals("/boardUpdateListForm.mp")) {
+            action = new MyPageListAction();
+
+            try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } 
         
         
 

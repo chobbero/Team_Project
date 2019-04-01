@@ -13,6 +13,8 @@ import board.action.Action;
 import board.action.BoardDeleteProAction;
 import board.action.BoardDetailAction;
 import board.action.BoardListAction;
+import board.action.BoardUpdateFormAction;
+import board.action.BoardUpdateProAction;
 import board.action.BoardWriteProAction;
 import board.action.SearchAction;
 import board.vo.ActionForward;
@@ -80,26 +82,6 @@ public class BoardController extends HttpServlet {
         		forward = new ActionForward();
                 forward.setPath("/BoardList.bo");
         	}
-        } else if(command.equals("/BoardDeleteForm.bo")) {
-            // board 폴더내의 qna_board_delete.jsp 파일로 포워딩
-            // 단, 글 삭제를 위한 게시물 번호(board_num)와 글 삭제 후 페이징 처리를 위한 페이지번호(page)를 가져와서 request.setAttribute() 메서드로 저장하여 이동
-            int board_num = Integer.parseInt(request.getParameter("board_num"));
-            String page = request.getParameter("page");
-            
-            request.setAttribute("board_num", board_num);
-            request.setAttribute("page", page);
-            
-            forward = new ActionForward();
-            // 최상위 폴더 -> board 폴더 내의 qna_board_delete.jsp 파일 지정 
-            forward.setPath("./board/qna_board_delete.jsp"); 
-        } else if(command.equals("/BoardDeletePro.bo")) {
-            action = new BoardDeleteProAction();
-            
-            try {
-                forward = action.execute(request, response);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         } else if(command.equals("/Search.bo")) {
         	// 검색어 유무에 따른 페이지 이동
         	if (request.getParameter("search_input") != null) {
@@ -114,7 +96,52 @@ public class BoardController extends HttpServlet {
                 forward = new ActionForward();
                 forward.setPath("/search.jsp");
         	}
-        }
+        } else if(command.equals("/BoardUpdateForm.bo")) {
+            action = new BoardUpdateFormAction();
+            
+            try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if(command.equals("/BoardUpdatePro.bo")) {
+            action = new BoardUpdateProAction();
+            
+            try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if(command.equals("/BoardDelete.bo")) {
+            action = new BoardDeleteProAction();
+            
+            try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } 
+//        else if(command.equals("/BoardDeleteForm.bo")) {
+//            // board 폴더내의 qna_board_delete.jsp 파일로 포워딩
+//            // 단, 글 삭제를 위한 게시물 번호(board_num)와 글 삭제 후 페이징 처리를 위한 페이지번호(page)를 가져와서 request.setAttribute() 메서드로 저장하여 이동
+//            int board_num = Integer.parseInt(request.getParameter("board_num"));
+//            String page = request.getParameter("page");
+//            
+//            request.setAttribute("board_num", board_num);
+//            request.setAttribute("page", page);
+//            
+//            forward = new ActionForward();
+//            // 최상위 폴더 -> board 폴더 내의 qna_board_delete.jsp 파일 지정 
+//            forward.setPath("./board/qna_board_delete.jsp"); 
+//        } else if(command.equals("/BoardDeletePro.bo")) {
+//            action = new BoardDeleteProAction();
+//            
+//            try {
+//                forward = action.execute(request, response);
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
         
         // ActionForward 객체 정보를 사용하여 포워딩 처리
         // isRedirect() 메서드 실행 결과가 true 일 경우 Redirect 방식으로 포워딩

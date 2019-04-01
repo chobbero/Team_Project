@@ -1,20 +1,44 @@
 package board.action;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import board.action.Action;
+import board.service.BoardDeleteService;
 import board.vo.ActionForward;
 
 public class BoardDeleteProAction implements Action {
 
     @Override
     public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        System.out.println("BoardDeleteProAction!");
-        System.out.println("글번호 : " + request.getParameter("board_num"));
-        System.out.println("페이지 번호 : " + request.getParameter("page"));
-        System.out.println("패스워드 : " + request.getParameter("board_pass"));
-        return null;
+    	ActionForward forward = new ActionForward();
+    	
+    	int board_num = Integer.parseInt(request.getParameter("board_num"));
+    	
+    	boolean isDeleteSuccess = false;
+    	
+    	BoardDeleteService boardDeleteService = new BoardDeleteService();
+    	isDeleteSuccess = boardDeleteService.deleteBoard(board_num);
+    	
+    	if(!isDeleteSuccess) {
+    		response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('삭제 실패')");
+			out.println("history.back()");
+			out.println("</script>");
+    	} else {
+    		response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('삭제하였습니다')");
+			out.println("</script>");
+			forward.setRedirect(true);
+			forward.setPath("boardUpdateListForm.mp");
+    	}
+    	
+    	return forward;
     }
 
 }

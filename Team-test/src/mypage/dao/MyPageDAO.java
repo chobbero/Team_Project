@@ -203,4 +203,74 @@ public class MyPageDAO {
         
         return result;
     }
+    
+    public ArrayList<ListBean> getMyPageBoardList(int page, int limit, String user_id) {
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        ArrayList<ListBean> list = new ArrayList<ListBean>();
+
+        int startRow = (page - 1) * 10;
+        
+        try {
+            String sql = "SELECT * FROM board b JOIN store s ON (b.store_num = s.store_num) WHERE user_id = ? LIMIT ?,?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, user_id);
+            pstmt.setInt(2, startRow);
+            pstmt.setInt(3, limit);
+            rs = pstmt.executeQuery();
+            
+            while (rs.next()) {
+                ListBean listBean = new ListBean();
+
+                listBean.setBoard_num(rs.getInt("board_num"));
+                listBean.setUser_id(rs.getString("user_id"));
+                listBean.setBoard_subject(rs.getString("board_subject"));
+                listBean.setBoard_content(rs.getString("board_content"));
+                listBean.setBoard_rating(rs.getDouble("board_rating"));
+                listBean.setBoard_like(rs.getInt("board_like"));
+                listBean.setBoard_date(rs.getDate("board_date"));
+                listBean.setBoard_readcount(rs.getInt("board_readcount"));
+                listBean.setStore_num(rs.getInt("store_num"));
+                listBean.setStore_name(rs.getString("store_name"));
+                listBean.setStore_address(rs.getString("store_address"));
+                listBean.setStore_category(rs.getString("store_category"));
+                listBean.setStore_menu(rs.getString("store_menu"));
+                listBean.setStore_price(rs.getInt("store_price"));
+                listBean.setStore_time(rs.getString("store_time"));
+                listBean.setStore_image(rs.getString("store_image"));
+                listBean.setStore_contact(rs.getString("store_contact"));
+
+                list.add(listBean);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(pstmt);
+            close(rs);
+        }
+        return list;
+    }
+    
+    public int getMyPageBoardCount(String user_id) {
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        int result = 0;
+        
+        try {
+            String sql = "SELECT count(*) FROM board WHERE user_id = ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, user_id);
+            rs = pstmt.executeQuery();
+            
+            if(rs.next()) {
+                result = rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(pstmt);
+            close(rs);
+        }
+        return result;
+    }
 }
