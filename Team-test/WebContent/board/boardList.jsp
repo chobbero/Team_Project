@@ -141,7 +141,7 @@
 			<%
 				} else {
 			%>
-			<a href="BoardList.bo?page=<%=nowPage - 1%>"><img src="img/left_click.png" class="arrow">이전</a>&nbsp;&nbsp;
+			<a href="BoardList.bo?page=<%=nowPage - 1%>" class="prev"><img src="img/left_click.png" class="arrow">이전</a>&nbsp;&nbsp;
 			<%
 				}
 			%>
@@ -150,12 +150,12 @@
 				for (int i = startPage; i <= endPage; i++) {
 						if (i == nowPage) {
 			%>
-			<%=i%>
+			<a class="cur"><%=i%></a>
 			<%
 				} else {
 			%>
-			<a href="BoardList.bo?page=<%=i%>"><%=i%>
-			</a>&nbsp;
+			<a href="BoardList.bo?page=<%=i%>" class="current"><%=i%>
+			</a>
 			<%
 				}
 			%>
@@ -170,7 +170,7 @@
 			<%
 				} else {
 			%>
-			<a href="BoardList.bo?page=<%=nowPage + 1%>">&nbsp;&nbsp;다음<img src="img/right_click.png" class="arrow"></a>
+			<a href="BoardList.bo?page=<%=nowPage + 1%>" class="next" >&nbsp;&nbsp;다음<img src="img/right_click.png" class="arrow"></a>
 			<%
 				}
 			%>

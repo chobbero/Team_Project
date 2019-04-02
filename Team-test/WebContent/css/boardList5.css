@@ -127,7 +127,7 @@
 }
 
 #boardList .boardList_content_layer02_l_4 {
-/* 		border: 1px solid red; */
+	/* 		border: 1px solid red; */
 	font-size: 1rem;
 	color: #585858;
 	margin: 15px 5%;
@@ -152,6 +152,25 @@
 	height: 18px;
 	vertical-align: bottom;
 	padding: 0 8px 2px 8px;
+}
+
+.prev {
+	color: #484848;
+}
+
+.current {
+	color: #484848;
+	padding: 0 10px;
+}
+
+.cur {
+	display: inline-block;
+	color: #ff5a5f;
+	padding: 0 10px;
+}
+
+.next {
+	color: #484848;
 }
 
 @MEDIA screen and (min-width:768px) {
@@ -221,14 +240,12 @@
 		font-size: 1.5rem;
 		color: #9b9b9b;
 	}
-	
 	.toWriteForm {
 		right: 50px;
 		top: 40px;
 		width: 60px;
 		height: 60px;
 	}
-	
 	#boardList .boardList_content {
 		/* 		border-bottom: 1.2px solid #ddd; */
 		height: 400px;
