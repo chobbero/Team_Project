@@ -16,7 +16,6 @@ public class UserDeleteProAction implements Action{
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
 		ActionForward forward = new ActionForward();
 		HttpSession session = request.getSession();
 		

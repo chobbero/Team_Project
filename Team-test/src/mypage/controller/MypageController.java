@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import common.db.SessionCheck;
 import mypage.action.Action;
 import mypage.action.LogoutAction;
 import mypage.action.MyPageAction;
@@ -47,75 +49,84 @@ public class MypageController extends HttpServlet {
         Action action = null;
         ActionForward forward = null;
 
-        if (command.equals("/myPage.mp")) {
-            action = new MyPageAction();
-            try {
-                forward = action.execute(request, response);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        
+        // 세션이 필요한 행동
+        if(SessionCheck.SessionCheck(request)) {
+        	if (command.equals("/myPage.mp")) {
+                action = new MyPageAction();
+                try {
+                    forward = action.execute(request, response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (command.equals("/BoardUpdateForm.mp")) {
+                forward = new ActionForward();
+                forward.setPath("./mypage/board_update.jsp");
+            } else if (command.equals("/PickList.mp")) {
+                action = new PickListAction();
+                try {
+                    forward = action.execute(request, response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (command.equals("/Logout.mp")) {
+            	action = new LogoutAction();
+            	try {
+                    forward = action.execute(request, response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (command.equals("/UserUpdateForm.mp")) {
+            	
+            	action = new UserUpdateFormAction();
+                try {
+                    forward = action.execute(request, response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (command.equals("/UserDeleteForm.mp")) {
+            	forward = new ActionForward();
+            	forward.setPath("./mypage/user_delete.jsp");
+            } else if (command.equals("/IdCheck.mp")) {
+            	forward = new ActionForward();
+            	forward.setPath("./mypage/user_update_passCheck.jsp");
+            } else if (command.equals("/IdCheckPro.mp")) {
+            	action = new UserUpdateFormAction();
+            	try {
+                    forward = action.execute(request, response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (command.equals("/UserUpdatePro.mp")) {
+            	action = new UserUpdateProAction();
+            	try {
+                    forward = action.execute(request, response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (command.equals("/UserDeletePro.mp")) {
+            	action = new UserDeleteProAction();
+            	try {
+                    forward = action.execute(request, response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+			} else if (command.equals("/boardUpdateListForm.mp")) {
+				action = new MyPageListAction();
 
-        } else if (command.equals("/BoardUpdateForm.mp")) {
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} 
+        } else {
             forward = new ActionForward();
-            forward.setPath("./mypage/board_update.jsp");
-        } else if (command.equals("/PickList.mp")) {
-            action = new PickListAction();
-            try {
-                forward = action.execute(request, response);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else if (command.equals("/Logout.mp")) {
-        	action = new LogoutAction();
-        	try {
-                forward = action.execute(request, response);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else if (command.equals("/UserUpdateForm.mp")) {
-        	
-        	action = new UserUpdateFormAction();
-            try {
-                forward = action.execute(request, response);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else if (command.equals("/UserDeleteForm.mp")) {
-        	forward = new ActionForward();
-        	forward.setPath("./mypage/user_delete.jsp");
-        } else if (command.equals("/IdCheck.mp")) {
-        	forward = new ActionForward();
-        	forward.setPath("./mypage/user_update_passCheck.jsp");
-        } else if (command.equals("/IdCheckPro.mp")) {
-        	action = new UserUpdateFormAction();
-        	try {
-                forward = action.execute(request, response);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }else if (command.equals("/UserUpdatePro.mp")) {
-        	action = new UserUpdateProAction();
-        	try {
-                forward = action.execute(request, response);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }else if (command.equals("/UserDeletePro.mp")) {
-        	action = new UserDeleteProAction();
-        	try {
-                forward = action.execute(request, response);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }else if (command.equals("/boardUpdateListForm.mp")) {
-            action = new MyPageListAction();
-
-            try {
-                forward = action.execute(request, response);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } 
+            request.setAttribute("msg", "로그인이 필요합니다");
+            forward.setPath("/member/msg.jsp");
+        }
+        
+        
         
         
 

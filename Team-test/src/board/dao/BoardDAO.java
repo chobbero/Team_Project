@@ -117,7 +117,7 @@ public class BoardDAO {
         return listCount;
     }
     
- // store,board 합친 List
+    // store,board 합친 List
     public ArrayList<ListBean> getList(int page, int limit) {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -519,7 +519,6 @@ public class BoardDAO {
         ResultSet rs = null;
         ArrayList<StoreBean> rankList = new ArrayList<StoreBean>();
 
-
         try {
         	
             String sql = "SELECT * FROM store s ORDER BY (SELECT count(*) FROM board b WHERE b.store_num = s.store_num) DESC LIMIT 10";
@@ -593,15 +592,15 @@ public class BoardDAO {
 	        int result = 0;
 	        
 	        try {
-	            String sql = "update board set board_subject = ?, board_content = ? where board_num = ?";
+	            String sql = "update board set board_subject = ?, board_content = ? where board_num = ? and user_id = ?";
 	            pstmt = con.prepareStatement(sql);
 	            
-	            System.out.println("DAO에서 board_num : "+ boardBean.getBoard_num());
+	            System.out.println(boardBean.getUser_id());
 	            pstmt.setString(1, boardBean.getBoard_subject());
 	            pstmt.setString(2, boardBean.getBoard_content());
 	            pstmt.setInt(3, boardBean.getBoard_num());
+	            pstmt.setString(4, boardBean.getUser_id());
 	            result = pstmt.executeUpdate();
-	            System.out.println(result);
 	        } catch (SQLException e) {
 	            System.out.println("updateBoard() 에러 : " + e.getMessage());
 	        } finally {
@@ -610,16 +609,16 @@ public class BoardDAO {
 	        return result;
 	    }
 	    
-	    public int deleteBoard(int board_num) {
+	    public int deleteBoard(int board_num, String user_id) {
 	        PreparedStatement pstmt = null;
 	        int result = 0;
 	        
 	        try {
-	            String sql = "DELETE FROM board WHERE board_num = ?";
+	            String sql = "DELETE FROM board WHERE board_num = ? AND user_id = ?";
 	            pstmt = con.prepareStatement(sql);
 	            pstmt.setInt(1, board_num);
+	            pstmt.setString(2, user_id);
 	            result = pstmt.executeUpdate();
-	            System.out.println(result);
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	        } finally {
@@ -653,6 +652,71 @@ public class BoardDAO {
 	        }
 	        return result;
 	    }
+	    
+	    // 메인에서 이동 맛집카테고리 클릭
+		public int getSearchCount(String storeCategory) {
+			int SearchCount = 0;
+	        
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
+	        
+	        try {
+	        	String sql = "SELECT count(*) FROM board b JOIN store s ON (b.store_num = s.store_num) WHERE s.store_category = ?";
+	        	
+	            pstmt = con.prepareStatement(sql);
+	            pstmt.setString(1, storeCategory);
+	            rs = pstmt.executeQuery();
+	            
+	            if(rs.next()) {
+	            	SearchCount = rs.getInt(1);
+	            }
+	            
+	        } catch (SQLException e) {
+	            System.out.println("SearchCount() 에러 : " + e.getMessage());
+	        } finally {
+	            close(pstmt);
+	            close(rs);
+	        }
+	        
+	        return SearchCount;
+		}
+
+		public ArrayList<BoardBean> getSearchList(String storeCategory) {
+			ArrayList<BoardBean> SearchList = new ArrayList<BoardBean>();
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			try {
+				String sql = "SELECT * FROM board b JOIN store s ON (b.store_num = s.store_num) WHERE s.store_category = ?";
+
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, storeCategory);
+				rs = pstmt.executeQuery();
+
+				// 카테고리에 따라 다른 리스트 전달
+				while (rs.next()) {
+					BoardBean boardBean = new BoardBean();
+
+					boardBean.setBoard_num(rs.getInt("board_num"));
+					boardBean.setUser_id(rs.getString("user_id"));
+					boardBean.setBoard_subject(rs.getString("board_subject"));
+					boardBean.setBoard_content(rs.getString("board_content"));
+					boardBean.setBoard_rating(rs.getDouble("board_rating"));
+					boardBean.setBoard_like(rs.getInt("board_like"));
+					boardBean.setBoard_date(rs.getDate("board_date"));
+					boardBean.setBoard_readcount(rs.getInt("board_readcount"));
+
+					SearchList.add(boardBean);
+				}
+			} catch (SQLException e) {
+				System.out.println("getSearchList() 에러 : " + e.getMessage());
+			} finally {
+				close(pstmt);
+				close(rs);
+			}
+
+			return SearchList;
+		}
 }
 
 

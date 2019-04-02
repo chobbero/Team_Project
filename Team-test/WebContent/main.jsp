@@ -88,18 +88,19 @@
 						공감수 (${topStoreReview.board_like })개의 게시물<br>
 						<a href="<c:url value='/BoardDetail.bo?board_num=${topStoreReview.board_num }'/>">
 						${topStoreReview.board_subject }</a><br>
-						# ${rankList.get(0).store_category }<br>
+						${rankList.get(0).store_address }<br>
 						${rankList.get(0).store_contact }<br>
-						${rankList.get(0).store_address }<br>추천
+						<a href="<c:url value="./Search.bo?store_category=${rankList.get(0).store_category }"/>"># ${rankList.get(0).store_category }</a><br>
 					</div>
 					<img class="down_scroll" alt="down_scroll" src="img/down5.png">
 				</div>
 				<c:forEach var="rankList" items="${rankList }" begin="1" varStatus="i">
 					<div class="rankOthers">
-						<a href="#"><img class="ranks_img" alt="no.1" src="files/${rankList.store_image }"></a>
+						<img class="ranks_img" alt="no.1" src="files/${rankList.store_image }">
 						<div class="ranks_title">${i.index + 1 }. ${rankList.store_name }
 						</div>
-						<div class="ranks_desc"># ${rankList.store_category }</div>
+						<div class="ranks_desc1"><a href="<c:url value="./Search.bo?store_category=${rankList.store_category }"/>"># ${rankList.store_category }</a></div>
+						<div class="ranks_desc">주소 : ${rankList.store_address }</div>
 					</div>
 				</c:forEach>
 			</div>
@@ -110,29 +111,29 @@
 			<div class="title">원하는 메뉴를 고르세요.</div>
 
 			<div class="container_category">
-				<a href="#" class="category"> <img src="img/date.png">
+				<a href="<c:url value="./Search.bo?store_category=데이트"/>" class="category"> <img src="img/date.png">
 					<div class="describe"># 데이트</div>
-				</a> <a href="#" class="category"> <img src="img/chinese_food.png">
+				</a> <a href="<c:url value="./Search.bo?store_category=중식"/>" class="category"> <img src="img/chinese_food.png">
 					<div class="describe"># 중식</div>
-				</a> <a href="#" class="category"> <img src="img/japanese_food.png">
+				</a> <a href="<c:url value="./Search.bo?store_category=일식"/>" class="category"> <img src="img/japanese_food.png">
 					<div class="describe"># 일식</div>
-				</a> <a href="#" class="category"> <img src="img/hot-dog.png">
+				</a> <a href="<c:url value="./Search.bo?store_category=분식"/>" class="category"> <img src="img/hot-dog.png">
 					<div class="describe"># 분식</div>
-				</a> <a href="#" class="category"> <img src="img/meat.png">
+				</a> <a href="<c:url value="./Search.bo?store_category=고기"/>" class="category"> <img src="img/meat.png">
 					<div class="describe"># 고기</div>
-				</a> <a href="#" class="category"> <img src="img/chicken.png">
+				</a> <a href="<c:url value="./Search.bo?store_category=치킨"/>" class="category"> <img src="img/chicken.png">
 					<div class="describe"># 치킨</div>
-				</a> <a href="#" class="category"> <img src="img/cafe.png">
+				</a> <a href="<c:url value="./Search.bo?store_category=카페"/>" class="category"> <img src="img/cafe.png">
 					<div class="describe"># 카페</div>
-				</a> <a href="#" class="category"> <img src="img/dessert.png">
+				</a> <a href="<c:url value="./Search.bo?store_category=디저트"/>" class="category"> <img src="img/dessert.png">
 					<div class="describe"># 디저트</div>
-				</a> <a href="#" class="category"> <img src="img/noodles.png">
+				</a> <a href="<c:url value="./Search.bo?store_category=면류"/>" class="category"> <img src="img/noodles.png">
 					<div class="describe"># 면류</div>
-				</a> <a href="#" class="category"> <img src="img/seafood.png">
+				</a> <a href="<c:url value="./Search.bo?store_category=해산물"/>" class="category"> <img src="img/seafood.png">
 					<div class="describe"># 해산물</div>
-				</a> <a href="#" class="category"> <img src="img/soup.png">
+				</a> <a href="<c:url value="./Search.bo?store_category=얼큰한"/>" class="category"> <img src="img/soup.png">
 					<div class="describe"># 얼큰한</div>
-				</a> <a href="#" class="category"> <img src="img/etc.png">
+				</a> <a href="<c:url value="./Search.bo?store_category=기타"/>" class="category"> <img src="img/etc.png">
 					<div class="describe"># 기타</div>
 				</a>
 			</div>

@@ -61,7 +61,6 @@ public class SearchService {
 		close(con);
 
 		return SearchList;
-
 	}
 
 	// 이미지 갯수 조회
@@ -93,6 +92,36 @@ public class SearchService {
 
 		return fileBean;
 
+	}
+
+	// 메인에서 이동 맛집카테고리 클릭
+	public int getSearchCount(String storeCategory) {
+		int SearchlistCount = 0;
+
+		Connection con = getConnection();
+		BoardDAO boardDAO = BoardDAO.getInstance();
+		boardDAO.setConnection(con);
+
+		SearchlistCount = boardDAO.getSearchCount(storeCategory);
+
+		close(con);
+
+		return SearchlistCount;
+	}
+
+	// 메인에서 이동 맛집카테고리 클릭 게시글 리스트
+	public ArrayList<BoardBean> getSearchList(String storeCategory) {
+		ArrayList<BoardBean> SearchList = null;
+
+		Connection con = getConnection();
+		BoardDAO boardDAO = BoardDAO.getInstance();
+		boardDAO.setConnection(con);
+
+		SearchList = boardDAO.getSearchList(storeCategory);
+
+		close(con);
+
+		return SearchList;
 	}
 
 }

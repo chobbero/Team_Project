@@ -13,6 +13,7 @@
 </head>
 <body>
 <form action="BoardUpdatePro.bo" method="post">
+	<input type="hidden" name="user_id" value="<%=boardBean.getUser_id() %>">
 	<input type="hidden" name="board_num" value="<%=board_num %>">
 	제목 : <input type="text" name="subject" value="<%=boardBean.getBoard_subject() %>"><br>
 	내용 : <textarea name="content" cols="100" rows="10"><%=boardBean.getBoard_content() %></textarea><br>

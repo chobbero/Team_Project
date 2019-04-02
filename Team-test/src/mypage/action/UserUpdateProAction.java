@@ -40,9 +40,9 @@ public class UserUpdateProAction implements Action{
 		
 		System.out.println("액션 check : "+check);
 		if (check == true) {
-			forward.setPath("./main.jsp");
+			forward.setPath("./main");
 		}else {
-			forward.setPath("./main.jsp");
+			forward.setPath("./main");
      /*       response.setContentType("text/html;charset=UTF-8");
             PrintWriter out = response.getWriter();
             out.println("<script>");

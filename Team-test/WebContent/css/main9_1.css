@@ -160,11 +160,9 @@ section#search .search_btn_text {
 
 #rank .ranks_title {
 	display: inline-block;
-	/* 		border: 1px solid red;  */
 	position: absolute;
 	left: 110px;
 	top: 10px;
-	height: 80px;
 	font-size: 1.3rem;
 	font-weight: 600;
 }
@@ -173,11 +171,20 @@ section#search .search_btn_text {
 	position: absolute;
 	top: 50px;
 	left: 110px;
-	width: 65%;
-	/* 		border: 1px solid red; */
 }
 
-.rank1 a {
+.ranks_desc1 {
+	position: absolute;
+	top: 80px;
+	left: 110px;
+}
+
+.rank1 a, .ranks_desc1 a {
+	text-decoration: none;
+	color: chocolate;
+}
+
+a {
 	text-decoration: none;
 	color: chocolate;
 }

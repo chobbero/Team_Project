@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-#board_frame {text-align: center; margin: 90px 0;}
+#board_frame {text-align: center; margin: 90px 0; padding-bottom: 20px;}
 
 /* 본 내용 */
 #contentImageArea1 {display: block; width: 100%;}
@@ -64,7 +64,7 @@ hr {margin: 5px;}
 
 /* 펼치기기능 */
 .js-load {display: none;}
-.js-load.active {display: block; white-space: pre-line;}
+.js-load.active {display: block; word-break: break-all;}
 .is_comp.js-load:after {display: none;}
 .btn-wrap, .lists, .main {display: block;}
 
@@ -76,18 +76,11 @@ hr {margin: 5px;}
 
 #js-load>p {font-size:25px; font-weight:bold; margin-top: 10px; text-align: left;}
 .review_table {max-width: 920px; margin: 10px 0;}
-.review_id {vertical-align: text-top; max-width: 100px; min-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-right: 10px;}
-.review_content {
-	text-align: left; padding-left: 10px; max-width: 500px; min-width: 500px;
-	height: 100px; display: inline-block; }
-	.review_like {
-	text-align: left; padding-left: 10px; max-width: 100px; min-width: 100px;position: relative;
-	}
-	.review_like img {position: absolute;top: 30px;height:30px; vertical-align: middle;
-	}
-	.review_date {
-	text-align: left; padding-left: 10px; max-width: 100px; min-width: 100px;height: 100px; 
-	}
+.review_id {max-width: 100px; min-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding-right: 10px;}
+.review_content {text-align: left; padding-left: 10px; min-width: 580px; height: 100px;}
+.review_like { text-align: left; padding-left: 10px; max-width: 100px; min-width: 100px; position: relative;}
+.review_like img {position: absolute;top: 30px;height:30px; vertical-align: middle;}
+.review_date {text-align: left; padding-left: 10px; max-width: 95px; min-width: 95px; height: 100px;}
 .review_content p {word-break: break-all; white-space: pre-line;}
 
 .btn-wrap {text-align: center;}
@@ -131,7 +124,7 @@ footer {position: fixed; bottom: 0; background:white; width:100%;}
 	.main {max-width: 710px;}
 	.review_table {max-width: 690px; margin: 10px 0;}
 	.review_id {max-width: 90px; min-width: 90px;}
-	.review_content {max-width: 570px; min-width: 570px;}
+	.review_content {min-width: 350px;}
 }
 
 
@@ -164,7 +157,7 @@ footer {position: fixed; bottom: 0; background:white; width:100%;}
 	.main {max-width: 600px;}
 	.review_table {max-width: 570px; margin: 10px 0;}
 	.review_id {max-width: 80px; min-width: 80px;}
-	.review_content {max-width: 470px; min-width: 470px;}
+	.review_content {min-width: 260px;}
 	
 }
 

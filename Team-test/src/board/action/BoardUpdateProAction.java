@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import board.service.BoardUpdateProService;
 import board.vo.ActionForward;
@@ -18,17 +19,17 @@ public class BoardUpdateProAction implements Action{
 		boolean isUpdateSuccess = false;
 		
 		int board_num = Integer.parseInt(request.getParameter("board_num"));
-		System.out.println("board_num ProAction에서 : " + board_num);
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
-		
+		String user_id = (String)request.getParameter("user_id");
+
+		boardBean.setUser_id(user_id);
 		boardBean.setBoard_num(board_num);
 		boardBean.setBoard_subject(subject);
 		boardBean.setBoard_content(content);
 		
 		BoardUpdateProService boardUpdateProService = new BoardUpdateProService();
 		isUpdateSuccess = boardUpdateProService.updateBoard(boardBean);
-		
 		
 		if(!isUpdateSuccess) {
     		response.setContentType("text/html;charset=UTF-8");

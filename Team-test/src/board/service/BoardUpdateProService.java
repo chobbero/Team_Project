@@ -17,7 +17,6 @@ public class BoardUpdateProService {
 		int result = 0;
 		
 		result = boardDAO.updateBoard(boardBean);
-		System.out.println(result);
 		
 		if(result > 0) {
 			isUpdateSuccess = true;

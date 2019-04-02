@@ -91,8 +91,11 @@
 			<div id="searchTitle">
 				<c:choose>
 					<c:when test="${search != null }">
-							<p>검색어 : "${search }" (${searchCount })</p>
-							<c:if test="${searchCount eq 0 }">검색 결과가 없어요 ㅠㅠ</c:if>
+						<p>검색어 : "${search }" (${searchCount })</p>
+						<c:if test="${searchCount eq 0 }">검색 결과가 없어요 ㅠㅠ</c:if>
+					</c:when>
+					<c:when test="${store_category != null }">
+						<p>음식카테고리 : "${store_category }" (${searchCount })</p>
 					</c:when>
 					<c:otherwise><p>검색어를 입력하세요 :D</p></c:otherwise>
 				</c:choose>
@@ -113,7 +116,7 @@
 						</td><td class="vertical">
 						<table class="searchTableCell2">
 							<tr><td class="searchSubject">
-								<a href="main.jsp#">글제목 : ${sl.board_subject }</a>
+								<a href="<c:url value='/BoardDetail.bo?board_num=${sl.board_num }'/>">${sl.board_subject }</a>
 							</td></tr>
 							<tr><td class="searchUser">글쓴이 : ${sl.user_id }</td></tr>
 							<tr><td class="searchCount">조회수 : ${sl.board_readcount }</td></tr>
@@ -127,9 +130,9 @@
 					<table class="searchTable"><tr><td class="searchTableCell">
 						<img src="files/${sl2.store_image }" class="searchListImg">
 						</td><td><table class="searchTableCell2">
-							<tr><td class="searchSubject">상호명 : ${sl2.store_name } 1231231232132132131232121312312312321</td></tr>
-							<tr><td class="searchAddress">주소 : ${sl2.store_address }</td></tr>
-							<tr><td class="searchContact">전화번호 : (Tel) ${sl2.store_contact }</td></tr>
+							<tr><td class="searchSubject">${sl2.store_name } </td></tr>
+							<tr><td class="searchAddress">${sl2.store_address }</td></tr>
+							<tr><td class="searchContact">(Tel) ${sl2.store_contact }</td></tr>
 							<tr><td class="searchTime">영업시간 : ${sl2.store_time }</td></tr>
 							<tr><td class="searchMenu">주메뉴 : ${sl2.store_menu }</td></tr>
 						</table>

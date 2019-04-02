@@ -32,7 +32,8 @@ public class CommentWriteProAction implements Action {
         isCheck = commentWriteProService.insertComment(commentBean);
 
         if (isCheck) {
-            forward.setPath("./BoardList.bo");
+            forward.setPath("./BoardDetail.bo?board_num=" + board_num);
+            System.out.println(forward.getPath());
             forward.setRedirect(true);
         } else {
             response.setContentType("text/html;charset=UTF-8");

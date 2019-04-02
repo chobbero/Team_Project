@@ -7,7 +7,7 @@ import java.sql.Connection;
 import board.dao.BoardDAO;
 
 public class BoardDeleteService {
-	public boolean deleteBoard(int board_num) {
+	public boolean deleteBoard(int board_num, String user_id) {
 		Connection con = getConnection();
 		BoardDAO boardDAO = BoardDAO.getInstance();
 		boardDAO.setConnection(con);
@@ -15,7 +15,7 @@ public class BoardDeleteService {
 		int result = 0;
 		boolean isDeleteSuccess = false;
 
-		result = boardDAO.deleteBoard(board_num);
+		result = boardDAO.deleteBoard(board_num, user_id);
 		
 		if(result > 0) {
 			isDeleteSuccess = true;

@@ -252,7 +252,6 @@
 						<tr><td class="storeMenu">대표메뉴</td><td class="storeMenuDetail">${sb.store_menu } ${sb.store_price }원</td></tr>
 					</table>
 				</aside>
-				
 				<!-- 버튼 -->
 				<div id="buttonArea">
 				
@@ -261,7 +260,7 @@
 					<a href='<c:url value="./BoardWriteForm.bo" />'><img class="btnBoardInsert" src="img/boardWrite_l_gray.png"></a>
 					</c:if>
 					<c:if test="${sessionScope.user_id !=null }">
-					<a><img class="btnBoardDelete" src="img/trashcan.png"></a>
+					<a href='<c:url value="./BoardDelete.bo?board_num=${bb.board_num }" />'><img class="btnBoardDelete" src="img/trashcan.png"></a>
 					</c:if>
 					
 				</div>
@@ -301,9 +300,6 @@
 									<c:when test="${cb.comment_like =='N' }">
 									<img alt="like" src='<c:url value="./img/dislike_comment.png" />'>
 									</c:when>
-									<c:otherwise>
-									<img alt="null">
-									</c:otherwise>
 									</c:choose>
 									</td>
 									<td class="review_date">

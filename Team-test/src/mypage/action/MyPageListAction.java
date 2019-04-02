@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import board.service.BoardListService;
 import board.vo.ListBean;
@@ -17,8 +18,9 @@ public class MyPageListAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = new ActionForward();
 		PageInfo pageInfo = new PageInfo();
+		HttpSession session = request.getSession();
 		
-		String user_id = request.getParameter("user_id");
+		String user_id = (String) session.getAttribute("user_id");
 		
 		int page = 1;
 		int limit = 10;
