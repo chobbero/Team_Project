@@ -43,11 +43,12 @@ public class BoardUpdateProAction implements Action{
 			PrintWriter out = response.getWriter();
 			out.println("<script>");
 			out.println("alert('수정 성공')");
-			out.println("history.back()");
 			out.println("</script>");
+		    forward.setPath("./boardUpdateListForm.mp");
+		    forward.setRedirect(true);
 		}
 		
-		return null;
+		return forward;
 	}
 	
 }

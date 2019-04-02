@@ -27,7 +27,7 @@ public class BoardUpdateFormAction implements Action{
 		} else {
 			request.setAttribute("BoardBean", boardBean);
 			request.setAttribute("board_num", board_num);
-			forward.setPath("/board/boardUpdateForm.jsp");
+			forward.setPath("/board/board_update.jsp");
 		}
 		
 		return forward;
