@@ -164,6 +164,53 @@ public class BoardDAO {
         return list;
     }
     
+    // 랭킹 리스트 
+    public ArrayList<ListBean> getListRank(int page, int limit) {
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        ArrayList<ListBean> list = new ArrayList<ListBean>();
+
+        int startRow = (page - 1) * 10;
+
+        try {
+            String sql = "SELECT * FROM board b JOIN store s ON (b.store_num = s.store_num) ORDER BY b.board_like desc LIMIT ?,?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, startRow);
+            pstmt.setInt(2, limit);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                ListBean listBean = new ListBean();
+
+                listBean.setBoard_num(rs.getInt("board_num"));
+                listBean.setUser_id(rs.getString("user_id"));
+                listBean.setBoard_subject(rs.getString("board_subject"));
+                listBean.setBoard_content(rs.getString("board_content"));
+                listBean.setBoard_rating(rs.getDouble("board_rating"));
+                listBean.setBoard_like(rs.getInt("board_like"));
+                listBean.setBoard_date(rs.getDate("board_date"));
+                listBean.setBoard_readcount(rs.getInt("board_readcount"));
+                listBean.setStore_num(rs.getInt("store_num"));
+                listBean.setStore_name(rs.getString("store_name"));
+                listBean.setStore_address(rs.getString("store_address"));
+                listBean.setStore_category(rs.getString("store_category"));
+                listBean.setStore_menu(rs.getString("store_menu"));
+                listBean.setStore_price(rs.getInt("store_price"));
+                listBean.setStore_time(rs.getString("store_time"));
+                listBean.setStore_image(rs.getString("store_image"));
+                listBean.setStore_contact(rs.getString("store_contact"));
+
+                list.add(listBean);
+            }
+        } catch (SQLException e) {
+            System.out.println("getList() 에러 : " + e.getMessage());
+        } finally {
+            close(pstmt);
+            close(rs);
+        }
+        return list;
+    }
+    
 	// 매장의 후기 갯수 조회
 	public int getBoardCount(int store_num) {
 

@@ -40,6 +40,20 @@ public class BoardListService {
 		return list;
 	}
 	
+	public ArrayList<ListBean> getBoardListRank(int page, int limit) throws Exception {
+        ArrayList<ListBean> list = null; // 게시물 목록을 저장할 변수
+
+        Connection con = getConnection();
+        BoardDAO boardDAO = BoardDAO.getInstance();
+        boardDAO.setConnection(con);
+
+        list = boardDAO.getListRank(page, limit);
+
+        close(con);
+
+        return list;
+    }
+	
 	public ArrayList<StoreBean> getRankList() throws Exception {
 		ArrayList<StoreBean> rankList = null;
 

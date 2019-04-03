@@ -23,7 +23,7 @@
 						<div class="nav_text">리얼후기</div>
 					</div>
 			</a></li>
-			<li><a href="#">
+			<li><a href="./BoardListRank.bo">
 					<div class="nav_wrap">
 						<img class="nav_img" alt="recommend" src="img/recommendation.png">
 						<div class="nav_text">추천음식점</div>

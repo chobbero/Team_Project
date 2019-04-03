@@ -13,6 +13,7 @@ import board.action.Action;
 import board.action.BoardDeleteProAction;
 import board.action.BoardDetailAction;
 import board.action.BoardListAction;
+import board.action.BoardListRankAction;
 import board.action.BoardUpdateFormAction;
 import board.action.BoardUpdateProAction;
 import board.action.BoardWriteProAction;
@@ -102,7 +103,15 @@ public class BoardController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		} else if(command.equals("/BoardDetail.bo")) {
+		} else if (command.equals("/BoardListRank.bo")) {
+            action = new BoardListRankAction();
+
+            try {
+                forward = action.execute(request, response);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if(command.equals("/BoardDetail.bo")) {
         	// board_num 유무 확인 및 이동
         	if (request.getParameter("board_num") != null && request.getParameter("board_num").trim().length() != 0 && !request.getParameter("board_num").trim().equals("")) {
         		action = new BoardDetailAction();
