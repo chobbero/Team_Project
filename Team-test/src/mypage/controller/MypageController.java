@@ -119,7 +119,10 @@ public class MypageController extends HttpServlet {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			} 
+			} else if (command.equals("/BusinessChange.mp")) {
+                forward = new ActionForward();
+                forward.setPath("./mypage/businessChange.jsp");
+            } 
         } else {
             forward = new ActionForward();
             request.setAttribute("msg", "로그인이 필요합니다");

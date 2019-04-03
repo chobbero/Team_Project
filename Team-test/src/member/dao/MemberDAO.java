@@ -40,7 +40,7 @@ public class MemberDAO {
         String sql = "";
 
         try {
-            sql = "INSERT INTO user VALUES(?,?,?,?,?,?,?,?,?)";
+            sql = "INSERT INTO  user(user_id, user_grade, user_pw, user_name, user_birth, user_email, user_phone, user_nickname, user_coupon) VALUES(?,?,?,?,?,?,?,?,?)";
 
             pstmt = con.prepareStatement(sql);
 

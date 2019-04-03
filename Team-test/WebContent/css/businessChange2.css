@@ -1,0 +1,160 @@
+@charset "UTF-8";
+/* 		border: 1px solid blue; */
+
+/*모바일 퍼스트*/
+#myPage {
+	/* 		border: 1px solid red; */
+	box-sizing: border-box;
+	margin: 0 auto 50px auto;
+	width: 100%;
+	min-height: 300px;
+	position: relative;
+}
+
+#myPage .bcange_title {
+	font-size: 1.3rem;
+	padding: 20px;
+	background-color: #fff;
+	color: #ff5a5f;
+	margin-bottom: 20px;
+	font-weight: bold;
+	border-bottom: 1px solid #ccc;
+}
+
+#myPage .a {
+	font-weight: 600;
+	color: #484848;
+	box-sizing: border-box;
+	width: 90%;
+	padding: 12px 0 12px 5%;
+	/* 		border: 1px solid; */
+	margin: 5px 5%;
+	font-size: 13px;
+	word-spacing: 4px;
+	letter-spacing: 0.5px;
+}
+
+#myPage .bchange {
+	/* 	border: 1px solid blue; */
+	width: 100%;
+	min-height: 650px;
+	padding: 0;
+	position: relative;
+}
+
+#myPage .change {
+	/* 	border: 1px solid red; */
+	margin-bottom: 20px;
+}
+
+.submit_com {
+	border: 1px solid #ff5a5f;
+	border-radius: 15px;
+	height: 50px;
+	width: 80%;
+	font-size: 1.3rem;
+	font-weight: 600;
+	margin: 10px 10%;
+	color: #ff5a5f;
+	background: #ffffff;
+	margin-bottom: 30px;
+}
+
+.filebox {
+	margin-top: 10px;
+	margin-left: 5%;
+}
+
+.filebox input[type="file"] {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+
+.filebox label {
+	width: 17%;
+	font-weight: 600;
+	text-align: center;
+	display: inline-block;
+	padding: .5em .75em;
+	color: #999;
+	font-size: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #fdfdfd;
+	cursor: pointer;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+}
+
+.filebox .upload-name {
+	width: 55%;
+	display: inline-block;
+	padding: .5em .75em; /* label의 패딩값과 일치 */
+	font-size: inherit;
+	font-family: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #f5f5f5;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+	-webkit-appearance: none; /* 네이티브 외형 감추기 */
+	-moz-appearance: none;
+	appearance: none;
+}
+
+#myPage .join_find {
+	height: 30px;
+	position: relative;
+	width: 80%;
+	margin: 5px 10%;
+	/* 	border: 1px solid red; */
+}
+
+.disabled {
+	background-color: #fff;
+	color: #808080;
+	border: 1px solid #808080;
+}
+
+@MEDIA screen and (min-width:768px) {
+	#myPage {
+		/* 		border: 1px solid red; */
+		position: relative;
+	}
+	#myPage .wrap1 {
+		position: absolute;
+		top: 120px;
+		right: 0;
+		width: 75%;
+		/* 		border: 1px solid red; */
+	}
+	.submit_com {
+		margin: 20px 10%;
+	}
+}
+
+@MEDIA screen and (min-width:1024px) {
+	#myPage {
+		/* 		border: 1px solid red; */
+		position: relative;
+		min-height: 760px !important;
+	}
+	#myPage .wrap1 {
+		position: absolute;
+		top: 120px;
+		right: 0;
+		width: 75%;
+		/* 		border: 1px solid red; */
+	}
+	.submit_com {
+		margin: 20px 10%;
+	}
+}
