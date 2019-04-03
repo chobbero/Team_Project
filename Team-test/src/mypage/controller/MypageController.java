@@ -122,7 +122,15 @@ public class MypageController extends HttpServlet {
 			} else if (command.equals("/BusinessChange.mp")) {
                 forward = new ActionForward();
                 forward.setPath("./mypage/businessChange.jsp");
-            } 
+            } else if (command.equals("/BusinessChangePro.mp")) {
+                action = new MyPageListAction();
+
+                try {
+                    forward = action.execute(request, response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         } else {
             forward = new ActionForward();
             request.setAttribute("msg", "로그인이 필요합니다");

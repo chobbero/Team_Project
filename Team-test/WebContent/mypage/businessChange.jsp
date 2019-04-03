@@ -21,7 +21,7 @@
 		
 		<section id="myPage">
 			<div class="wrap1">
-			<form action="businessJoinPro.bp" method="post" name="businessJoinForm" enctype="multipart/form-data">
+			<form action="./BusinessChangePro.mp" method="post" name="businessJoinForm" enctype="multipart/form-data">
 			<div class="bcange_title">사업자 정보 입력</div>
 			
 			<div class="bchange">
