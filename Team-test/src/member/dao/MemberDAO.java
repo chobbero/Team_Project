@@ -10,6 +10,7 @@ import javax.sql.DataSource;
 
 import static common.db.JdbcUtil.*;
 import member.vo.MemberBean;
+import mypage.vo.BusinessMemberBean;
 
 public class MemberDAO {
     Connection con;
@@ -134,5 +135,49 @@ public class MemberDAO {
         }
 
         return memberBean;
+    }
+
+    public int userGradeUpdate(MemberBean memberBean) {
+        PreparedStatement pstmt = null;
+        String sql = "";
+        int isSuccess = 0;
+        try {
+            sql = "update user set user_grade=? where user_id=?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, memberBean.getUser_grade());
+            pstmt.setString(2, memberBean.getUser_id());
+
+            isSuccess = pstmt.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close(pstmt);
+        }
+
+        return isSuccess;
+    }
+    
+    public int BusinessJoin(BusinessMemberBean businessMemberBean) {
+        PreparedStatement pstmt = null;
+        String sql = "";
+        int isSuccess = 0;
+        try {
+            sql = "INSERT INTO business VALUES(?,?,?,?,now());";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, businessMemberBean.getBusiness_number());
+            pstmt.setString(2, businessMemberBean.getBusiness_name());
+            pstmt.setString(3, businessMemberBean.getUser_id());
+            pstmt.setInt(4, businessMemberBean.getStore_num());
+
+            isSuccess = pstmt.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close(pstmt);
+        }
+
+        return isSuccess;
     }
 }

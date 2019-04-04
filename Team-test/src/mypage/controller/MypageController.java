@@ -8,10 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import common.db.SessionCheck;
 import mypage.action.Action;
+import mypage.action.BusinessChangeProAction;
 import mypage.action.LogoutAction;
 import mypage.action.MyPageAction;
 import mypage.action.MyPageListAction;
@@ -123,8 +123,7 @@ public class MypageController extends HttpServlet {
                 forward = new ActionForward();
                 forward.setPath("./mypage/businessChange.jsp");
             } else if (command.equals("/BusinessChangePro.mp")) {
-                action = new MyPageListAction();
-
+                action = new BusinessChangeProAction();
                 try {
                     forward = action.execute(request, response);
                 } catch (Exception e) {
