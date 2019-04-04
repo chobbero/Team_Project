@@ -825,4 +825,42 @@ public class BoardDAO {
         }
         return isSuccess;
     }
+    
+    // 매장 정보 가져오기
+    public mypage.vo.StoreBean getStoreInfo(String user_id) {
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        mypage.vo.StoreBean storeBean = null;
+
+        try {
+            String sql = "SELECT * FROM store WHERE store_num = (select store_num from business where user_id =?)";
+
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, user_id);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                storeBean = new mypage.vo.StoreBean();
+
+                storeBean.setStore_num(rs.getInt("store_num"));
+                storeBean.setStore_name(rs.getString("store_name"));
+                storeBean.setStore_address(rs.getString("store_address"));
+                storeBean.setStore_category(rs.getString("store_category"));
+                storeBean.setStore_menu(rs.getString("store_menu"));
+                storeBean.setStore_price(rs.getInt("store_price"));
+                storeBean.setStore_time(rs.getString("store_time"));
+                storeBean.setStore_image(rs.getString("store_image"));
+                storeBean.setStore_contact(rs.getString("store_contact"));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("getStoreInfo() 에러 : " + e.getMessage());
+        } finally {
+            close(pstmt);
+            close(rs);
+        }
+        return storeBean;
+
+    }
 }

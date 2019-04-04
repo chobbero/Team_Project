@@ -26,7 +26,12 @@
 			<a href="./IdCheck.mp"><li><div>프로필 수정</div><img class="list_imgs" src="img/edit_profile.png"/></li></a>
 			<a href="./PickList.mp"><li><div>Pick리스트</div><img class="list_imgs" src="img/mypage_heart.png"/></li></a>
 			<a href="./boardUpdateListForm.mp"><li><div>게시글 수정</div><img class="list_imgs" src="img/edit_board_mypage.png"/></li></a>
+			<c:if test="${sessionScope.user_grade eq 'C' }">
 			<a href="./BusinessChange.mp"><li><div>회원전환</div><img class="list_imgs" src="img/change_to_business.png"/></li></a>
+			</c:if>
+			<c:if test="${sessionScope.user_grade eq 'B' }">
+			<a href="./BusinessEventWriteForm.mp"><li><div>제휴 이벤트</div><img class="list_imgs" src="img/business_discount.png"/></li></a>
+			</c:if>
 			<a href="./UserDeleteForm.mp"><li><div>회원탈퇴</div><img class="list_imgs" src="img/remove-user4.png"/></li></a>
 			<a href="./Logout.mp"><li><div>로그아웃</div><img class="list_imgs" src="img/logout_mypage.png"/></li></a>
 			</ul>

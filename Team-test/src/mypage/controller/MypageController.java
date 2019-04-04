@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import common.db.SessionCheck;
 import mypage.action.Action;
 import mypage.action.BusinessChangeProAction;
+import mypage.action.BusinessEventWriteForm;
 import mypage.action.LogoutAction;
 import mypage.action.MyPageAction;
 import mypage.action.MyPageListAction;
@@ -129,7 +130,16 @@ public class MypageController extends HttpServlet {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            } else if (command.equals("/BusinessEventWriteForm.mp")) {
+                action = new BusinessEventWriteForm();
+                try {
+                    forward = action.execute(request, response);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
+        	
+        	
         } else {
             forward = new ActionForward();
             request.setAttribute("msg", "로그인이 필요합니다");
