@@ -145,4 +145,18 @@ public class BoardDetailService {
         
         return boardBean;
     }
+    
+    public int[] userPickArr(String user_id) {
+    	
+        Connection con = getConnection();
+        BoardDAO boardDAO = BoardDAO.getInstance();
+        boardDAO.setConnection(con);
+        int[] userPickArr = null;
+        
+        userPickArr = boardDAO.userPickArr(user_id);
+
+        close(con);
+        
+        return userPickArr;
+    }
 }

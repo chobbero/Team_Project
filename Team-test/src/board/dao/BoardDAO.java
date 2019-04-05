@@ -863,4 +863,41 @@ public class BoardDAO {
         return storeBean;
 
     }
+    
+    public int[] userPickArr(String user_id) {
+    	PreparedStatement pstmt = null;
+        ResultSet rs = null;
+    	int pickCount;
+    	int[] userPickArr = null;
+    	
+    	try {
+			String sql = "SELECT count(*) FROM pick WHERE user_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user_id);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				pickCount = rs.getInt(1);
+				System.out.println("pickCount : " + pickCount);
+				rs= null;
+				System.out.println("pickCount : " + pickCount);
+				
+				userPickArr = new int[pickCount];
+				int i = 0;
+				sql = "SELECT board_num FROM pick WHERE user_id = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, user_id);
+				rs = pstmt.executeQuery();
+				
+				while (rs.next()) {
+					userPickArr[i] = rs.getInt("board_num");
+					i++;
+				}				
+            }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    	
+    	return userPickArr;
+    }
 }

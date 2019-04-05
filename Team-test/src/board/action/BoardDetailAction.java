@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import board.service.BoardDetailService;
 import board.vo.ActionForward;
@@ -19,9 +20,17 @@ public class BoardDetailAction implements Action {
         
         // boardList에서 board_num 값 가져오기
         int board_num = Integer.parseInt(request.getParameter("board_num"));
-                
+        
         // 인스턴스 생성
         BoardDetailService boardDetailService = new BoardDetailService();
+        
+        // session확인
+        HttpSession session = request.getSession(false);
+        if (session.getAttribute("user_id") != null) {
+        	String user_id = (String)session.getAttribute("user_id");
+        	int[] userPickArr = boardDetailService.userPickArr(user_id);
+        	request.setAttribute("pickNo", userPickArr);
+        }
         
         // 후기 가져오기
         BoardBean boardBean = boardDetailService.getBoardArticle(board_num);

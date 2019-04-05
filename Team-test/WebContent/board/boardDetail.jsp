@@ -31,6 +31,8 @@
 	    $(review_list + ":lt(" + review_total_cnt + ")").addClass("active");
 	}
 	
+	
+	
 	// 이미지 애니매이션 레이어팝업 쿼리
 	function dialog() {
 
@@ -99,7 +101,6 @@
 	    dialog();
 	});
 </script>
-
 <!-- 찜하기 제이쿼리 -->
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -109,6 +110,8 @@
 			
 			var id = $(this).parent().next().attr("name");
 			var board_num = $(this).parent().next().attr("value");
+			
+			console.log("아이디 : " + id + " 글번호 : " + board_num);
 			
 			if (img == "img/heart.png") {
 				$(this).attr("src", "img/filled_heart.png");
@@ -221,7 +224,7 @@
 							<label for="pick">
 						 	<img class="pick" src="img/heart.png">
 							</label>
-							<input id="pick" type="checkbox" name="${sessionScope.user_id }" value="${bb.board_num }"> <!-- name?(하드코딩?) -->
+							<input id="pick" type="checkbox" name="${sessionScope.user_id }" value="${bb.board_num }">
 							</c:if>
 							</td>
 						</tr>
