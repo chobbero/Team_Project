@@ -11,17 +11,26 @@
 <%
     String id = request.getParameter("id");
     int board_num = Integer.parseInt(request.getParameter("board_num"));
+    int output = 0;
 
     Connection con = JdbcUtil.getConnection();
+    PreparedStatement pstmt = null;
     
     String sql = "delete from pick where user_id=? and board_num=?";
-    PreparedStatement pstmt = con.prepareStatement(sql);
+    pstmt = con.prepareStatement(sql);
     pstmt.setString(1, id);
     pstmt.setInt(2, board_num);
-    int output = pstmt.executeUpdate();
-    JdbcUtil.commit(con);
+    output = pstmt.executeUpdate();
+
+    if (output == 1) {
+        JdbcUtil.commit(con);
+    } else if (output == 0) {
+        JdbcUtil.rollback(con);
+    }
+
+    pstmt.close();
     JdbcUtil.close(con);
-    
+
     JSONObject result = new JSONObject();
     result.put("output", output);
     PrintWriter pw = response.getWriter();

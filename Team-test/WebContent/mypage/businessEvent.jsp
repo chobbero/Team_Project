@@ -134,7 +134,8 @@
 
 		<section id="boardWrite">
 			<h2>제휴 이벤트 등록</h2>
-			<form action="BoardWritePro.bo" method="post" enctype="multipart/form-data" name="boardform" id="writeF">
+			<form action="./BusinessEventPro.mp" method="post" enctype="multipart/form-data" name="boardform" id="writeF">
+				
 				<input type="hidden" name="store_num" id="store_num" value="${storeBean.store_num }"> 
 				<input type="hidden" name="user_id" value="${sessionScope.user_id }">
 				<table>

@@ -1,4 +1,3 @@
-<%@page import="oracle.jdbc.OracleConnection.CommitOption"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="org.json.simple.JSONArray"%>
 <%@page import="org.json.simple.JSONObject"%>
@@ -12,15 +11,36 @@
 <%
     String id = request.getParameter("id");
     int board_num = Integer.parseInt(request.getParameter("board_num"));
+    int output = 0;
 
     Connection con = JdbcUtil.getConnection();
-    
-    String sql = "insert into pick values(?,?)";
-    PreparedStatement pstmt = con.prepareStatement(sql);
+    ResultSet rs = null;
+    PreparedStatement pstmt = null;
+
+    String sql = "select * from pick where user_id=? and board_num=?;";
+    pstmt = con.prepareStatement(sql);
     pstmt.setString(1, id);
     pstmt.setInt(2, board_num);
-    int output = pstmt.executeUpdate();
-    JdbcUtil.commit(con);
+    rs = pstmt.executeQuery();
+
+    if (rs.next()) {
+        pstmt.close();
+        rs.close();
+    } else {
+        sql = "insert into pick values(?,?)";
+        pstmt = con.prepareStatement(sql);
+        pstmt.setString(1, id);
+        pstmt.setInt(2, board_num);
+        output = pstmt.executeUpdate();
+        pstmt.close();
+        rs.close();
+    }
+    if (output == 1) {
+        JdbcUtil.commit(con);
+    } else if (output == 0) {
+        JdbcUtil.rollback(con);
+    }
+
     JdbcUtil.close(con);
     
     JSONObject result = new JSONObject();

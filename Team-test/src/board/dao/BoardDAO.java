@@ -17,6 +17,8 @@ import board.vo.BoardBean;
 import board.vo.FileBean;
 import board.vo.ListBean;
 import board.vo.StoreBean;
+import mypage.vo.BusinessBoardBean;
+import mypage.vo.BusinessFile;
 
 public class BoardDAO {
     Connection con;
@@ -264,6 +266,27 @@ public class BoardDAO {
 
     }
 
+    // 제휴 게시판 게시물 조회수 증가
+    public int updateReadcountBusiness(int store_num) {
+
+        PreparedStatement pstmt = null;
+        int updateCount = 0;
+
+        String sql = "UPDATE business_board SET board_readcount = board_readcount + 1 WHERE store_num = ?";
+
+        try {
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, store_num);
+            updateCount = pstmt.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("updateReadcount() 에러 : " + e.getMessage());
+        } finally {
+            close(pstmt);
+        }
+        return updateCount;
+
+    }
+
     // 게시물 내용 가져오기
     public BoardBean selectBoardArticle(int board_num) {
 
@@ -299,6 +322,40 @@ public class BoardDAO {
             close(rs);
         }
         return boardBean;
+
+    }
+
+    // 제휴 게시판 게시물 내용 가져오기
+    public BusinessBoardBean selectBusinessBoardArticle(int store_num) {
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        BusinessBoardBean businessBoardBean = null;
+
+        try {
+            String sql = "SELECT * FROM business_board WHERE store_num = ?";
+
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, store_num);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                businessBoardBean = new BusinessBoardBean();
+
+                businessBoardBean.setUser_id(rs.getString("user_id"));
+                businessBoardBean.setBoard_subject(rs.getString("board_subject"));
+                businessBoardBean.setBoard_content(rs.getString("board_content"));
+                businessBoardBean.setBoard_date(rs.getDate("board_date"));
+                businessBoardBean.setBoard_readcount(rs.getInt("board_readcount"));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("selectBoardArticle() 에러 : " + e.getMessage());
+        } finally {
+            close(pstmt);
+            close(rs);
+        }
+        return businessBoardBean;
 
     }
 
@@ -358,6 +415,38 @@ public class BoardDAO {
                 String imgFileName = rs.getString("image");
 
                 imgFileList.add(imgFileName);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("getImgFileList() 에러 : " + e.getMessage());
+        } finally {
+            close(pstmt);
+            close(rs);
+        }
+        return imgFileList;
+
+    }
+
+    // 이미지 파일 리스트 가져오기
+    public ArrayList<BusinessFile> getImgFileListBusiness(int store_num) {
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        ArrayList<BusinessFile> imgFileList = new ArrayList<BusinessFile>();
+
+        try {
+            String sql = "SELECT * FROM business_file WHERE store_num = ?";
+
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, store_num);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                BusinessFile file = new BusinessFile();
+                file.setStore_num(store_num);
+                file.setImage(rs.getString("image"));
+
+                imgFileList.add(file);
             }
 
         } catch (SQLException e) {
@@ -770,7 +859,7 @@ public class BoardDAO {
 
         return SearchList;
     }
-    
+
     // 가게 번호 구하기
     public int store_maxNum() {
         PreparedStatement pstmt = null;
@@ -782,7 +871,7 @@ public class BoardDAO {
             pstmt = con.prepareStatement(sql);
             rs = pstmt.executeQuery();
             if (rs.next()) {
-                maxNum = rs.getInt(1) + 1 ;
+                maxNum = rs.getInt(1) + 1;
             } else {
                 maxNum = 1;
             }
@@ -794,7 +883,7 @@ public class BoardDAO {
         }
         return maxNum;
     }
-    
+
     // 가게 입력
     public int store_insert(mypage.vo.StoreBean storeBean) {
         PreparedStatement pstmt = null;
@@ -803,7 +892,7 @@ public class BoardDAO {
             String sql = "INSERT INTO "
                     + "store(store_num, store_name, store_address, store_category, store_menu, store_price, store_time, store_image,store_contact,store_cooperation)  "
                     + "VALUES(?,?,?,?,?,?,?,?,?,?)";
-            
+
             pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, storeBean.getStore_num());
             pstmt.setString(2, storeBean.getStore_name());
@@ -815,9 +904,9 @@ public class BoardDAO {
             pstmt.setString(8, storeBean.getStore_image());
             pstmt.setString(9, storeBean.getStore_contact());
             pstmt.setString(10, storeBean.getStore_cooperation());
-            
+
             isSuccess = pstmt.executeUpdate();
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -825,7 +914,7 @@ public class BoardDAO {
         }
         return isSuccess;
     }
-    
+
     // 매장 정보 가져오기
     public mypage.vo.StoreBean getStoreInfo(String user_id) {
 
@@ -863,41 +952,149 @@ public class BoardDAO {
         return storeBean;
 
     }
-    
+
     public int[] userPickArr(String user_id) {
-    	PreparedStatement pstmt = null;
+        PreparedStatement pstmt = null;
         ResultSet rs = null;
-    	int pickCount;
-    	int[] userPickArr = null;
-    	
-    	try {
-			String sql = "SELECT count(*) FROM pick WHERE user_id = ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, user_id);
-			rs = pstmt.executeQuery();
-			
-			if (rs.next()) {
-				pickCount = rs.getInt(1);
-				System.out.println("pickCount : " + pickCount);
-				rs= null;
-				System.out.println("pickCount : " + pickCount);
-				
-				userPickArr = new int[pickCount];
-				int i = 0;
-				sql = "SELECT board_num FROM pick WHERE user_id = ?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, user_id);
-				rs = pstmt.executeQuery();
-				
-				while (rs.next()) {
-					userPickArr[i] = rs.getInt("board_num");
-					i++;
-				}				
+        int pickCount;
+        int[] userPickArr = null;
+
+        try {
+            String sql = "SELECT count(*) FROM pick WHERE user_id = ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, user_id);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                pickCount = rs.getInt(1);
+                System.out.println("pickCount : " + pickCount);
+                rs = null;
+                System.out.println("pickCount : " + pickCount);
+
+                userPickArr = new int[pickCount];
+                int i = 0;
+                sql = "SELECT board_num FROM pick WHERE user_id = ?";
+                pstmt = con.prepareStatement(sql);
+                pstmt.setString(1, user_id);
+                rs = pstmt.executeQuery();
+
+                while (rs.next()) {
+                    userPickArr[i] = rs.getInt("board_num");
+                    i++;
+                }
             }
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-    	
-    	return userPickArr;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return userPickArr;
+    }
+
+    // 가게정보 가져오기
+    public List<mypage.vo.StoreBean> getStoreList(int page, int limit) {
+
+        int startRow = (page - 1) * 10;
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        List<mypage.vo.StoreBean> sList = new ArrayList<mypage.vo.StoreBean>();
+        mypage.vo.StoreBean storeBean = null;
+
+        try {
+            String sql = "SELECT * FROM store s join business_board b on(s.store_num = b.store_num)ORDER BY b.board_date desc LIMIT ?,? ";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, startRow);
+            pstmt.setInt(2, limit);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                storeBean = new mypage.vo.StoreBean();
+
+                storeBean.setStore_num(rs.getInt("store_num"));
+                storeBean.setStore_name(rs.getString("store_name"));
+                storeBean.setStore_address(rs.getString("store_address"));
+                storeBean.setStore_category(rs.getString("store_category"));
+                storeBean.setStore_menu(rs.getString("store_menu"));
+                storeBean.setStore_price(rs.getInt("store_price"));
+                storeBean.setStore_time(rs.getString("store_time"));
+                storeBean.setStore_image(rs.getString("store_image"));
+                storeBean.setStore_contact(rs.getString("store_contact"));
+                storeBean.setStore_cooperation(rs.getString("store_cooperation"));
+
+                sList.add(storeBean);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("getStoreInfo() 에러 : " + e.getMessage());
+        } finally {
+            close(pstmt);
+            close(rs);
+        }
+        return sList;
+
+    }
+
+    // 게시글 정보 가져오기
+    public List<BusinessBoardBean> getBoardList(int page, int limit) {
+
+        int startRow = (page - 1) * 10;
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        List<BusinessBoardBean> bList = new ArrayList<BusinessBoardBean>();
+        BusinessBoardBean businessBoardBean = null;
+
+        try {
+            String sql = "SELECT * FROM store s join business_board b on(s.store_num = b.store_num)ORDER BY b.board_date desc LIMIT ?,? ";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setInt(1, startRow);
+            pstmt.setInt(2, limit);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                businessBoardBean = new BusinessBoardBean();
+
+                businessBoardBean.setBoard_subject(rs.getString("board_subject"));
+                businessBoardBean.setUser_id(rs.getString("user_id"));
+                businessBoardBean.setBoard_content(rs.getString("board_content"));
+                businessBoardBean.setBoard_date(rs.getDate("board_date"));
+
+                bList.add(businessBoardBean);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("getStoreInfo() 에러 : " + e.getMessage());
+        } finally {
+            close(pstmt);
+            close(rs);
+        }
+        return bList;
+    }
+
+    // BusinessBoard list 갯수
+    public int getBusinessBoardListCount() {
+        int listCount = 0; // 총 게시물 수 저장 변수
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            String sql = "SELECT count(*) FROM store s join business_board b on(s.store_num = b.store_num)";
+
+            pstmt = con.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                listCount = rs.getInt(1);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("getBoardListCount() 에러 : " + e.getMessage());
+        } finally {
+            close(pstmt);
+            close(rs);
+        }
+
+        return listCount;
     }
 }

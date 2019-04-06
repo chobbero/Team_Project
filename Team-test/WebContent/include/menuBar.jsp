@@ -29,7 +29,7 @@
 						<div class="nav_text">추천음식점</div>
 					</div>
 			</a></li>
-			<li><a href="#">
+			<li><a href="./BusinessBoardList.bo">
 					<div class="nav_wrap">
 						<img class="nav_img" alt="cowork" src="img/organization.png">
 						<div class="nav_text">제휴음식점</div>

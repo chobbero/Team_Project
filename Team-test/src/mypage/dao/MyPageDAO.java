@@ -7,11 +7,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.sql.DataSource;
 
 import board.vo.ListBean;
 import member.vo.MemberBean;
+import mypage.vo.BusinessBoardBean;
+import mypage.vo.BusinessFile;
 
 public class MyPageDAO {
     Connection con;
@@ -75,7 +78,7 @@ public class MyPageDAO {
         }
         return PickList;
     }
-    
+
     // 마이페이지에 쓸 정보 가져가기
     public MemberBean getMember(String user_id) {
         PreparedStatement pstmt = null;
@@ -111,24 +114,24 @@ public class MyPageDAO {
 
         return memberBean;
     }
-    
-    //회원정보 수정
-    public int updateUser(MemberBean mb)throws Exception {
+
+    // 회원정보 수정
+    public int updateUser(MemberBean mb) throws Exception {
         PreparedStatement pstmt = null;
-      
+
         int check = 0;
         try {
             String sql = "update user set user_name=?, user_birth=?, user_phone=?, user_email=? where user_id=?";
             pstmt = con.prepareStatement(sql);
-            
-    		System.out.println("DB");
-    		System.out.println(sql);
-    		System.out.println(mb.getUser_id());
-    		System.out.println(mb.getUser_name());
-    		System.out.println(mb.getUser_phone());
-    		System.out.println(mb.getUser_birth());
-    		System.out.println(mb.getUser_email());
-    		
+
+            System.out.println("DB");
+            System.out.println(sql);
+            System.out.println(mb.getUser_id());
+            System.out.println(mb.getUser_name());
+            System.out.println(mb.getUser_phone());
+            System.out.println(mb.getUser_birth());
+            System.out.println(mb.getUser_email());
+
             pstmt.setString(1, mb.getUser_name());
             pstmt.setString(2, mb.getUser_birth());
             pstmt.setString(3, mb.getUser_phone());
@@ -136,19 +139,19 @@ public class MyPageDAO {
             pstmt.setString(5, mb.getUser_id());
 
             check = pstmt.executeUpdate();
-            System.out.println("DB check : "+check);
-           
+            System.out.println("DB check : " + check);
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             close(pstmt);
         }
         return check;
-    	
+
     }
-    
-    //삭제전 비밀번호 확인
-    public MemberBean userCheck(String user_id, String user_pw) throws Exception{
+
+    // 삭제전 비밀번호 확인
+    public MemberBean userCheck(String user_id, String user_pw) throws Exception {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         String sql = "";
@@ -182,35 +185,34 @@ public class MyPageDAO {
         }
         return memberBean;
     }
-    
-    //회원정보 삭제
-    public int deleteUser(String user_id){
+
+    // 회원정보 삭제
+    public int deleteUser(String user_id) {
         PreparedStatement pstmt = null;
         int result = 0;
-        
+
         try {
-        	
-        	String sql = "delete from user where user_id = ?";
-        	pstmt = con.prepareStatement(sql);
-        	pstmt.setString(1, user_id);
-        	result = pstmt.executeUpdate();
-        }
-        catch (Exception e) {
+
+            String sql = "delete from user where user_id = ?";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, user_id);
+            result = pstmt.executeUpdate();
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             close(pstmt);
         }
-        
+
         return result;
     }
-    
+
     public ArrayList<ListBean> getMyPageBoardList(int page, int limit, String user_id) {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         ArrayList<ListBean> list = new ArrayList<ListBean>();
 
         int startRow = (page - 1) * 10;
-        
+
         try {
             String sql = "SELECT * FROM board b JOIN store s ON (b.store_num = s.store_num) WHERE user_id = ? LIMIT ?,?";
             pstmt = con.prepareStatement(sql);
@@ -218,7 +220,7 @@ public class MyPageDAO {
             pstmt.setInt(2, startRow);
             pstmt.setInt(3, limit);
             rs = pstmt.executeQuery();
-            
+
             while (rs.next()) {
                 ListBean listBean = new ListBean();
 
@@ -250,19 +252,19 @@ public class MyPageDAO {
         }
         return list;
     }
-    
+
     public int getMyPageBoardCount(String user_id) {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         int result = 0;
-        
+
         try {
             String sql = "SELECT count(*) FROM board WHERE user_id = ?";
             pstmt = con.prepareStatement(sql);
             pstmt.setString(1, user_id);
             rs = pstmt.executeQuery();
-            
-            if(rs.next()) {
+
+            if (rs.next()) {
                 result = rs.getInt(1);
             }
         } catch (SQLException e) {
@@ -270,6 +272,37 @@ public class MyPageDAO {
         } finally {
             close(pstmt);
             close(rs);
+        }
+        return result;
+    }
+
+    public int insertArticle(BusinessBoardBean businessBoardBean, List<BusinessFile> businessFileList) {
+        PreparedStatement pstmt = null;
+        int result = 0;
+
+        try {
+            String sql = "insert into business_board values(?,?,?,?,now())";
+            pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, businessBoardBean.getUser_id());
+            pstmt.setInt(2, businessBoardBean.getStore_num());
+            pstmt.setString(3, businessBoardBean.getBoard_subject());
+            pstmt.setString(4, businessBoardBean.getBoard_content());
+
+            result = pstmt.executeUpdate();
+
+            for (int i = 0; i < businessFileList.size(); i++) {
+
+                sql = "INSERT INTO business_file VALUES(?,?)";
+                pstmt = con.prepareStatement(sql);
+                pstmt.setInt(1, businessFileList.get(i).getStore_num());
+                pstmt.setString(2, businessFileList.get(i).getImage());
+                result = pstmt.executeUpdate();
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            close(pstmt);
         }
         return result;
     }
